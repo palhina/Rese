@@ -19,7 +19,7 @@ class CreateReservationsTable extends Migration
             $table->unsignedBigInteger('shop_id');
             $table->time('rsv_date');
             $table->time('rsv_time');
-            $table->int('rsv_guests');
+            $table->integer('rsv_guests');
             $table->timestamps();
         });
     }

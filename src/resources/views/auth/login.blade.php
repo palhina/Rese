@@ -9,29 +9,30 @@
         <div class="login__group-title">
             <h2>Login</h2>
         </div>
-        <!-- form class="form" action="/login" method="post" csrf-->
+        <form class="form" action="/login" method="post">
+        @csrf
             
             <div class="login__form-content">
                 <div class="form__email-input">
                     <div class="form__email-text">
-                        <input type="email" name="email" value="" placeholder="Email" />
+                        <input type="email" name="email" value="{{ old('email') }}" placeholder="Email" />
                     </div>
-                    <!-- <div class="form__error">
+                    <div class="form__error">
                         {{$errors->first('email')}}
-                    </div> -->
+                    </div>
                 </div>
                 <div class="form__pwd-input">
                     <div class="form__pwd-text">
                         <input type="password" name="password" placeholder="Password" />
                     </div>
-                    <!-- <div class="form__error">
+                    <div class="form__error">
                         {{$errors->first('password')}}
-                    </div> -->
+                    </div>
                 </div>
                 <div class="form__button">
                     <button class="form__button-login" type="submit">ログイン</button>
                 </div>
             </div>
-        <!-- /form -->
+        </form>
     </div>
 @endsection

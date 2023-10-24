@@ -10,10 +10,6 @@
             <div class="search-form__area">
                 <select class="search__area" name="area">
                     <option value="">All area</option>
-                    <!-- foreach($prefectures as $prefecture)
-                    <option value="{{ $prefecture }}" {{ $prefecture==$selectedPrefecture ? 'selected' : '' }}>{{ $prefecture }}
-                    </option>
-                    endforeach -->
                 </select>
             </div>
             <div class="search-form__genre">
@@ -28,7 +24,7 @@
         <div class="shop-all">
             <div class="my-page__fav-card">
                 <div class="my-page__fav-img">
-                    <img class="card__img" src="sushi.jpg">
+                    <img class="card__img" src="/images/sushi.jpg">
                 </div>
                 <div class="my-page__fav-desc">
                     <div class="my-page__fav-name">
@@ -47,7 +43,7 @@
             </div>
             <div class="my-page__fav-card">
                 <div class="my-page__fav-img">
-                    <img class="card__img" src="sushi.jpg">
+                    <img class="card__img" src="/images/sushi.jpg">
                 </div>
                 <div class="my-page__fav-desc">
                     <div class="my-page__fav-name">
@@ -66,7 +62,7 @@
             </div>
             <div class="my-page__fav-card">
                 <div class="my-page__fav-img">
-                    <img class="card__img" src="sushi.jpg">
+                    <img class="card__img" src="/images/sushi.jpg">
                 </div>
                 <div class="my-page__fav-desc">
                     <div class="my-page__fav-name">
@@ -85,7 +81,7 @@
             </div>
             <div class="my-page__fav-card">
                 <div class="my-page__fav-img">
-                    <img class="card__img" src="sushi.jpg">
+                    <img class="card__img" src="/images/sushi.jpg">
                 </div>
                 <div class="my-page__fav-desc">
                     <div class="my-page__fav-name">
@@ -104,7 +100,7 @@
             </div>
             <div class="my-page__fav-card">
                 <div class="my-page__fav-img">
-                    <img class="card__img" src="sushi.jpg">
+                    <img class="card__img" src="/images/sushi.jpg">
                 </div>
                 <div class="my-page__fav-desc">
                     <div class="my-page__fav-name">
