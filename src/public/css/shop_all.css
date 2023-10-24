@@ -1,0 +1,103 @@
+.shop-all__wrapper {
+    width: 100%;
+}
+
+.search-form {
+    display: flex;
+    justify-content: flex-end;
+    width: 500px;
+    margin: 0 30px 0 auto;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px #B7B7B7;
+}
+
+.search__area,
+.search__genre {
+    border-left: none;
+    border-top: none;
+    border-bottom: none;
+    border-right: 1px solid #B7B7B7;
+    height: 30px;
+    width: 100px;
+}
+
+.search__key {
+    border: none;
+    height: 30px;
+    width: 300px;
+}
+
+.shop-all {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.my-page__fav-card {
+    width: 23%;
+    background-color: #fff;
+    margin: 10px;
+    border-radius: 3px;
+    box-shadow: 3px 3px 3px #B7B7B7;
+    position: relative;
+}
+
+.my-page__fav-img {
+    width: 100%;
+}
+
+.card__img {
+    width: 100%;
+}
+
+.my-page__fav-desc {
+    margin: 20px;
+}
+
+.my-page__fav-name {
+    font-weight: bolder;
+    font-size: larger;
+}
+
+.fav-name {
+    margin: 0;
+}
+
+.my-page__fav-tag {
+    display: flex;
+    justify-content: left;
+}
+
+.fav-tag {
+    margin-right: 10px;
+}
+
+
+.to-shop-detail {
+    background-color: #3560F6;
+    color: #fff;
+    border-style: none;
+    padding: 5px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.heart-checkbox {
+    display: none;
+}
+
+.fav-button {
+    width: 24px;
+    height: 24px;
+    background-color: #B7B7B7;
+    clip-path: path("M12 4.248c-3.148-5.402-12-3.825-12 2.944 0 4.661 5.571 9.427 12 15.808 6.43-6.381 12-11.147 12-15.808 0-6.792-8.875-8.306-12-2.944z");
+    position: absolute;
+    right: 30px;
+    bottom: 30px;
+    cursor: pointer;
+}
+
+.heart-checkbox:checked+.fav-button {
+    background-color: red;
+}

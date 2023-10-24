@@ -1,0 +1,26 @@
+h2 {
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+    margin: 50px;
+}
+
+.thanks__content {
+    width: 50%;
+    text-align: center;
+    margin: auto;
+    background-color: #fff;
+    padding: 100px 50px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px #B7B7B7;
+}
+
+.login__link {
+    background-color: #3560F6;
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+    margin: 30px;
+    padding: 10px;
+    border-radius: 5px;
+}
