@@ -22,101 +22,30 @@
             </div>
         </div>
         <div class="shop-all">
+            @foreach ($shops as $shop)
             <div class="my-page__fav-card">
                 <div class="my-page__fav-img">
-                    <img class="card__img" src="/images/sushi.jpg">
+                    <img class="card__img" src="{{ $shop->shop_photo }}">
                 </div>
                 <div class="my-page__fav-desc">
                     <div class="my-page__fav-name">
-                        <p class="fav-name">仙人</p>
+                        <p class="fav-name">{{ $shop->shop_name }}</p>
                     </div>
                     <div class="my-page__fav-tag">
-                        <p class="fav-tag">#東京都</p>
-                        <p class="fav-tag">#寿司</p>
+                        <p class="fav-tag">#{{ $shop->area_id }}</p>
+                        <p class="fav-tag">#{{ $shop->genre_id }}</p>
                     </div>
                     <div class="my-page__shop-detail">
-                        <button class="to-shop-detail">詳しく見る</button>
+                        <form class="form" action="/detail" method="get">
+                        @csrf
+                            <button class="to-shop-detail">詳しく見る</button>
+                        </form>
                     </div>
                     <input type="checkbox" class="heart-checkbox" id="heart-check">
                     <label class="fav-button" for="heart-check"></label>
                 </div>
             </div>
-            <div class="my-page__fav-card">
-                <div class="my-page__fav-img">
-                    <img class="card__img" src="/images/sushi.jpg">
-                </div>
-                <div class="my-page__fav-desc">
-                    <div class="my-page__fav-name">
-                        <p class="fav-name">仙人</p>
-                    </div>
-                    <div class="my-page__fav-tag">
-                        <p class="fav-tag">#東京都</p>
-                        <p class="fav-tag">#寿司</p>
-                    </div>
-                    <div class="my-page__shop-detail">
-                        <button class="to-shop-detail">詳しく見る</button>
-                    </div>
-                    <input type="checkbox" class="heart-checkbox" id="heart-check">
-                    <label class="fav-button" for="heart-check"></label>
-                </div>
-            </div>
-            <div class="my-page__fav-card">
-                <div class="my-page__fav-img">
-                    <img class="card__img" src="/images/sushi.jpg">
-                </div>
-                <div class="my-page__fav-desc">
-                    <div class="my-page__fav-name">
-                        <p class="fav-name">仙人</p>
-                    </div>
-                    <div class="my-page__fav-tag">
-                        <p class="fav-tag">#東京都</p>
-                        <p class="fav-tag">#寿司</p>
-                    </div>
-                    <div class="my-page__shop-detail">
-                        <button class="to-shop-detail">詳しく見る</button>
-                    </div>
-                    <input type="checkbox" class="heart-checkbox" id="heart-check">
-                    <label class="fav-button" for="heart-check"></label>
-                </div>
-            </div>
-            <div class="my-page__fav-card">
-                <div class="my-page__fav-img">
-                    <img class="card__img" src="/images/sushi.jpg">
-                </div>
-                <div class="my-page__fav-desc">
-                    <div class="my-page__fav-name">
-                        <p class="fav-name">仙人</p>
-                    </div>
-                    <div class="my-page__fav-tag">
-                        <p class="fav-tag">#東京都</p>
-                        <p class="fav-tag">#寿司</p>
-                    </div>
-                    <div class="my-page__shop-detail">
-                        <button class="to-shop-detail">詳しく見る</button>
-                    </div>
-                    <input type="checkbox" class="heart-checkbox" id="heart-check">
-                    <label class="fav-button" for="heart-check"></label>
-                </div>
-            </div>
-            <div class="my-page__fav-card">
-                <div class="my-page__fav-img">
-                    <img class="card__img" src="/images/sushi.jpg">
-                </div>
-                <div class="my-page__fav-desc">
-                    <div class="my-page__fav-name">
-                        <p class="fav-name">仙人</p>
-                    </div>
-                    <div class="my-page__fav-tag">
-                        <p class="fav-tag">#東京都</p>
-                        <p class="fav-tag">#寿司</p>
-                    </div>
-                    <div class="my-page__shop-detail">
-                        <button class="to-shop-detail">詳しく見る</button>
-                    </div>
-                    <input type="checkbox" class="heart-checkbox" id="heart-check">
-                    <label class="fav-button" for="heart-check"></label>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>                
 @endsection

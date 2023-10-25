@@ -5,32 +5,33 @@
 @endsection
 
 @section('content')
+
     <div class="shop-detail__wrapper">
             <div class="shop__contents">
                 <div class="shop__contents-ttl">
                     <button class="back">&lt;</button>
-                    <h2>仙人</h2>
+                    <h2>{{ $shop->shop_name }}</h2>
                 </div>
                 <div class="shop__contents-img">
-                    <img class="shop__img" src="sushi.jpg">
+                    <img class="shop__img" src="{{ $shop->shop_photo }}">
                 </div>
                 <div class="shop__contents-tag">
-                    <p>#東京都</p>
-                    <p>#寿司</p>
+                    <p>#{{ $shop->area_id }}</p>
+                    <p>#{{ $shop->genre_id }}</p>
                 </div>
                 <div class="shop__contents-desc">
-                    <p>料理長厳選の食材から作る寿司を用いたコースをぜひお楽しみください。食材・味・価格、お客様の満足度を徹底的に追及したお店です。特別な日のお食事、ビジネス接待まで気軽に使用することができます。</p>
+                    <p>{{ $shop->shop_comment }}</p>
                 </div>
             </div>
             <div class="shop__rsv">
                 <h3>予約</h3>
                 <form class="shop__rsv-form" action="" method="get">
-                        <!-- csrf -->
+                @csrf
                     <div class="form__group">
-                        <input class="rsv-date" type="date" name="date">
+                        <input class="rsv-date" type="date" name="date" id="dateInput">
                     </div>
                     <div class="form__group">
-                        <select class="rsv-time" name="time">
+                        <select class="rsv-time" name="time" id="timeInput">
                             <option value="10:00">10:00</option>
                             <option value="11:00">11:00</option>
                             <option value="12:00">12:00</option>
@@ -46,7 +47,7 @@
                         </select>
                     </div>
                     <div class="form__group">
-                        <select class="rsv-number" name="number">
+                        <select class="rsv-number" name="number" id="numberInput">
                             <option value="1">1人</option>
                             <option value="2">2人</option>
                             <option value="3">3人</option>
@@ -64,19 +65,19 @@
                         <table>
                             <tr>
                                 <th>Shop</th>
-                                <td>仙人</td>
+                                <td>{{ $shop->shop_name }}</td>
                             </tr>
                             <tr>
                                 <th>Date</th>
-                                <td>2021-04-21</td>
+                                <td id="displayDate"></td>
                             </tr>
                              <tr>
                                 <th>Time</th>
-                                <td>17:00</td>
+                                <td id="displayTime"></td>
                             </tr>
                             <tr>
                                 <th>Number</th>
-                                <td>1人</td>
+                                <td id="displayNumber"></td>
                             </tr>
                         </table>
                     </div>
@@ -86,4 +87,30 @@
                 </form>
             </div>
         </div>
+        
+    <script>
+    // フォームの要素を取得
+    const dateInput = document.getElementById('dateInput');
+    const timeInput = document.getElementById('timeInput');
+    const numberInput = document.getElementById('numberInput');
+
+    // 表示エリアの要素を取得
+    const displayDate = document.getElementById('displayDate');
+    const displayTime = document.getElementById('displayTime');
+    const displayNumber = document.getElementById('displayNumber');
+
+    // フォームの変更を監視し、表示エリアに反映
+    dateInput.addEventListener('change', () => {
+        displayDate.textContent = dateInput.value;
+    });
+
+    timeInput.addEventListener('change', () => {
+        displayTime.textContent = timeInput.value;
+    });
+
+    numberInput.addEventListener('change', () => {
+        displayNumber.textContent = numberInput.options[numberInput.selectedIndex].text;
+    });
+    </script>
+
 @endsection

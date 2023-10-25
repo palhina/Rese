@@ -1,11 +1,11 @@
-extends('layouts.app')
+@extends('layouts.app')
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/my_page.css') }}">
 @endsection
 
 @section('content')
-    <h2>testさん</h2>
+    <h2>{{ $user->name }}さん</h2>
     <div class="my-page__wrapper">
         <div class="my-page__rsv">
             <div class="my-page__rsv-ttl">
@@ -39,7 +39,7 @@ extends('layouts.app')
             <div class="my-page__fav">
                 <div class="my-page__fav-card">
                     <div class="my-page__fav-img"> 
-                        <img class="card__img" src="sushi.jpg">
+                        <img class="card__img" src="/images/sushi.jpg">
                     </div>
                     <div class="my-page__fav-desc">
                         <div class="my-page__fav-name">
@@ -58,7 +58,7 @@ extends('layouts.app')
                 </div>
                 <div class="my-page__fav-card">
                     <div class="my-page__fav-img">
-                        <img class="card__img" src="sushi.jpg">
+                        <img class="card__img" src="/images/sushi.jpg">
                     </div>
                     <div class="my-page__fav-desc">
                         <div class="my-page__fav-name">
@@ -77,7 +77,7 @@ extends('layouts.app')
                 </div>
                 <div class="my-page__fav-card">
                     <div class="my-page__fav-img">
-                        <img class="card__img" src="sushi.jpg">
+                        <img class="card__img" src="/images/sushi.jpg">
                     </div>
                     <div class="my-page__fav-desc">
                         <div class="my-page__fav-name">
@@ -96,7 +96,7 @@ extends('layouts.app')
                 </div>
                 <div class="my-page__fav-card">
                     <div class="my-page__fav-img">
-                        <img class="card__img" src="sushi.jpg">
+                        <img class="card__img" src="/images/sushi.jpg">
                     </div>
                     <div class="my-page__fav-desc">
                         <div class="my-page__fav-name">
