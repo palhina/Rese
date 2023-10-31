@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageViewController;
 use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\FavoriteController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -23,4 +25,5 @@ Route::middleware('auth')->group(function () {
     Route::delete('/delete/{id}', [ReservationController::class, 'delete']);
     Route::get('/thanks', [PageViewController::class, 'thanks']);
     Route::get('/my_page', [PageViewController::class, 'myPage']);
+    Route::post('/favorite/{id}', [FavoriteController::class, 'favorite']);
 });

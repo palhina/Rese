@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Shop;
 use App\Models\Reservation;
+use App\Models\Favorite;
 
 
 class PageViewController extends Controller
@@ -31,6 +32,7 @@ class PageViewController extends Controller
         ->orderBy('rsv_date', 'asc') 
         ->orderBy('rsv_time', 'asc')
         ->get();
-        return view('my_page',compact('user','reservations'));
+        $favorites =  Favorite::where('user_id',$user->id)->get();
+        return view('my_page',compact('user','reservations','favorites'));
     }
 }

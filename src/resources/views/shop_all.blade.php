@@ -41,8 +41,10 @@
                             <button class="to-shop-detail">詳しく見る</button>
                         </form>
                     </div>
-                    <input type="checkbox" class="heart-checkbox" id="heart-check">
-                    <label class="fav-button" for="heart-check"></label>
+                    <form method="POST" action="/favorite/{{ $shop->id }}">
+                    @csrf
+                        <button class="fav-button" type="submit"></button>
+                    </form>
                 </div>
             </div>
             @endforeach

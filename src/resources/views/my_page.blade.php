@@ -22,7 +22,7 @@
                         <table>
                             <tr>
                                 <th>Shop</th>
-                                <td>{{ $reservation->id }}</td>
+                                <td>{{ $reservation->shop->shop_name}}</td>
                             </tr>
                             <tr>
                                 <th>Date</th>
@@ -45,82 +45,30 @@
         <div class="shop__rsv">
             <h3>お気に入り店舗</h3>
             <div class="my-page__fav">
-                <div class="my-page__fav-card">
-                    <div class="my-page__fav-img"> 
-                        <img class="card__img" src="/images/sushi.jpg">
-                    </div>
-                    <div class="my-page__fav-desc">
-                        <div class="my-page__fav-name">
-                            <p class="fav-name">仙人</p>
-                        </div>
-                        <div class="my-page__fav-tag">
-                            <p class="fav-tag">#東京都</p>
-                            <p class="fav-tag">#寿司</p>
-                        </div>
-                        <div class="my-page__shop-detail">
-                            <button class="to-shop-detail">詳しく見る</button>
-                        </div>
-                        <input type="checkbox" class="heart-checkbox" id="heart-check">
-                        <label class="fav-button" for="heart-check"></label>
-                    </div>
-                </div>
+                @foreach($favorites as $favorite)
                 <div class="my-page__fav-card">
                     <div class="my-page__fav-img">
-                        <img class="card__img" src="/images/sushi.jpg">
+                        <img class="card__img" src="{{ $favorite ->shop->shop_photo }}">
                     </div>
                     <div class="my-page__fav-desc">
                         <div class="my-page__fav-name">
-                            <p class="fav-name">仙人</p>
+                            <p class="fav-name">{{$favorite->shop->shop_name}}</p>
                         </div>
                         <div class="my-page__fav-tag">
-                            <p class="fav-tag">#東京都</p>
-                            <p class="fav-tag">#寿司</p>
+                            <p class="fav-tag">#{{$favorite->shop->area->shop_area}}</p>
+                            <p class="fav-tag">#{{$favorite->shop->genre->shop_genre}}</p>
                         </div>
                         <div class="my-page__shop-detail">
-                            <button class="to-shop-detail">詳しく見る</button>
+                            <form class="form" action="/detail/{{$favorite->shop->id}}" method="get">
+                            @csrf
+                                <button class="to-shop-detail">詳しく見る</button>
+                            </form>
                         </div>
                         <input type="checkbox" class="heart-checkbox" id="heart-check">
                         <label class="fav-button" for="heart-check"></label>
                     </div>
                 </div>
-                <div class="my-page__fav-card">
-                    <div class="my-page__fav-img">
-                        <img class="card__img" src="/images/sushi.jpg">
-                    </div>
-                    <div class="my-page__fav-desc">
-                        <div class="my-page__fav-name">
-                            <p class="fav-name">仙人</p>
-                        </div>
-                        <div class="my-page__fav-tag">
-                            <p class="fav-tag">#東京都</p>
-                            <p class="fav-tag">#寿司</p>
-                        </div>
-                        <div class="my-page__shop-detail">
-                            <button class="to-shop-detail">詳しく見る</button>
-                        </div>
-                        <input type="checkbox" class="heart-checkbox" id="heart-check">
-                        <label class="fav-button" for="heart-check"></label>
-                    </div>
-                </div>
-                <div class="my-page__fav-card">
-                    <div class="my-page__fav-img">
-                        <img class="card__img" src="/images/sushi.jpg">
-                    </div>
-                    <div class="my-page__fav-desc">
-                        <div class="my-page__fav-name">
-                            <p class="fav-name">仙人</p>
-                        </div>
-                        <div class="my-page__fav-tag">
-                            <p class="fav-tag">#東京都</p>
-                            <p class="fav-tag">#寿司</p>
-                        </div>
-                        <div class="my-page__shop-detail">
-                            <button class="to-shop-detail">詳しく見る</button>
-                        </div>
-                        <input type="checkbox" class="heart-checkbox" id="heart-check">
-                        <label class="fav-button" for="heart-check"></label>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>

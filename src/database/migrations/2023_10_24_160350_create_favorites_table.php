@@ -17,6 +17,7 @@ class CreateFavoritesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('shop_id');
+            $table->unique(['user_id', 'shop_id']);
             $table->timestamps();
         });
     }
