@@ -13,10 +13,10 @@ class PageViewController extends Controller
         $shops = Shop::all();
         return view('shop_all', ['shops' => $shops]);
     }
-    public function detail()
+    public function detail($id)
     {
-        $shop = Shop::first();
-        return view('shop_detail',['shop' => $shop]);
+        $shop = Shop::find($id);
+        return view('shop_detail',compact('shop'));
     }
     public function thanks()
     {

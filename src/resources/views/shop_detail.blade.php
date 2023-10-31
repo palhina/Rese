@@ -9,7 +9,7 @@
     <div class="shop-detail__wrapper">
             <div class="shop__contents">
                 <div class="shop__contents-ttl">
-                    <button class="back">&lt;</button>
+                    <a class="back" href="/">&lt;</a>
                     <h2>{{ $shop->shop_name }}</h2>
                 </div>
                 <div class="shop__contents-img">
@@ -25,7 +25,7 @@
             </div>
             <div class="shop__rsv">
                 <h3>予約</h3>
-                <form class="shop__rsv-form" action="" method="get">
+                <form class="shop__rsv-form" action="/reservation/{{$shop->id}}" method="post">
                 @csrf
                     <div class="form__group">
                         <input class="rsv-date" type="date" name="date" id="dateInput">
@@ -59,9 +59,8 @@
                             <option value="9">9人</option>
                             <option value="10">10人</option>
                         </select>
-                    </div>
+                    </div>   
                     <div class="rsv-confirm">
-                        <!-- 多分Javascript使用し仕上げる -->
                         <table>
                             <tr>
                                 <th>Shop</th>
@@ -82,24 +81,22 @@
                         </table>
                     </div>
                     <div class="form__button">
-                        <input class="form__button-rsv" type="submit" value="予約する">
+                        <button class="form__button-rsv" type="submit">予約する</button>
                     </div>
-                </form>
+                </form> 
             </div>
         </div>
-        
+
+    <!--フォーム入力内容の表示  -->
     <script>
-    // フォームの要素を取得
     const dateInput = document.getElementById('dateInput');
     const timeInput = document.getElementById('timeInput');
     const numberInput = document.getElementById('numberInput');
 
-    // 表示エリアの要素を取得
     const displayDate = document.getElementById('displayDate');
     const displayTime = document.getElementById('displayTime');
     const displayNumber = document.getElementById('displayNumber');
 
-    // フォームの変更を監視し、表示エリアに反映
     dateInput.addEventListener('change', () => {
         displayDate.textContent = dateInput.value;
     });

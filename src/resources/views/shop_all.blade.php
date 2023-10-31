@@ -23,20 +23,20 @@
         </div>
         <div class="shop-all">
             @foreach ($shops as $shop)
-            <div class="my-page__fav-card">
-                <div class="my-page__fav-img">
+            <div class="shop-all__card">
+                <div class="shop-all__card-img">
                     <img class="card__img" src="{{ $shop->shop_photo }}">
                 </div>
-                <div class="my-page__fav-desc">
-                    <div class="my-page__fav-name">
-                        <p class="fav-name">{{ $shop->shop_name }}</p>
+                <div class="shop-all__card-desc">
+                    <div class="shop-all__card-name">
+                        <p class="card-name">{{ $shop->shop_name }}</p>
                     </div>
-                    <div class="my-page__fav-tag">
-                        <p class="fav-tag">#{{ $shop->area_id }}</p>
-                        <p class="fav-tag">#{{ $shop->genre_id }}</p>
+                    <div class="shop-all__card-tag">
+                        <p class="card-tag">#{{ $shop->area_id }}</p>
+                        <p class="card-tag">#{{ $shop->genre_id }}</p>
                     </div>
-                    <div class="my-page__shop-detail">
-                        <form class="form" action="/detail" method="get">
+                    <div class="shop-all__card-detail">
+                        <form class="form" action="/detail/{{$shop->id}}" method="get">
                         @csrf
                             <button class="to-shop-detail">詳しく見る</button>
                         </form>

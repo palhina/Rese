@@ -10,7 +10,7 @@
             <h2>ご予約ありがとうございます</h2>
         </div>
         <div class="form__button">
-            <a class="back-link" href="">戻る</a>
+            <a class="back-link" href="/">戻る</a>
         </div>
     </div>
 @endsection

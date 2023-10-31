@@ -34,7 +34,7 @@
     flex-wrap: wrap;
 }
 
-.my-page__fav-card {
+.shop-all__card {
     width: 23%;
     background-color: #fff;
     margin: 10px;
@@ -43,7 +43,7 @@
     position: relative;
 }
 
-.my-page__fav-img {
+.shop-all__card-img {
     width: 100%;
 }
 
@@ -51,25 +51,25 @@
     width: 100%;
 }
 
-.my-page__fav-desc {
+.shop-all__card-desc {
     margin: 20px;
 }
 
-.my-page__fav-name {
+.shop-all__card-name {
     font-weight: bolder;
     font-size: larger;
 }
 
-.fav-name {
+.card-name {
     margin: 0;
 }
 
-.my-page__fav-tag {
+.shop-all__card-tag {
     display: flex;
     justify-content: left;
 }
 
-.fav-tag {
+.card-tag {
     margin-right: 10px;
 }
 
