@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Shop;
+use App\Models\Reservation;
+
 
 class PageViewController extends Controller
 {
@@ -25,6 +27,10 @@ class PageViewController extends Controller
     public function myPage()
     {   
         $user = Auth::user();
-        return view('my_page',compact('user'));
+        $reservations = Reservation::where('user_id',$user->id)
+        ->orderBy('rsv_date', 'asc') 
+        ->orderBy('rsv_time', 'asc')
+        ->get();
+        return view('my_page',compact('user','reservations'));
     }
 }

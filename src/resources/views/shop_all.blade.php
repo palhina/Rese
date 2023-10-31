@@ -32,8 +32,8 @@
                         <p class="card-name">{{ $shop->shop_name }}</p>
                     </div>
                     <div class="shop-all__card-tag">
-                        <p class="card-tag">#{{ $shop->area_id }}</p>
-                        <p class="card-tag">#{{ $shop->genre_id }}</p>
+                        <p class="card-tag">#{{ $shop->area->shop_area}}</p>
+                        <p class="card-tag">#{{ $shop->genre->shop_genre }}</p>
                     </div>
                     <div class="shop-all__card-detail">
                         <form class="form" action="/detail/{{$shop->id}}" method="get">

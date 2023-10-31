@@ -16,8 +16,8 @@
                     <img class="shop__img" src="{{ $shop->shop_photo }}">
                 </div>
                 <div class="shop__contents-tag">
-                    <p>#{{ $shop->area_id }}</p>
-                    <p>#{{ $shop->genre_id }}</p>
+                    <p>#{{ $shop->area->shop_area }}</p>
+                    <p>#{{ $shop->genre->shop_genre }}</p>
                 </div>
                 <div class="shop__contents-desc">
                     <p>{{ $shop->shop_comment }}</p>

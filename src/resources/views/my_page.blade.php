@@ -11,27 +11,31 @@
             <div class="my-page__rsv-ttl">
                 <h3>予約状況</h3>
             </div>
-            <div class="my-page__rsv-detail">
-                <p class="rsv__ttl">予約「１」</p>
-                <button class="back">×</button>
-                <table>
-                    <tr>
-                        <th>Shop</th>
-                        <td>仙人</td>
-                    </tr>
-                    <tr>
-                        <th>Date</th>
-                        <td>2021-04-01</td>
-                    </tr>
-                    <tr>
-                        <th>Time</th>
-                        <td>17:00</td>
-                    </tr>
-                    <tr>
-                        <th>Number</th>
-                        <td>1人</td>
-                    </tr>
-                </table>
+            <div class="my-page_rsv">
+                @foreach($reservations as $key => $reservation)
+                <div class="my-page__rsv-detail">
+                    <p class="rsv__ttl">予約{{$key + 1}}</p>
+                    <button class="back">×</button>
+                    <table>
+                        <tr>
+                            <th>Shop</th>
+                            <td>{{$reservation->shop->shop_name}}</td>
+                        </tr>
+                        <tr>
+                            <th>Date</th>
+                            <td>{{$reservation->rsv_date}}</td>
+                        </tr>
+                        <tr>
+                            <th>Time</th>
+                            <td>{{$reservation->rsv_time}}</td>
+                        </tr>
+                        <tr>
+                            <th>Number</th>
+                            <td>{{$reservation->rsv_guests}}</td>
+                        </tr>
+                    </table>
+                </div>
+                @endforeach
             </div>
         </div>
         <div class="shop__rsv">

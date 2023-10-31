@@ -16,4 +16,13 @@ class Reservation extends Model
         'rsv_time',
         'rsv_guests'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+    public function shop()
+    {
+        return $this->belongsTo(Shop::class, 'shop_id', 'id');
+    }
 }
