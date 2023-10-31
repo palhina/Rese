@@ -14,26 +14,30 @@
             <div class="my-page_rsv">
                 @foreach($reservations as $key => $reservation)
                 <div class="my-page__rsv-detail">
-                    <p class="rsv__ttl">予約{{$key + 1}}</p>
-                    <button class="back">×</button>
-                    <table>
-                        <tr>
-                            <th>Shop</th>
-                            <td>{{$reservation->shop->shop_name}}</td>
-                        </tr>
-                        <tr>
-                            <th>Date</th>
-                            <td>{{$reservation->rsv_date}}</td>
-                        </tr>
-                        <tr>
-                            <th>Time</th>
-                            <td>{{$reservation->rsv_time}}</td>
-                        </tr>
-                        <tr>
-                            <th>Number</th>
-                            <td>{{$reservation->rsv_guests}}</td>
-                        </tr>
-                    </table>
+                    <form class="rsv__delete" method="post" action="/delete/{{ $reservation->id }}">
+                    @method('DELETE')
+                    @csrf
+                        <p class="rsv__ttl">予約{{$key + 1}}</p>
+                        <button class="rsv__delete--btn" type="submit">×</button>
+                        <table>
+                            <tr>
+                                <th>Shop</th>
+                                <td>{{ $reservation->id }}</td>
+                            </tr>
+                            <tr>
+                                <th>Date</th>
+                                <td>{{$reservation->rsv_date}}</td>
+                            </tr>
+                            <tr>
+                                <th>Time</th>
+                                <td>{{$reservation->rsv_time}}</td>
+                            </tr>
+                            <tr>
+                                <th>Number</th>
+                                <td>{{$reservation->rsv_guests}}</td>
+                            </tr>
+                        </table>
+                    </form>
                 </div>
                 @endforeach
             </div>

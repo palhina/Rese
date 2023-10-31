@@ -20,6 +20,7 @@ Route::get('/detail/{id}', [PageViewController::class, 'detail']);
 // 認証機能必要（サンクス、予約、お気に入り、マイページ）
 Route::middleware('auth')->group(function () {
     Route::post('/reservation/{id}', [ReservationController::class, 'reserve']);
+    Route::delete('/delete/{id}', [ReservationController::class, 'delete']);
     Route::get('/thanks', [PageViewController::class, 'thanks']);
     Route::get('/my_page', [PageViewController::class, 'myPage']);
 });

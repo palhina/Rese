@@ -25,7 +25,12 @@
                         <button class="header-nav__button">Logout</button>
                     </form>
                 </li>
-                <li><a href="/my_page">Mypage</a></li>
+                <li>
+                    <form class="form" action="/my_page" method="get">
+                    @csrf
+                        <button class="my_page">Mypage</button>
+                    </form>
+                </li>
                 @else
                 <li><a href="/">Home</a></li>
                 <li><a href="/register">Registration</a></li>
