@@ -14,7 +14,7 @@
             <div class="my-page_rsv">
                 @foreach($reservations as $key => $reservation)
                 <div class="my-page__rsv-detail">
-                    <form class="rsv__delete" method="post" action="/delete/{{ $reservation->id }}">
+                    <form class="rsv__delete" method="post" action="/cancel/{{ $reservation->id }}">
                     @method('DELETE')
                     @csrf
                         <p class="rsv__ttl">予約{{$key + 1}}</p>
@@ -64,8 +64,11 @@
                                 <button class="to-shop-detail">詳しく見る</button>
                             </form>
                         </div>
-                        <input type="checkbox" class="heart-checkbox" id="heart-check">
-                        <label class="fav-button" for="heart-check"></label>
+                        <form class="fav__delete" method="post" action="/delete/{{ $favorite->id }}">
+                        @method('DELETE')
+                        @csrf
+                        <button class="fav-btn__favorite" type="submit"></button>
+                        </form>
                     </div>
                 </div>
                 @endforeach

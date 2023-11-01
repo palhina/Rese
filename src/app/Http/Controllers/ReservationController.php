@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Reservation;
 use App\Models\Shop;
+use App\Models\Favorite;
+
 
 class ReservationController extends Controller
 {
@@ -26,7 +28,7 @@ class ReservationController extends Controller
     }
 
     // 予約削除
-    public function delete($id)
+    public function cancel($id)
     {
         $reservation = Reservation::find($id)->delete();
         $user = Auth::user();
@@ -34,6 +36,8 @@ class ReservationController extends Controller
         ->orderBy('rsv_date', 'asc') 
         ->orderBy('rsv_time', 'asc')
         ->get();
-        return view('my_page',compact('user','reservations'));
+        $favorites = Favorite::where('user_id',$user->id)
+        ->get();
+        return view('my_page',compact('user','reservations','favorites'));
     }
 }
