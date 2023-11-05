@@ -38,8 +38,20 @@ input {
     width: 80%;
 }
 
-input::before {
-    /* アイコン挿入 */
+.form__email-text::before {
+    content: "email";
+    font-family: 'Material Icons';
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+.form__pwd-text::before {
+    content: "lock";
+    font-family: 'Material Icons';
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 8px;
 }
 
 /* バリデーションエラー */

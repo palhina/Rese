@@ -2,6 +2,7 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/my_page.css') }}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 @endsection
 
 @section('content')
@@ -17,7 +18,10 @@
                     <form class="rsv__delete" method="post" action="/cancel/{{ $reservation->id }}">
                     @method('DELETE')
                     @csrf
-                        <p class="rsv__ttl">予約{{$key + 1}}</p>
+                        <div class="form__icon">
+                            <i class="material-icons">schedule</i>
+                            <p class="rsv__ttl">予約{{$key + 1}}</p>
+                        </div>
                         <button class="rsv__delete--btn" type="submit">×</button>
                         <table>
                             <tr>
@@ -64,7 +68,7 @@
                                 <button class="to-shop-detail">詳しく見る</button>
                             </form>
                         </div>
-                        <form class="fav__delete" method="post" action="/delete/{{ $favorite->id }}">
+                        <form class="fav__delete" method="post" action="/delete_mypage/{{ $favorite->id }}">
                         @method('DELETE')
                         @csrf
                         <button class="fav-btn__favorite" type="submit"></button>

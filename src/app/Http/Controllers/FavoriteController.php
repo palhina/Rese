@@ -20,12 +20,15 @@ class FavoriteController extends Controller
             'user_id' => $user->id,
             'shop_id' => $shop->id,
         ]);
-        return view('shop_all', ['shops' => $shops]);
+        $userId = Auth::user()->id;
+        $favorites =  Favorite::where('user_id',$userId)->get();
+        $shops->each(function ($shop) use ($userId) {
+            $shop->isFavorite = Favorite::isFavorite($shop->id, $userId)->exists();
+        });
+        return view('shop_all', compact('shops','favorites'));
     }
 
-    // どのページ（マイページor一覧）からお気に入り削除かけたかで挙動変更する
-    // 最悪returnview先2個作る
-    public function delete($id)
+    public function deleteMyPage($id)
     {
         $favorite = Favorite::find($id)->delete();
         $user = Auth::user();
@@ -36,6 +39,21 @@ class FavoriteController extends Controller
         ->orderBy('rsv_time', 'asc')
         ->get();
         return view('my_page',compact('user','favorites','reservations'));
+    }
+
+     public function deleteShopAll($id)
+    {
+        $favorite = Favorite::find($id)->delete();
+        $user = Auth::user();
+        $shop = Shop::find($id);
+        $shops = Shop::all();
+        $userId = Auth::user()->id;
+        $favorites = Favorite::where('user_id',$user->id)
+        ->get();
+        $shops->each(function ($shop) use ($userId) {
+            $shop->isFavorite = Favorite::isFavorite($shop->id, $userId)->exists();
+        });
+        return view('shop_all',compact('user','favorites','shops'));
     }
 
 }

@@ -5,8 +5,8 @@
 .search-form {
     display: flex;
     justify-content: flex-end;
-    width: 530px;
-    margin: 0 30px 0 auto;
+    width: 600px;
+    margin: 0 100px 0 auto;
     background-color: #fff;
     padding: 10px;
     border-radius: 5px;
@@ -27,6 +27,10 @@
     border: none;
     height: 30px;
     width: 300px;
+}
+
+.search__btn{
+    cursor: pointer;
 }
 
 .shop-all {
@@ -83,7 +87,7 @@
     cursor: pointer;
 }
 
-.fav-button {
+.fav-button__not {
     width: 24px;
     height: 24px;
     background-color: #B7B7B7;

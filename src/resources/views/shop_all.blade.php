@@ -1,53 +1,40 @@
-@extends('layouts.app')
+@extends('search')
 
-@section('css')
-    <link rel="stylesheet" href="{{ asset('css/shop_all.css') }}">
-@endsection
-
-@section('content')
-    <div class="shop-all__wrapper">
-        <div class="search-form">
-            <div class="search-form__area">
-                <select class="search__area" name="area">
-                    <option value="">All area</option>
-                </select>
-            </div>
-            <div class="search-form__genre">
-                <select class="search__genre" name="genre">
-                    <option value="">All genre</option>
-                </select>
-            </div>
-            <div class="search-form__keyword">
-                <input class="search__key" type="text" name="keyword" placeholder="Search...">
-            </div>
+@section('result')
+<div class="shop-all">
+    @foreach ($shops as $shop)
+    <div class="shop-all__card">
+        <div class="shop-all__card-img">
+            <img class="card__img" src="{{ $shop->shop_photo }}">
         </div>
-        <div class="shop-all">
-            @foreach ($shops as $shop)
-            <div class="shop-all__card">
-                <div class="shop-all__card-img">
-                    <img class="card__img" src="{{ $shop->shop_photo }}">
-                </div>
-                <div class="shop-all__card-desc">
-                    <div class="shop-all__card-name">
-                        <p class="card-name">{{ $shop->shop_name }}</p>
-                    </div>
-                    <div class="shop-all__card-tag">
-                        <p class="card-tag">#{{ $shop->area->shop_area}}</p>
-                        <p class="card-tag">#{{ $shop->genre->shop_genre }}</p>
-                    </div>
-                    <div class="shop-all__card-detail">
-                        <form class="form" action="/detail/{{$shop->id}}" method="get">
-                        @csrf
-                            <button class="to-shop-detail">詳しく見る</button>
-                        </form>
-                    </div>
-                    <form method="POST" action="/favorite/{{ $shop->id }}">
+        <div class="shop-all__card-desc">
+            <div class="shop-all__card-name">
+                <p class="card-name">{{ $shop->shop_name }}</p>
+            </div>
+            <div class="shop-all__card-tag">
+                <p class="card-tag">#{{ $shop->area->shop_area}}</p>
+                <p class="card-tag">#{{ $shop->genre->shop_genre }}</p>
+            </div>
+            <div class="shop-all__card-detail"> 
+                <form class="form" action="/detail/{{$shop->id}}" method="get">
+                @csrf
+                    <button class="to-shop-detail">詳しく見る</button>
+                </form>
+            </div>
+            @if ($shop->isFavorite)   
+                <form class="fav__delete" method="post" action="/delete_shop/{{ $favorites->firstWhere('shop_id', $shop->id)->id }}">
+                    @method('DELETE')
                     @csrf
-                        <button class="fav-button" type="submit"></button>
-                    </form>
-                </div>
-            </div>
-            @endforeach
+                    <button class="fav-btn__favorite" type="submit"></button>
+                </form>
+            @else
+                <form  class="fav__add" method="post" action="/favorite/{{ $shop->id }}">
+                    @csrf
+                    <button class="fav-button__not" type="submit"></button>
+                </form>
+            @endif
         </div>
-    </div>                
+    </div>
+    @endforeach
+</div>                
 @endsection

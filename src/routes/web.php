@@ -26,5 +26,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/thanks', [PageViewController::class, 'thanks']);
     Route::get('/my_page', [PageViewController::class, 'myPage']);
     Route::post('/favorite/{id}', [FavoriteController::class, 'favorite']);
-    Route::delete('/delete/{id}', [FavoriteController::class, 'delete']);
+    Route::delete('/delete_shop/{id}', [FavoriteController::class, 'deleteShopAll']);
+     Route::delete('/delete_mypage/{id}', [FavoriteController::class, 'deleteMyPage']);
 });

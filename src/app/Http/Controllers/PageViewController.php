@@ -7,14 +7,25 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Shop;
 use App\Models\Reservation;
 use App\Models\Favorite;
-
+use App\Models\User;
 
 class PageViewController extends Controller
 {
     public function index()
     {
         $shops = Shop::all();
-        return view('shop_all', ['shops' => $shops]);
+        $favorites = [];
+        if (Auth::check()) {
+            $userId = Auth::user()->id;
+            $favorites =  Favorite::where('user_id',$userId)->get();
+            $shops->each(function ($shop) use ($userId) {
+                $shop->isFavorite = Favorite::isFavorite($shop->id, $userId)->exists();
+            });   
+         return view('shop_all', compact('shops','favorites'));
+        }
+        else{
+            return view('shop_all', compact('shops'));
+        }
     }
     public function detail($id)
     {
