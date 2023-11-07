@@ -8,11 +8,15 @@ use App\Models\Shop;
 use App\Models\Reservation;
 use App\Models\Favorite;
 use App\Models\User;
+use App\Models\Area;
+use App\Models\Genre;
 
 class PageViewController extends Controller
 {
     public function index()
     {
+        $areas = Area::all();
+        $genres = Genre::all();
         $shops = Shop::all();
         $favorites = [];
         if (Auth::check()) {
@@ -21,10 +25,10 @@ class PageViewController extends Controller
             $shops->each(function ($shop) use ($userId) {
                 $shop->isFavorite = Favorite::isFavorite($shop->id, $userId)->exists();
             });   
-         return view('shop_all', compact('shops','favorites'));
+         return view('shop_all', compact('shops','favorites','areas','genres'));
         }
         else{
-            return view('shop_all', compact('shops'));
+            return view('shop_all', compact('shops','areas','genres'));
         }
     }
     public function detail($id)

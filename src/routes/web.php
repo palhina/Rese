@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageViewController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\ShopController;
 
 
 /*
@@ -18,6 +19,7 @@ use App\Http\Controllers\FavoriteController;
 */
 Route::get('/', [PageViewController::class, 'index']);
 Route::get('/detail/{id}', [PageViewController::class, 'detail']);
+ Route::post('/search', [ShopController::class, 'search']);
 
 // 認証機能必要（サンクス、予約、お気に入り、マイページ）
 Route::middleware('auth')->group(function () {
@@ -27,5 +29,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/my_page', [PageViewController::class, 'myPage']);
     Route::post('/favorite/{id}', [FavoriteController::class, 'favorite']);
     Route::delete('/delete_shop/{id}', [FavoriteController::class, 'deleteShopAll']);
-     Route::delete('/delete_mypage/{id}', [FavoriteController::class, 'deleteMyPage']);
+    Route::delete('/delete_mypage/{id}', [FavoriteController::class, 'deleteMyPage']);
+   
+   
 });
