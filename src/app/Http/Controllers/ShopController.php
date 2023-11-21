@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 use App\Models\Shop;
 use App\Models\Area;
 use App\Models\Genre;
+use App\Models\Favorite;
 
 class ShopController extends Controller
 {
@@ -28,6 +31,12 @@ class ShopController extends Controller
             $query->where('shop_name', 'LIKE', '%' . $keyword . '%');
         }
         $results = $query->get();
-        return view('results', compact('results','areas','genres'));
+
+        $userId = Auth::user()->id;
+        $favorites =  Favorite::where('user_id',$userId)->get();
+        $results->each(function ($shop) use ($userId,$favorites) {
+            $shop->isFavorite = $favorites->where($shop->id, $userId)->isNotEmpty();
+        });
+        return view('results', compact('results','areas','genres','favorites'));
     }
 }

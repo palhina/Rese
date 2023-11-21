@@ -8,6 +8,9 @@ use App\Models\User;
 use App\Models\Favorite;
 use App\Models\Shop;
 use App\Models\Reservation;
+use App\Models\Area;
+use App\Models\Genre;
+
 
 class FavoriteController extends Controller
 {
@@ -16,6 +19,8 @@ class FavoriteController extends Controller
         $user = Auth::user();
         $shop = Shop::find($id);
         $shops = Shop::all();
+        $areas = Area::all();
+        $genres = Genre::all();
         Favorite::create([
             'user_id' => $user->id,
             'shop_id' => $shop->id,
@@ -25,7 +30,7 @@ class FavoriteController extends Controller
         $shops->each(function ($shop) use ($userId) {
             $shop->isFavorite = Favorite::isFavorite($shop->id, $userId)->exists();
         });
-        return view('shop_all', compact('shops','favorites'));
+        return view('shop_all', compact('shops','favorites','areas','genres'));
     }
 
     public function deleteMyPage($id)
@@ -43,6 +48,8 @@ class FavoriteController extends Controller
 
      public function deleteShopAll($id)
     {
+        $areas = Area::all();
+        $genres = Genre::all();
         $favorite = Favorite::find($id)->delete();
         $user = Auth::user();
         $shop = Shop::find($id);
@@ -53,7 +60,7 @@ class FavoriteController extends Controller
         $shops->each(function ($shop) use ($userId) {
             $shop->isFavorite = Favorite::isFavorite($shop->id, $userId)->exists();
         });
-        return view('shop_all',compact('user','favorites','shops'));
+        return view('shop_all',compact('user','favorites','shops','areas','genres'));
     }
 
 }

@@ -10,7 +10,7 @@
             <h2>会員登録ありがとうございます</h2>
         </div>
         <div class="form__button">
-            <a class="login__link" href="">ログインする</a>
+            <a class="login__link" href="/login">ログインする</a>
         </div>
     </div>
 @endsection

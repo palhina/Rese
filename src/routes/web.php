@@ -19,7 +19,7 @@ use App\Http\Controllers\ShopController;
 */
 Route::get('/', [PageViewController::class, 'index']);
 Route::get('/detail/{id}', [PageViewController::class, 'detail']);
- Route::post('/search', [ShopController::class, 'search']);
+Route::post('/search', [ShopController::class, 'search']);
 
 // 認証機能必要（サンクス、予約、お気に入り、マイページ）
 Route::middleware('auth')->group(function () {
@@ -28,8 +28,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/thanks', [PageViewController::class, 'thanks']);
     Route::get('/my_page', [PageViewController::class, 'myPage']);
     Route::post('/favorite/{id}', [FavoriteController::class, 'favorite']);
-    Route::delete('/delete_shop/{id}', [FavoriteController::class, 'deleteShopAll']);
-    Route::delete('/delete_mypage/{id}', [FavoriteController::class, 'deleteMyPage']);
-   
+    Route::delete('/fav_delete_shop/{id}', [FavoriteController::class, 'deleteShopAll']);
+    Route::delete('/fav_delete_mypage/{id}', [FavoriteController::class, 'deleteMyPage']);
+    Route::get('/edit/{id}', [PageViewController::class, 'edit']);
+    Route::post('/update/{id}', [ReservationController::class, 'update']);
+    Route::get('/rate/{id}', [PageViewController::class, 'rate']);
    
 });

@@ -50,4 +50,18 @@ class PageViewController extends Controller
         $favorites =  Favorite::where('user_id',$user->id)->get();
         return view('my_page',compact('user','reservations','favorites'));
     }
+
+    // 予約変更ページ表示
+    public function edit($id)
+    {
+        $shop = Shop::find($id);
+        return view('edit',compact('shop'));
+    }
+
+    // 評価ページ表示
+    public function edit($id)
+    {
+        $shop = Shop::find($id);
+        return view('edit',compact('shop'));
+    }
 }

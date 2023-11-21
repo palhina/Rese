@@ -22,8 +22,7 @@ class Favorite extends Model
     {
         return $this->belongsTo(Shop::class, 'shop_id', 'id');
     }
-
-        // ローカルスコープを用いて、お気に入りに登録済かどうかを調べる
+    //   お気に入りに登録済かどうかを調べる
     public function scopeIsFavorite($query, $shopId, $userId)
     {
         return $query->where('shop_id', $shopId)->where('user_id', $userId);

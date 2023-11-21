@@ -30,8 +30,14 @@
                     <div class="form__group">
                         <input class="rsv-date" type="date" name="date" id="dateInput">
                     </div>
+                    <div class="form__error">
+                        @if ($errors->has('date'))
+                            {{$errors->first('date')}}
+                        @endif 
+                    </div>
                     <div class="form__group">
                         <select class="rsv-time" name="time" id="timeInput">
+                            <option value="" selected="selected">予約時間を選択</option>
                             <option value="10:00">10:00</option>
                             <option value="11:00">11:00</option>
                             <option value="12:00">12:00</option>
@@ -46,8 +52,14 @@
                             <option value="21:00">21:00</option>
                         </select>
                     </div>
+                    <div class="form__error">
+                        @if ($errors->has('time'))
+                            {{$errors->first('time')}}
+                        @endif 
+                    </div>
                     <div class="form__group">
                         <select class="rsv-number" name="number" id="numberInput">
+                            <option value="" selected="selected">予約人数を選択</option>
                             <option value="1">1人</option>
                             <option value="2">2人</option>
                             <option value="3">3人</option>
@@ -59,6 +71,11 @@
                             <option value="9">9人</option>
                             <option value="10">10人</option>
                         </select>
+                    </div>
+                    <div class="form__error">
+                        @if ($errors->has('number'))
+                            {{$errors->first('number')}}
+                        @endif 
                     </div>   
                     <div class="rsv-confirm">
                         <table>

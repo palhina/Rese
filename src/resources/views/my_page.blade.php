@@ -42,6 +42,15 @@
                             </tr>
                         </table>
                     </form>
+                    <form class="form" action="/edit/{{$reservation->shop->id}}" method="get">
+                    @csrf
+                        <button class="rsv__edit--btn">予約変更</button>
+                    </form>
+                    <!-- if 予約日より後の日にちになったら -->
+                    <form class="form" action="/rate/{{$reservation->shop->id}}" method="get">
+                    @csrf
+                        <button class="rsv__edit--btn">店を評価する</button>
+                    </form>
                 </div>
                 @endforeach
             </div>
@@ -68,7 +77,7 @@
                                 <button class="to-shop-detail">詳しく見る</button>
                             </form>
                         </div>
-                        <form class="fav__delete" method="post" action="/delete_mypage/{{ $favorite->id }}">
+                        <form class="fav__delete" method="post" action="/fav_delete_mypage/{{ $favorite->id }}">
                         @method('DELETE')
                         @csrf
                         <button class="fav-btn__favorite" type="submit"></button>

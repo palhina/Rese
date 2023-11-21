@@ -68,6 +68,12 @@ h3 {
     width: 100%;
 }
 
+.form__error{
+    color: #fff;
+    margin: 30px;
+    font-size: larger;
+}
+
 .rsv-confirm {
     background-color: #5580F7;
     color: #fff;
