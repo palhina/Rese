@@ -33,7 +33,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/fav_delete_shop/{id}', [FavoriteController::class, 'deleteShopAll']);
     Route::delete('/fav_delete_mypage/{id}', [FavoriteController::class, 'deleteMyPage']);
     Route::get('/edit/{id}', [PageViewController::class, 'edit']);
-    Route::post('/update/{id}', [ReservationController::class, 'update']);
+    Route::put('/update/{id}', [ReservationController::class, 'update']);
     Route::get('/rate/{id}', [PageViewController::class, 'rate']);
     Route::post('/rate/{id}', [RatingController::class, 'review']);
    

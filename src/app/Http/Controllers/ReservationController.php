@@ -42,19 +42,20 @@ class ReservationController extends Controller
     }
 
     // 予約変更
-     public function update(Request $request, $id)
+    public function update(ReservationRequest $request, $id)
     {
         $user = Auth::user();
-        $form = [
-            'rsv_date' => $request->input('date'),
-            'rsv_time' => $request->input('time'),
-            'number' => $request->input('number')
-        ];
+        
+        $reservation = Reservation::find($id);
+        $reservation->rsv_date = $request->input('date');
+        $reservation->rsv_time = $request->input('time');
+        $reservation->rsv_guests = $request->input('number');
+        
+        $reservation->save();
+
         $reservation = Reservation::where('id', $id)
         ->where('user_id', $user->id)
         ->first();
-        
-       dd($reservation);
 
         $reservations = Reservation::where('user_id',$user->id)
         ->orderBy('rsv_date', 'asc') 

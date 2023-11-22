@@ -31,15 +31,18 @@ class PageViewController extends Controller
             return view('shop_all', compact('shops','areas','genres'));
         }
     }
+    
     public function detail($id)
     {
         $shop = Shop::find($id);
         return view('shop_detail',compact('shop'));
     }
+
     public function thanks()
     {
         return view('thanks');
     }
+
     public function myPage()
     {   
         $user = Auth::user();
