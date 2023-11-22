@@ -59,9 +59,10 @@ class PageViewController extends Controller
     }
 
     // 評価ページ表示
-    public function edit($id)
+    public function rate($id)
     {
+        $user = Auth::user();
         $shop = Shop::find($id);
-        return view('edit',compact('shop'));
+        return view('rating',compact('shop','user'));
     }
 }

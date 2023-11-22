@@ -5,6 +5,8 @@ use App\Http\Controllers\PageViewController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\ShopController;
+use App\Http\Controllers\RatingController;
+
 
 
 /*
@@ -33,5 +35,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/edit/{id}', [PageViewController::class, 'edit']);
     Route::post('/update/{id}', [ReservationController::class, 'update']);
     Route::get('/rate/{id}', [PageViewController::class, 'rate']);
+    Route::post('/rate/{id}', [RatingController::class, 'review']);
    
 });

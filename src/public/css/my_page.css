@@ -43,6 +43,19 @@ h2 {
     background-color: #3560F6;
 }
 
+.rsv__btn{
+    display: flex;
+    justify-content: space-between;
+}
+
+.rsv__edit--btn,
+.rsv__rate--btn{
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #fff;
+    margin: 10px;
+}
+
 .shop__rsv {
     width: 50%;
 }

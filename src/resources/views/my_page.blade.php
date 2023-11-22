@@ -42,15 +42,18 @@
                             </tr>
                         </table>
                     </form>
-                    <form class="form" action="/edit/{{$reservation->shop->id}}" method="get">
-                    @csrf
-                        <button class="rsv__edit--btn">予約変更</button>
-                    </form>
-                    <!-- if 予約日より後の日にちになったら -->
-                    <form class="form" action="/rate/{{$reservation->shop->id}}" method="get">
-                    @csrf
-                        <button class="rsv__edit--btn">店を評価する</button>
-                    </form>
+                    <div class="rsv__btn">
+                        <form class="form" action="/edit/{{$reservation->shop->id}}" method="get">
+                        @csrf
+                            <button class="rsv__edit--btn">予約変更</button>
+                        </form>
+                        @if($reservation->rsv_date < now())
+                            <form class="form" action="/rate/{{$reservation->shop->id}}" method="get">
+                            @csrf
+                                <button class="rsv__rate--btn">店を評価する</button>
+                            </form>
+                        @endif
+                    </div>
                 </div>
                 @endforeach
             </div>
