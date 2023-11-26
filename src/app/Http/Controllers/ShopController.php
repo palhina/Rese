@@ -45,7 +45,7 @@ class ShopController extends Controller
          return view('results', compact('results','areas','genres','favorites'));
         }
         else{
-            return view('shop_all', compact('results','areas','genres'));
+            return view('results', compact('results','areas','genres'));
         }
     }
 }

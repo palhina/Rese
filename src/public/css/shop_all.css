@@ -4,13 +4,22 @@
 
 .search-form {
     display: flex;
-    justify-content: flex-end;
-    width: 600px;
-    margin: 0 100px 0 auto;
+    justify-content: space-around;
+    width: 50%;
+    margin: 0 0 0 auto;
     background-color: #fff;
     padding: 10px;
     border-radius: 5px;
     box-shadow: 5px 5px 5px #B7B7B7;
+}
+
+.search-form__area,
+.search-form__genre{
+    width: 20%;
+}
+
+.search-form__keyword{
+    width: 50%;
 }
 
 .search__area,
@@ -19,18 +28,15 @@
     border-top: none;
     border-bottom: none;
     border-right: 1px solid #B7B7B7;
-    height: 30px;
-    width: 100px;
 }
 
 .search__key {
     border: none;
-    height: 30px;
-    width: 300px;
 }
 
 .search__btn{
     cursor: pointer;
+    width: max-content;
 }
 
 .shop-all {
@@ -41,7 +47,7 @@
 .shop-all__card {
     width: 23%;
     background-color: #fff;
-    margin: 10px;
+    margin: 10px auto;
     border-radius: 3px;
     box-shadow: 3px 3px 3px #B7B7B7;
     position: relative;
@@ -119,19 +125,30 @@
 
     .search-form {
         display: flex;
-        justify-content: flex-end;
+        justify-content: space-around;
         width: 90%;
+        margin: 0 30px 0 auto;
         background-color: #fff;
         padding: 10px;
         border-radius: 5px;
         box-shadow: 5px 5px 5px #B7B7B7;
     }
 
-    .search-form__area,
-    .search-form__genre,
-    .search-form__keyword{
+    input{
         width: 30%;
-        height: 30px;
+    }
+
+    .search-form__area,
+    .search-form__genre {
+        width: 20%;
+    }
+
+    .search-form__keyword {
+        width: 40%;
+    }
+    
+    input{
+        width: auto;
     }
 
     .search__area,
@@ -140,7 +157,7 @@
         border-top: none;
         border-bottom: none;
         border-right: 1px solid #B7B7B7;
-        
+        width: 100%;
     }
 
     .search__key {
@@ -149,6 +166,8 @@
 
     .search__btn {
         cursor: pointer;
+        height: auto;
+        width: ;
     }
 
     .shop-all {
@@ -157,7 +176,7 @@
     }
 
     .shop-all__card {
-        width: 23%;
+        width: 100%;
         background-color: #fff;
         margin: 10px;
         border-radius: 3px;

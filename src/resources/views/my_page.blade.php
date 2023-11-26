@@ -58,7 +58,7 @@
                 @endforeach
             </div>
         </div>
-        <div class="shop__rsv">
+        <div class="shop__fav">
             <h3>お気に入り店舗</h3>
             <div class="my-page__fav">
                 @foreach($favorites as $favorite)

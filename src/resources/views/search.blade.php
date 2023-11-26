@@ -21,7 +21,9 @@
             <div class="search-form__keyword">
                 <input class="search__key" type="text" name="keyword" placeholder="Search..." id="keyword">
             </div>
-            <button class="search__btn" type="submit">Search</button>
+            <div class="search__btn-wrapper">
+                <button class="search__btn" type="submit">Search</button>
+            </div>    
         </div>
     </form>
 </div>
