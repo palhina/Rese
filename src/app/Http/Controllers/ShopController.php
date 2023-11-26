@@ -12,6 +12,7 @@ use App\Models\Favorite;
 
 class ShopController extends Controller
 {
+    // 検索機能
     public function search(Request $request)
     {   
         $areas = Area::all();
@@ -32,11 +33,19 @@ class ShopController extends Controller
         }
         $results = $query->get();
 
-        $userId = Auth::user()->id;
-        $favorites =  Favorite::where('user_id',$userId)->get();
-        $results->each(function ($shop) use ($userId,$favorites) {
-            $shop->isFavorite = $favorites->where($shop->id, $userId)->isNotEmpty();
-        });
-        return view('results', compact('results','areas','genres','favorites'));
+        // お気に入り表示
+        $shops = Shop::all();
+        $favorites = [];
+        if (Auth::check()) {
+            $userId = Auth::user()->id;
+            $favorites =  Favorite::where('user_id',$userId)->get();
+            $shops->each(function ($shop) use ($userId) {
+                $shop->isFavorite = Favorite::isFavorite($shop->id, $userId)->exists();
+            });   
+         return view('results', compact('results','areas','genres','favorites'));
+        }
+        else{
+            return view('shop_all', compact('results','areas','genres'));
+        }
     }
 }
