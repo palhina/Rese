@@ -25,8 +25,9 @@ class AfterUserRegistered
      * @param  object  $event
      * @return void
      */
-    public function handle(Registerd $event)
+    public function handle(Registered $event)
     {
+        $user = $event->user;
         return Redirect::to('/thanks');
     }
 }
