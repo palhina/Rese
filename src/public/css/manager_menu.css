@@ -1,0 +1,33 @@
+.manager-menu__content{
+    background-color: #fff;
+    width: 50%;
+    margin: 50px auto;
+    padding: 50px;
+    text-align: center;
+}
+
+ul {
+    list-style: none;
+}
+
+.create__shop{
+    margin: 30px;
+}
+
+.shops__list{
+    margin: 30px 0 0 0;
+}
+
+p{
+    margin-top: 0px;
+}
+
+@media screen and (max-width: 768px) {
+    .manager-menu__content {
+        background-color: #fff;
+        width: 80%;
+        margin: 20px auto;
+        padding: 20px;
+        text-align: center;
+    }
+}

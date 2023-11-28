@@ -68,4 +68,58 @@ class PageViewController extends Controller
         $shop = Shop::find($id);
         return view('rating',compact('shop','user'));
     }
+
+    // 店舗管理
+
+    public function managerLogin()
+    {
+        return view('manager_login');
+    }
+
+    public function managerRegister()
+    {
+        return view('manager_register');
+    }
+
+    public function administerLogin()
+    {
+        return view('administer_login');
+    }
+
+    public function managerMenu()
+    {
+        return view('manager_menu');
+    }
+
+    public function createShop()
+    {
+        return view('create_shop');
+    }
+    // 作成した店舗一覧表示
+    public function editShop()
+    {
+        $areas = Area::all();
+        $genres = Genre::all();
+        $shops = Shop::all();
+        // if (Auth::check()) {
+        //     $userId = Auth::user()->id;
+        return view('edit_shop', compact('shops','areas','genres'));
+    }
+
+    public function updateShop($id)
+    {
+       $shop = Shop::find($id);
+       return view('update_shop',compact('shop'));
+    }
+    public function bookingConfirm($id)
+    {
+        $shop = Shop::find($id);
+        // $reservations = Reservation::where('user_id',$user->id)
+        // ->orderBy('rsv_date', 'asc') 
+        // ->orderBy('rsv_time', 'asc')
+        // ->get();
+        // if (Auth::check()) {
+        //     $userId = Auth::user()->id;
+        return view('booking_confirmation', compact('shop',));
+    }
 }

@@ -116,6 +116,14 @@ input[type=checkbox]:checked~#overlay-button span:after {
     cursor: pointer;
 }
 
+.admin{
+    margin-top: 100px;
+}
+
+.admin__link{
+    border-bottom: 1px solid;
+}
+
 /* ハンバーガーメニュー以外 */
 .header {
     width: 100%;

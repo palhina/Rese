@@ -22,6 +22,17 @@ use App\Http\Controllers\RatingController;
 Route::get('/', [PageViewController::class, 'index']);
 Route::get('/detail/{id}', [PageViewController::class, 'detail']);
 Route::post('/search', [ShopController::class, 'search']);
+Route::get('/manager_login', [PageViewController::class, 'managerLogin']);
+Route::get('/administer_login', [PageViewController::class, 'administerLogin']);
+// 以下認証機能（店舗代表者）追加
+// メニュー選択画面
+Route::get('/manager_menu', [PageViewController::class, 'managerMenu']);
+Route::get('/create_shop', [PageViewController::class, 'createShop']);
+Route::get('/edit_shop', [PageViewController::class, 'editShop']);
+Route::get('/update_shop/{id}', [PageViewController::class, 'updateShop']);
+Route::get('/booking_confirmation/{id}', [PageViewController::class, 'bookingConfirm']);
+// 以下認証機能（管理者）
+Route::get('/manager_register', [PageViewController::class, 'managerRegister']);
 
 // 認証機能必要（サンクス、予約、お気に入り、マイページ）
 Route::middleware('auth')->group(function () {
