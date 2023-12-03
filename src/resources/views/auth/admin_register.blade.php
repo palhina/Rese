@@ -1,19 +1,33 @@
 @extends('layouts.app')
 
 @section('css')
-    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/manager_register.css') }}">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 @endsection
 
 @section('content')
-    <div class="login__content">
-        <div class="login__group-title">
-            <h2>管理者ログイン</h2>
+<!-- 隠しメニューだが、便宜上作成 -->
+    @if (session('result'))
+        <div class="flash_message">
+            {{ session('result') }}
         </div>
-        <form class="form" action="/login" method="post">
+    @endif
+    <div class="register__content">
+        <div class="register__group-title">
+            <h2>サイト管理者を作成</h2>
+        </div>
+        <form class="form" action="/register/admin" method="post">
         @csrf
-            
-            <div class="login__form-content">
+            <div class="register__form-content">
+                <div class="form__name-input">
+                    <div class="form__name-text">
+                        <input type="text" name="name" value="{{ old('name') }}" placeholder="Manager_name" />
+                    </div>
+                    <div class="form__error">
+                        {{$errors->first('name')}}
+                    </div>
+                </div>
                 <div class="form__email-input">
                     <div class="form__email-text">
                         <input type="email" name="email" value="{{ old('email') }}" placeholder="Email" />
@@ -31,10 +45,10 @@
                     </div>
                 </div>
                 <div class="form__button">
-                    <button class="form__button-login" type="submit">ログイン</button>
+                    <button class="form__button-register" type="submit">登録</button>
                 </div>
-                <p>管理者はログイン後、店舗代表者アカウントの作成が可能になります。</p>
             </div>
         </form>
     </div>
 @endsection
+

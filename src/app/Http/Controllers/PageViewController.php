@@ -73,17 +73,17 @@ class PageViewController extends Controller
 
     public function managerLogin()
     {
-        return view('manager_login');
+        return view('auth.manager_login');
     }
 
     public function managerRegister()
     {
-        return view('manager_register');
+        return view('auth.manager_register');
     }
 
-    public function administerLogin()
+    public function adminLogin()
     {
-        return view('administer_login');
+        return view('auth.admin_login');
     }
 
     public function managerMenu()

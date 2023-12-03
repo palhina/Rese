@@ -7,11 +7,16 @@
 @endsection
 
 @section('content')
+    @if (session('result'))
+        <div class="flash_message">
+            {{ session('result') }}
+        </div>
+    @endif
     <div class="register__content">
         <div class="register__group-title">
             <h2>店舗代表者を作成</h2>
         </div>
-        <form class="form" action="/register" method="post">
+        <form class="form" action="/register/manager" method="post">
         @csrf
             <div class="register__form-content">
                 <div class="form__name-input">

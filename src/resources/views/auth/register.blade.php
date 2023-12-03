@@ -11,7 +11,7 @@
         <div class="register__group-title">
             <h2>Registration</h2>
         </div>
-        <form class="form" action="/register" method="post">
+        <form class="form" action="/register/user" method="post">
         @csrf
             <div class="register__form-content">
                 <div class="form__name-input">

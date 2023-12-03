@@ -20,7 +20,7 @@
                 @if (Auth::check())
                 <li><a href="/">Home</a></li>
                 <li>
-                    <form class="form" action="/logout" method="post">
+                    <form class="form" action="/logout/user" method="post">
                     @csrf
                         <button class="header-nav__button">Logout</button>
                     </form>
@@ -33,10 +33,10 @@
                 </li>
                 @else
                 <li><a href="/">Home</a></li>
-                <li><a href="/register">Registration</a></li>
-                <li><a href="/login">Login</a></li>
-                <li><a href="/manager_login">店舗代表の方</a></li>
-                <li><a href="/administer_login">管理メニュー</a></li>
+                <li><a href="/register/user">Registration</a></li>
+                <li><a href="/login/user">Login</a></li>
+                <li><a href="/login/manager">店舗代表の方</a></li>
+                <li><a href="/login/admin">管理メニュー</a></li>
                 @endif
             </ul>
            
