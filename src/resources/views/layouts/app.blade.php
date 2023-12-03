@@ -41,6 +41,7 @@
                         </form>
                     </li>
                 @elseif(Auth::guard('admins')->check())
+                    <li><a href="/register/manager">店舗代表者新規作成</a></li>
                     <li>
                         <form class="form" action="/logout/admin" method="post">
                         @csrf

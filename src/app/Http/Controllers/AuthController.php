@@ -110,7 +110,7 @@ class AuthController extends Controller
     public function postAdminLogin(LoginRequest $request)
     {
         if (Auth::guard('admins')->attempt(['email' => $request['email'], 'password' => $request['password']])) {
-            return redirect('/register/manager');
+            return redirect('/register/manager')->with('result', '管理者ログインに成功しました');
         } else {
             return redirect('/login/admin')->with('result', 'メールアドレスまたはパスワードが違います');
         }
