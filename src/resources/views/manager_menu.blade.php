@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="manager-menu__content">
-        <h2>ようこそ、〇〇さん</h2>
+        <h2>ようこそ、{{ Auth::guard('managers')->user()->name }}さん</h2>
         <ul>
             <li class="create__shop"><a href="/create_shop">店舗情報の新規作成</a></li>
             <li class="shops__list"><a href="/edit_shop">店舗情報一覧</a></li>

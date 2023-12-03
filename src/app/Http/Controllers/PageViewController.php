@@ -69,23 +69,6 @@ class PageViewController extends Controller
         return view('rating',compact('shop','user'));
     }
 
-    // 店舗管理
-
-    public function managerLogin()
-    {
-        return view('auth.manager_login');
-    }
-
-    public function managerRegister()
-    {
-        return view('auth.manager_register');
-    }
-
-    public function adminLogin()
-    {
-        return view('auth.admin_login');
-    }
-
     public function managerMenu()
     {
         return view('manager_menu');

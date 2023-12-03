@@ -21,13 +21,10 @@ Route::get('/create_shop', [PageViewController::class, 'createShop']);
 Route::get('/edit_shop', [PageViewController::class, 'editShop']);
 Route::get('/update_shop/{id}', [PageViewController::class, 'updateShop']);
 Route::get('/booking_confirmation/{id}', [PageViewController::class, 'bookingConfirm']);
-// 以下認証機能（管理者）
-Route::get('/register/manager', [PageViewController::class, 'managerRegister']);
 
 // 認証機能必要（予約、お気に入り、マイページ）
 Route::middleware('auth')->group(function () {
     Route::post('/logout/user', [AuthController::class,'userLogout']);
-
     Route::post('/reservation/{id}', [ReservationController::class, 'reserve']);
     Route::delete('/cancel/{id}', [ReservationController::class, 'cancel']);
     Route::get('/my_page', [PageViewController::class, 'myPage']);
@@ -44,22 +41,24 @@ Route::middleware('auth')->group(function () {
 // ユーザー作成、ログイン機能・サンクスページ
 Route::get('/register/user', [AuthController::class,'userRegister']);
 Route::post('/register/user', [AuthController::class,'postUserRegister']);
-Route::get('/login/user', [AuthController::class,'userLogin']);
+Route::get('/login/user', [AuthController::class,'userLogin'])->name('login');
 Route::post('/login/user', [AuthController::class,'postUserLogin']);
 Route::get('/thanks', [PageViewController::class, 'thanks']);
 
-// 店舗代表者作成、ログイン機能　※認証機能は後で振り分け
+// 店舗代表者作成、ログイン機能　※認証機能はミドルウェア作成後振り分け
 Route::get('/register/manager', [AuthController::class, 'managerRegister']);
 Route::post('/register/manager', [AuthController::class, 'postManagerRegister']);
 Route::get('/login/manager', [AuthController::class, 'managerLogin']);
 Route::post('/login/manager', [AuthController::class, 'postManagerLogin']);
+Route::post('/logout/manager', [AuthController::class,'managerLogout']);
 
 
-// 管理者作成・ログイン機能　※認証機能は後で振り分け
+// 管理者作成・ログイン機能　※認証機能はミドルウェア作成後振り分け
 Route::get('/register/admin', [AuthController::class, 'adminRegister']);
 Route::post('/register/admin', [AuthController::class, 'postAdminRegister']);
 Route::get('/login/admin', [AuthController::class, 'adminLogin']);
-Route::post('/login/admin', [AuthController::class, 'postAdminrLogin']);
+Route::post('/login/admin', [AuthController::class, 'postAdminLogin']);
+Route::post('/logout/admin', [AuthController::class,'adminLogout']);
 
 
 

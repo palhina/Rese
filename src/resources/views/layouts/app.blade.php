@@ -18,25 +18,41 @@
         <div id="overlay">
             <ul>
                 @if (Auth::check())
-                <li><a href="/">Home</a></li>
-                <li>
-                    <form class="form" action="/logout/user" method="post">
-                    @csrf
-                        <button class="header-nav__button">Logout</button>
-                    </form>
-                </li>
-                <li>
-                    <form class="form" action="/my_page" method="get">
-                    @csrf
-                        <button class="my_page">Mypage</button>
-                    </form>
-                </li>
+                    <li><a href="/">Home</a></li>
+                    <li>
+                        <form class="form" action="/logout/user" method="post">
+                        @csrf
+                            <button class="header-nav__button">Logout</button>
+                        </form>
+                    </li>
+                    <li>
+                        <form class="form" action="/my_page" method="get">
+                        @csrf
+                            <button class="my_page">Mypage</button>
+                        </form>
+                    </li>
+                @elseif(Auth::guard('managers')->check())
+                    <li><a href="/create_shop">店舗情報の新規作成</a></li>
+                    <li><a href="/edit_shop">店舗情報一覧</a></li>
+                    <li>
+                        <form class="form" action="/logout/manager" method="post">
+                        @csrf
+                            <button class="header-nav__button">Logout</button>
+                        </form>
+                    </li>
+                @elseif(Auth::guard('admins')->check())
+                    <li>
+                        <form class="form" action="/logout/admin" method="post">
+                        @csrf
+                            <button class="header-nav__button">Logout</button>
+                        </form>
+                    </li>
                 @else
-                <li><a href="/">Home</a></li>
-                <li><a href="/register/user">Registration</a></li>
-                <li><a href="/login/user">Login</a></li>
-                <li><a href="/login/manager">店舗代表の方</a></li>
-                <li><a href="/login/admin">管理メニュー</a></li>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/register/user">Registration</a></li>
+                    <li><a href="/login/user">Login</a></li>
+                    <li><a href="/login/manager">店舗代表の方</a></li>
+                    <li><a href="/login/admin">管理メニュー</a></li>
                 @endif
             </ul>
            

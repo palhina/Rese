@@ -3,7 +3,7 @@
 namespace app\Http\Controllers;
 
 use App\Models\User;
-use App\Models\Manger;
+use App\Models\Manager;
 use App\Models\Admin;
 use Illuminate\Routing\Controller;
 use App\Http\Requests\RegisterRequest;
@@ -22,12 +22,12 @@ class AuthController extends Controller
 
     public function postUserRegister(RegisterRequest $request)
     {   
-            User::create([
-                'name' => $request['name'],
-                'email' => $request['email'],
-                'password' => Hash::make($request['password']),
-            ]);
-            return view('thanks');
+        User::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
+        ]);
+        return view('thanks');
     }
 
     public function userLogin()
@@ -58,12 +58,12 @@ class AuthController extends Controller
 
     public function postManagerRegister(RegisterRequest $request)
     {   
-            Manager::create([
-                'name' => $request['name'],
-                'email' => $request['email'],
-                'password' => Hash::make($request['password']),
-            ]);
-            return redirect('/register/manager')->with('result', '店舗代表者アカウントの作成に成功しました');
+        Manager::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
+        ]);
+        return redirect('/register/manager')->with('result', '店舗代表者アカウントの作成に成功しました');
     }
 
     public function managerLogin()
@@ -73,17 +73,17 @@ class AuthController extends Controller
 
     public function postManagerLogin(LoginRequest $request)
     {
-        if (Auth::attempt(['email' => $request['email'], 'password' => $request['password']])) {
+        if (Auth::guard('managers')->attempt(['email' => $request['email'], 'password' => $request['password']])) {
             return view('manager_menu');
         } else {
-            return redirect('login/manager')->with('result', 'メールアドレスまたはパスワードが違います');
+            return redirect('/login/manager')->with('result', 'メールアドレスまたはパスワードが違います');
         }
     }
 
     public function managerLogout()
     {
-        Auth::logout();
-        return redirect("login/manager");
+        Auth::guard('managers')->logout();
+        return redirect('login/manager')->with('result', 'ログアウトしました');
     }
 
     // 以下、管理者認証機能
@@ -109,16 +109,16 @@ class AuthController extends Controller
 
     public function postAdminLogin(LoginRequest $request)
     {
-        if (Auth::attempt(['email' => $request['email'], 'password' => $request['password']])) {
+        if (Auth::guard('admins')->attempt(['email' => $request['email'], 'password' => $request['password']])) {
             return redirect('/register/manager');
         } else {
-            return redirect('login/admin')->with('result', 'メールアドレスまたはパスワードが違います');
+            return redirect('/login/admin')->with('result', 'メールアドレスまたはパスワードが違います');
         }
     }
 
     public function adminLogout()
     {
-        Auth::logout();
-        return redirect("login/admin");
+        Auth::guard('admins')->logout();
+        return redirect('/login/admin')->with('result', 'ログアウトしました');
     }
 }
