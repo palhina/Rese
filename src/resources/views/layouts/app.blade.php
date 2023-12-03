@@ -52,6 +52,7 @@
                     <li><a href="/">Home</a></li>
                     <li><a href="/register/user">Registration</a></li>
                     <li><a href="/login/user">Login</a></li>
+                    <li><a href="/two_factor_auth/login_form">Login(二段階認証機能使用)</a></li>
                     <li><a href="/login/manager">店舗代表の方</a></li>
                     <li><a href="/login/admin">管理メニュー</a></li>
                 @endif

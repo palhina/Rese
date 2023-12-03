@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Mail\TwoFactorAuthPassword;
+use App\Models\User;
 
 class TwoFactorAuthController extends Controller
 {
@@ -18,7 +19,7 @@ class TwoFactorAuthController extends Controller
             for($i = 0 ; $i < 4 ; $i++) {
                 $random_password .= strval(rand(0, 9));
             }
-            $user = \App\User::where('email', $request->email)->first();
+            $user = \App\Models\User::where('email', $request->email)->first();
             $user->tfa_token = $random_password;            // 4桁のランダムな数字
             $user->tfa_expiration = now()->addMinutes(10);  // 10分間だけ有効
             $user->save();
@@ -35,7 +36,7 @@ class TwoFactorAuthController extends Controller
     public function second_auth(Request $request) {  // ２段階目の認証
         $result = false;
         if($request->filled('tfa_token', 'user_id')) {
-            $user = \App\User::find($request->user_id);
+            $user = \App\Models\User::find($request->user_id);
             $expiration = new Carbon($user->tfa_expiration);
             if($user->tfa_token === $request->tfa_token && $expiration > now()) {
                 $user->tfa_token = null;

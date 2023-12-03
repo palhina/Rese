@@ -2,36 +2,44 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/login.css') }}">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 @endsection
 
 @section('content')
     <div id="app" class="p-5">
-        <div class="alert alert-info" v-if="message" v-text="message"></div>
+        <div class="flash_message" v-if="message" v-text="message"></div>
 
         <!-- １段階目のログインフォーム -->
-        <div v-if="step==1">
-            <div class="form-group">
-                <label>メールアドレス</label>
-                <input type="text" class="form-control" v-model="email">
+        <div v-if="step==1" class="login__content">
+            <div class="login__group-title">
+                <h2>Login: two-factor authentication</h2>
             </div>
-            <div class="form-group">
-                <label>パスワード</label>
-                <input type="password" class="form-control" v-model="password">
+            <div class="login__form-content">
+                <div class="form__email-text">
+                    <input type="text" v-model="email" placeholder="Email">
+                </div>
+                <div class="form__pwd-text">
+                    <input type="password" v-model="password" placeholder="Password">
+                </div>
+                <button type="button" class="form__button-login" @click="firstAuth">二段階認証を用いてログイン</button>
             </div>
-            <button type="button" class="btn btn-primary" @click="firstAuth">送信する</button>
         </div>
 
         <!-- ２段階目・ログインフォーム -->
-        <div v-if="step==2">
-            ２段階認証のパスワードをメールアドレスに登録しました。（有効時間：10分間）
-            <hr>
-            <div class="form-group">
-                <label>２段階パスワード</label>
-                <input type="text" class="form-control" v-model="token">
+        <div v-if="step==2" class="login__content">
+            <div class="login__group-title">
+                <h2>Login: two-factor authentication</h2>
             </div>
-            <button type="button" class="btn btn-primary" @click="secondAuth">送信する</button>
+            <div class="login__form-content">
+                ２段階認証のパスワードをメールアドレスに登録しました。（有効時間：10分間）
+                <hr>
+                <div class="form__pwd-text">
+                    <label>２段階パスワード</label>
+                    <input type="text" v-model="token">
+                </div>
+                <button type="button" class="form__button-login" @click="secondAuth">送信する</button>
+            </div>
         </div>
 
     </div>
@@ -94,7 +102,7 @@
                             if(result) {
 
                                 // ２段階認証成功
-                                location.href = '/home';
+                                location.href = '/';
 
                             } else {
 
