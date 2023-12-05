@@ -11,6 +11,7 @@ use App\Http\Requests\RatingRequest;
 
 class RatingController extends Controller
 {
+    // 評価機能送信
     public function review(RatingRequest $request,$id)
     {
         $user = Auth::user();
@@ -21,6 +22,6 @@ class RatingController extends Controller
             'rating' => $request->input('rating'),
             'comment' => $request->input('comment'),
         ]);
-        return view('rated');
+        return view('thanks_rate');
     }
 }

@@ -15,7 +15,6 @@ class ShopController extends Controller
     // 検索機能
     public function search(Request $request)
     {   
-        // 検索機能
         $areas = Area::all();
         $genres = Genre::all();
         $shop_area = $request->input('shop_area');
@@ -35,7 +34,6 @@ class ShopController extends Controller
         $results = $query->get();
 
         // 検索後お気に入り表示
-        $shops = Shop::all();
         $favorites = [];
         if (Auth::check()) {
             $userId = Auth::user()->id;
@@ -48,5 +46,29 @@ class ShopController extends Controller
         else{
             return view('results', compact('results','areas','genres'));
         }
+    }
+
+    // 店舗新規作成
+    public function createShop()
+    {
+        return view('create_shop');
+    }
+
+    // 作成した店舗一覧表示
+    public function editShop()
+    {
+        $areas = Area::all();
+        $genres = Genre::all();
+        $shops = Shop::all();
+        // if (Auth::check()) {
+        //     $userId = Auth::user()->id;
+        return view('edit_shop', compact('shops','areas','genres'));
+    }
+
+    // 店舗情報更新
+    public function updateShop($id)
+    {
+       $shop = Shop::find($id);
+       return view('update_shop',compact('shop'));
     }
 }

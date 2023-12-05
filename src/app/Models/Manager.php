@@ -18,7 +18,4 @@ class Manager extends Authenticatable
         'name', 'email', 'password',
     ];
 
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
 }

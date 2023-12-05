@@ -65,4 +65,27 @@ class ReservationController extends Controller
         ->get();
         return view('my_page',compact('user','reservations','favorites'));
     }
+
+    // 予約一覧（店舗代表者）
+    public function bookingConfirm()
+    {
+        $manager = Auth::guard('managers')->user();
+        $shops = Shop::where('manager_id',$manager->id)->get();
+        $reservations = collect();
+        foreach ($shops as $shop) {
+            $shopReservations = Reservation::where('shop_id', $shop->id)
+                ->orderBy('rsv_date', 'asc')
+                ->orderBy('rsv_time', 'asc')
+                ->get();
+            $reservations = $reservations->merge($shopReservations); 
+        }
+        return view('booking_confirmation',compact('shops','reservations'));
+    }
+
+    // 予約詳細確認（店舗代表者）
+    public function bookingdetail($id)
+    {
+        $reservation = Reservation::find($id);
+        return view('booking_detail',compact('reservation'));
+    }
 }

@@ -13,6 +13,7 @@ use App\Models\Genre;
 
 class PageViewController extends Controller
 {
+    // 店舗一覧＋お気に入り（ハートマーク）表示
     public function index()
     {
         $areas = Area::all();
@@ -32,17 +33,20 @@ class PageViewController extends Controller
         }
     }
     
+    // 店舗詳細情報表示
     public function detail($id)
     {
         $shop = Shop::find($id);
         return view('shop_detail',compact('shop'));
     }
 
+    // サンクスページ
     public function thanks()
     {
         return view('thanks');
     }
 
+    // マイページ表示
     public function myPage()
     {   
         $user = Auth::user();
@@ -69,40 +73,10 @@ class PageViewController extends Controller
         return view('rating',compact('shop','user'));
     }
 
+    // 店舗代表者メニュー
     public function managerMenu()
     {
         return view('manager_menu');
     }
 
-    public function createShop()
-    {
-        return view('create_shop');
-    }
-    // 作成した店舗一覧表示
-    public function editShop()
-    {
-        $areas = Area::all();
-        $genres = Genre::all();
-        $shops = Shop::all();
-        // if (Auth::check()) {
-        //     $userId = Auth::user()->id;
-        return view('edit_shop', compact('shops','areas','genres'));
-    }
-
-    public function updateShop($id)
-    {
-       $shop = Shop::find($id);
-       return view('update_shop',compact('shop'));
-    }
-    public function bookingConfirm($id)
-    {
-        $shop = Shop::find($id);
-        // $reservations = Reservation::where('user_id',$user->id)
-        // ->orderBy('rsv_date', 'asc') 
-        // ->orderBy('rsv_time', 'asc')
-        // ->get();
-        // if (Auth::check()) {
-        //     $userId = Auth::user()->id;
-        return view('booking_confirmation', compact('shop',));
-    }
 }

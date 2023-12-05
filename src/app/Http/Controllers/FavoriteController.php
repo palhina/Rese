@@ -14,6 +14,7 @@ use App\Models\Genre;
 
 class FavoriteController extends Controller
 {
+    // お気に入り追加機能(店舗一覧ページから)
     public function favorite(Request $request,$id)
     {
         $user = Auth::user();
@@ -33,20 +34,8 @@ class FavoriteController extends Controller
         return view('shop_all', compact('shops','favorites','areas','genres'));
     }
 
-    public function deleteMyPage($id)
-    {
-        $favorite = Favorite::find($id)->delete();
-        $user = Auth::user();
-        $favorites = Favorite::where('user_id',$user->id)
-        ->get();
-        $reservations = Reservation::where('user_id',$user->id)
-        ->orderBy('rsv_date', 'asc') 
-        ->orderBy('rsv_time', 'asc')
-        ->get();
-        return view('my_page',compact('user','favorites','reservations'));
-    }
-
-     public function deleteShopAll($id)
+    // お気に入り削除機能(店舗一覧ページから)
+    public function deleteShopAll($id)
     {
         $areas = Area::all();
         $genres = Genre::all();
@@ -63,4 +52,17 @@ class FavoriteController extends Controller
         return view('shop_all',compact('user','favorites','shops','areas','genres'));
     }
 
+    // お気に入り削除機能(マイページから)
+    public function deleteMyPage($id)
+    {
+        $favorite = Favorite::find($id)->delete();
+        $user = Auth::user();
+        $favorites = Favorite::where('user_id',$user->id)
+        ->get();
+        $reservations = Reservation::where('user_id',$user->id)
+        ->orderBy('rsv_date', 'asc') 
+        ->orderBy('rsv_time', 'asc')
+        ->get();
+        return view('my_page',compact('user','favorites','reservations'));
+    }
 }

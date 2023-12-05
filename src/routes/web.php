@@ -47,7 +47,7 @@ Route::get('/thanks', [PageViewController::class, 'thanks']);
 // 店舗代表者作成、ログイン機能　
 Route::get('/register/manager', [AuthController::class, 'managerRegister']);
 Route::post('/register/manager', [AuthController::class, 'postManagerRegister']);
-Route::get('/login/manager', [AuthController::class, 'managerLogin']);
+Route::get('/login/manager', [AuthController::class, 'managerLogin'])->name('manager.login');
 Route::post('/login/manager', [AuthController::class, 'postManagerLogin']);
 Route::post('/logout/manager', [AuthController::class,'managerLogout']);
 
@@ -61,9 +61,11 @@ Route::post('/logout/admin', [AuthController::class,'adminLogout']);
 
 
 // 店舗代表者メニュー,ミドルウェアかける
-Route::get('/manager_menu', [PageViewController::class, 'managerMenu']);
-Route::get('/create_shop', [PageViewController::class, 'createShop']);
-Route::get('/edit_shop', [PageViewController::class, 'editShop']);
-Route::get('/update_shop/{id}', [PageViewController::class, 'updateShop']);
-Route::get('/booking_confirmation/{id}', [PageViewController::class, 'bookingConfirm']);
-
+Route::middleware('auth:managers')->group(function () {
+    Route::get('/manager_menu', [PageViewController::class, 'managerMenu']);
+    Route::get('/create_shop', [ShopController::class, 'createShop']);
+    Route::get('/edit_shop', [ShopController::class, 'editShop']);
+    Route::get('/update_shop/{id}', [ShopController::class, 'updateShop']);
+    Route::get('/booking_confirmation', [ReservationController::class, 'bookingConfirm']);
+    Route::post('/booking_detail/{id}', [ReservationController::class, 'bookingDetail']);
+});

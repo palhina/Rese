@@ -35,7 +35,7 @@
                     <h2>ようこそ、{{ Auth::guard('managers')->user()->name }}さん</h2>
                     <h3>店舗代表者権限でログイン中</h3>
                     <li><a href="/edit_shop">店舗情報作成・更新</a></li>
-                    <li><a href="#">予約確認</a></li>
+                    <li><a href="/booking_confirmation">予約確認</a></li>
                     <li>
                         <form class="form" action="/logout/manager" method="post">
                         @csrf
