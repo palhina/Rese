@@ -20,10 +20,9 @@ class TwoFactorAuthController extends Controller
                 $random_password .= strval(rand(0, 9));
             }
             $user = \App\Models\User::where('email', $request->email)->first();
-            $user->tfa_token = $random_password;            // 4桁のランダムな数字
-            $user->tfa_expiration = now()->addMinutes(10);  // 10分間だけ有効
+            $user->tfa_token = $random_password;            
+            $user->tfa_expiration = now()->addMinutes(10);  
             $user->save();
-            // メール送信
             \Mail::to($user)->send(new TwoFactorAuthPassword($random_password));
             return [
                 'result' => true,
@@ -42,7 +41,7 @@ class TwoFactorAuthController extends Controller
                 $user->tfa_token = null;
                 $user->tfa_expiration = null;
                 $user->save();
-                \Auth::login($user);    // 自動ログイン
+                \Auth::login($user);   
                 $result = true;
             }
         }

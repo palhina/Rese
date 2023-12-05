@@ -32,8 +32,10 @@
                         </form>
                     </li>
                 @elseif(Auth::guard('managers')->check())
-                    <li><a href="/create_shop">店舗情報の新規作成</a></li>
-                    <li><a href="/edit_shop">店舗情報一覧</a></li>
+                    <h2>ようこそ、{{ Auth::guard('managers')->user()->name }}さん</h2>
+                    <h3>店舗代表者権限でログイン中</h3>
+                    <li><a href="/edit_shop">店舗情報作成・更新</a></li>
+                    <li><a href="#">予約確認</a></li>
                     <li>
                         <form class="form" action="/logout/manager" method="post">
                         @csrf
@@ -41,6 +43,8 @@
                         </form>
                     </li>
                 @elseif(Auth::guard('admins')->check())
+                    <h2>ようこそ、{{ Auth::guard('admins')->user()->name }}さん</h2>
+                    <h3>管理者権限でログイン中</h3>
                     <li><a href="/register/manager">店舗代表者新規作成</a></li>
                     <li>
                         <form class="form" action="/logout/admin" method="post">
@@ -49,6 +53,7 @@
                         </form>
                     </li>
                 @else
+                    <h3>現在ログインしていません</h3> 
                     <li><a href="/">Home</a></li>
                     <li><a href="/register/user">Registration</a></li>
                     <li><a href="/login/user">Login</a></li>

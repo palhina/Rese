@@ -17,7 +17,7 @@ class ReservationController extends Controller
     {
         $user = Auth::user();
         $shop = Shop::find($id);
-         Reservation::create([
+        Reservation::create([
             'user_id' => $user->id,
             'shop_id' => $shop->id,
             'rsv_date' => $request->input('date'),
@@ -45,8 +45,8 @@ class ReservationController extends Controller
     public function update(ReservationRequest $request, $id)
     {
         $user = Auth::user();
-        
         $reservation = Reservation::find($id);
+        
         $reservation->rsv_date = $request->input('date');
         $reservation->rsv_time = $request->input('time');
         $reservation->rsv_guests = $request->input('number');

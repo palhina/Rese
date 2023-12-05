@@ -1,11 +1,15 @@
 @extends('layouts.app')
 
 @section('css')
-    <link rel="stylesheet" href="{{ asset('css/shop_all.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/edit_shop.css') }}">
 @endsection
 
 @section('content')
-<p>作成した店舗一覧</p>
+<div class="shop__create">
+    <a class="shop-all__create-shop" href="/create_shop">+ 店舗の新規作成</a>
+</div>
+<div class="shop-all__wrapper">
+    <p class="shop-all__ttl">作成した店舗一覧</p>
     <div class="shop-all">
         @foreach ($shops as $shop)
         <div class="shop-all__card">
@@ -23,15 +27,12 @@
                 <div class="shop-all__card-detail"> 
                     <form class="form" action="/update_shop/{{$shop->id}}" method="get">
                     @csrf
-                        <button class="to-shop-detail">店舗情報更新</button>
-                    </form>
-                    <form class="form" action="/booking_confirmation/{{$shop->id}}" method="get">
-                    @csrf
-                        <button class="to-shop-detail">予約の確認</button>
+                        <button class="edit__shop">店舗情報更新</button>
                     </form>
                 </div>
             </div>
         </div>
         @endforeach
-    </div>                
+    </div>       
+</div>         
 @endsection

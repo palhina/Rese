@@ -18,9 +18,12 @@ ul {
     margin: 30px 0 0 0;
 }
 
-p{
-    margin-top: 0px;
+ul li a {
+    color: #3560F6;
+    font-size: 1.5em;
 }
+
+
 
 @media screen and (max-width: 768px) {
     .manager-menu__content {
@@ -29,5 +32,18 @@ p{
         margin: 20px auto;
         padding: 20px;
         text-align: center;
+    }
+
+    .create__shop {
+        margin: 20px 0 0 0;
+    }
+
+    .shops__list {
+        margin: 20px 0 0 0;
+    }
+
+    ul li a {
+        color: #3560F6;
+        font-size: 1em;
     }
 }

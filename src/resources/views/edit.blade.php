@@ -10,22 +10,22 @@
             <div class="shop__contents">
                 <div class="shop__contents-ttl">
                     <a class="back" href="/">&lt;</a>
-                    <h2>{{ $shop->shop_name }}</h2>
+                    <h2>{{ $reservation->shop->shop_name }}</h2>
                 </div>
                 <div class="shop__contents-img">
-                    <img class="shop__img" src="{{ $shop->shop_photo }}">
+                    <img class="shop__img" src="{{ $reservation->shop->shop_photo }}">
                 </div>
                 <div class="shop__contents-tag">
-                    <p>#{{ $shop->area->shop_area }}</p>
-                    <p>#{{ $shop->genre->shop_genre }}</p>
+                    <p>#{{ $reservation->shop->area->shop_area }}</p>
+                    <p>#{{ $reservation->shop->genre->shop_genre }}</p>
                 </div>
                 <div class="shop__contents-desc">
-                    <p>{{ $shop->shop_comment }}</p>
+                    <p>{{ $reservation->shop->shop_comment }}</p>
                 </div>
             </div>
             <div class="shop__rsv">
                 <h3>予約変更</h3>
-                <form action="/update/{{$shop->id}}" method="POST">
+                <form action="/update/{{$reservation->id}}" method="POST">
                     @csrf
                     @method('PUT')
                     <div class="form__group">
@@ -82,7 +82,7 @@
                         <table>
                             <tr>
                                 <th>Shop</th>
-                                <td>{{ $shop->shop_name }}</td>
+                                <td>{{ $reservation->shop->shop_name }}</td>
                             </tr>
                             <tr>
                                 <th>Date</th>

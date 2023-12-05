@@ -26,13 +26,13 @@
             </div>
         </div>
 
-        <!-- ２段階目・ログインフォーム -->
+        <!-- ２段階目 -->
         <div v-if="step==2" class="login__content">
             <div class="login__group-title">
                 <h2>Login: two-factor authentication</h2>
             </div>
             <div class="login__form-content">
-                ２段階認証のパスワードをメールアドレスに登録しました。（有効時間：10分間）
+                ２段階認証のパスワードをメールアドレスに送信しました。（有効時間：10分間）
                 <hr>
                 <div class="form__pwd-text">
                     <label>２段階パスワード</label>
@@ -46,7 +46,6 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
     <script>
-
         new Vue({
             el: '#app',
             data: {
@@ -59,9 +58,7 @@
             },
             methods: {
                 firstAuth() {
-
                     this.message = '';
-
                     const url = '/ajax/two_factor_auth/first_auth';
                     const params = {
                         email: this.email,
@@ -69,54 +66,35 @@
                     };
                     axios.post(url, params)
                         .then(response => {
-
                             const result = response.data.result;
-
                             if(result) {
-
                                 this.userId = response.data.user_id;
                                 this.step = 2;
-
                             } else {
-
                                 this.message = 'ログイン情報が間違っています。';
-
                             }
-
                         });
-
                 },
                 secondAuth() {
-
                     const url = '/ajax/two_factor_auth/second_auth';
                     const params = {
                         user_id: this.userId,
                         tfa_token: this.token
                     };
-
                     axios.post(url, params)
                         .then(response => {
-
                             const result = response.data.result;
-
                             if(result) {
-
                                 // ２段階認証成功
                                 location.href = '/';
-
                             } else {
-
                                 this.message = '２段階パスワードが正しくありません。';
                                 this.token = '';
-
                             }
-
                         });
-
                 }
             }
         });
-
     </script>
 </body>
 @endsection

@@ -43,7 +43,7 @@
                         </table>
                     </form>
                     <div class="rsv__btn">
-                        <form class="form" action="/edit/{{$reservation->shop->id}}" method="get">
+                        <form class="form" action="/edit/{{$reservation->id}}" method="get">
                         @csrf
                             <button class="rsv__edit--btn">予約変更</button>
                         </form>

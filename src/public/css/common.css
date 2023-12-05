@@ -76,6 +76,16 @@ input[type=checkbox]:checked~#overlay-button span:after {
     width: 35px;
 }
 
+h2{
+
+}
+
+h3{
+    margin-bottom: 50px;
+    font-weight: lighter;
+}
+
+
 #overlay {
     height: 100vh;
     width: 100vw;
@@ -142,6 +152,7 @@ body {
     background-color: #F2F2F2;
 }
 
+/* レスポンシブ */
 @media screen and (max-width: 768px) {
     #overlay-button {
         padding: 26px 11px;
@@ -220,6 +231,13 @@ body {
         width: 35px;
     }
 
+    h2 {}
+
+    h3 {
+        margin-bottom: 50px;
+        font-weight: lighter;
+    }
+    
     #overlay {
         height: 100vh;
         width: 100vw;

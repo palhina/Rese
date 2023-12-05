@@ -12,6 +12,7 @@ class Shop extends Model
     [
         'area_id',
         'genre_id',
+        'manager_id',
         'shop_name',
         'shop_photo',
         'shop_comment'
@@ -25,5 +26,8 @@ class Shop extends Model
     {
         return $this->belongsTo(Genre::class, 'genre_id', 'id');
     }
-
+    public function manager()
+    {
+        return $this->belongsTo(Manager::class, 'manager_id', 'id');
+    }
 }

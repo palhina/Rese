@@ -57,8 +57,8 @@ class PageViewController extends Controller
     // 予約変更ページ表示
     public function edit($id)
     {
-        $shop = Shop::find($id);
-        return view('edit',compact('shop'));
+        $reservation = Reservation::with('shop')->find($id);
+        return view('edit',compact('reservation'));
     }
 
     // 評価ページ表示

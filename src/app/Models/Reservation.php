@@ -23,6 +23,6 @@ class Reservation extends Model
     }
     public function shop()
     {
-        return $this->belongsTo(Shop::class, 'shop_id');
+        return $this->belongsTo(Shop::class, 'shop_id','id');
     }
 }

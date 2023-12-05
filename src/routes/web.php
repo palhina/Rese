@@ -60,7 +60,7 @@ Route::post('/login/admin', [AuthController::class, 'postAdminLogin']);
 Route::post('/logout/admin', [AuthController::class,'adminLogout']);
 
 
-// 店舗代表者メニュー
+// 店舗代表者メニュー,ミドルウェアかける
 Route::get('/manager_menu', [PageViewController::class, 'managerMenu']);
 Route::get('/create_shop', [PageViewController::class, 'createShop']);
 Route::get('/edit_shop', [PageViewController::class, 'editShop']);
