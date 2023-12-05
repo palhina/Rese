@@ -1,15 +1,15 @@
 @extends('layouts.app')
 
 @section('css')
-    <link rel="stylesheet" href="{{ asset('css/edit.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/update_shop.css') }}">
 @endsection
 
 @section('content')
     <div class="shop-detail__wrapper">
             <div class="shop__contents">
-                <p>現在の情報</p>
+                <p class="shop__contents-info">現在の情報</p>
                 <div class="shop__contents-ttl">
-                    <a class="back" href="/edit_shop">&lt;</a>
+                    <a class="back" href="/check_shop">&lt;</a>
                     <h2>{{ $shop->shop_name }}</h2>
                 </div>
                 <div class="shop__contents-img">
@@ -23,60 +23,52 @@
                     <p>{{ $shop->shop_comment }}</p>
                 </div>
             </div>
-            <div class="shop__rsv">
+            <div class="shop__contents-update">
                 <h3>店舗情報変更</h3>
-                <form action="/update/{{$shop->id}}" method="POST">
+                <form action="/update_shop/{{$shop->id}}" method="POST">
                     @csrf
                     @method('PUT')
                     <div class="form__group">
-                        <input class="rsv-date" type="date" name="date" id="dateInput">
-                    </div>
-                    <div class="form__error">
-                        @if ($errors->has('date'))
-                            {{$errors->first('date')}}
-                        @endif 
-                    </div>
-                    <div class="form__group">
-                        <select class="rsv-time" name="time" id="timeInput">
-                            <option value="" selected="selected">予約時間を選択</option>
-                            <option value="10:00">10:00</option>
-                            <option value="11:00">11:00</option>
-                            <option value="12:00">12:00</option>
-                            <option value="13:00">13:00</option>
-                            <option value="14:00">14:00</option>
-                            <option value="15:00">15:00</option>
-                            <option value="16:00">16:00</option>
-                            <option value="17:30">17:00</option>
-                            <option value="18:00">18:00</option>
-                            <option value="19:00">19:00</option>
-                            <option value="20:00">20:00</option>
-                            <option value="21:00">21:00</option>
-                        </select>
-                    </div>
-                    <div class="form__error">
-                        @if ($errors->has('time'))
-                            {{$errors->first('time')}}
-                        @endif 
+                        <input class="form__shop-name" type="text" name="shop_name" placeholder="店名入力"></input>
+                        <div class="form__error">
+                            @if ($errors->has('shop_name'))
+                                {{$errors->first('shop_name')}}
+                            @endif 
+                        </div>
                     </div>
                     <div class="form__group">
-                        <select class="rsv-number" name="number" id="numberInput">
-                            <option value="" selected="selected">予約人数を選択</option>
-                            <option value="1">1人</option>
-                            <option value="2">2人</option>
-                            <option value="3">3人</option>
-                            <option value="4">4人</option>
-                            <option value="5">5人</option>
-                            <option value="6">6人</option>
-                            <option value="7">7人</option>
-                            <option value="8">8人</option>
-                            <option value="9">9人</option>
-                            <option value="10">10人</option>
+                        <select class="form__shop-area" name="shop_area">
+                            <option value="">地域を選択</option>
+                            @foreach($areas as $area)
+                            <option value="{{ $area->id }}">{{ $area->shop_area }}</option>
+                            @endforeach
                         </select>
-                    </div>   
-                    <div class="form__error">
-                        @if ($errors->has('number'))
-                            {{$errors->first('number')}}
-                        @endif 
+                        <div class="form__error">
+                            @if ($errors->has('shop_area'))
+                                {{$errors->first('shop_area')}}
+                            @endif 
+                        </div>
+                    </div>
+                    <div class="form__group">
+                        <select class="form__shop-genre" name="shop_genre">
+                            <option value="">ジャンルを選択</option>
+                            @foreach($genres as $genre)
+                            <option value="{{ $genre->id }}">{{ $genre->shop_genre }}</option>
+                            @endforeach
+                        </select>
+                        <div class="form__error">
+                            @if ($errors->has('shop_genre'))
+                                {{$errors->first('shop_genre')}}
+                            @endif 
+                        </div>
+                    </div>
+                    <div class="form__group">
+                        <textarea class="form__shop-comment" col="50" name="shop_comment" placeholder="店舗概要を入力"></textarea>
+                        <div class="form__error">
+                            @if ($errors->has('shop_comment'))
+                                {{$errors->first('shop_comment')}}
+                            @endif 
+                        </div>
                     </div>
                     <div class="form__button">
                         <button class="rsv__edit--btn">店舗情報更新</button>

@@ -61,11 +61,11 @@ Route::post('/logout/admin', [AuthController::class,'adminLogout']);
 
 
 // 店舗代表者メニュー,ミドルウェアかける
-Route::middleware('auth:managers')->group(function () {
     Route::get('/manager_menu', [PageViewController::class, 'managerMenu']);
     Route::get('/create_shop', [ShopController::class, 'createShop']);
-    Route::get('/edit_shop', [ShopController::class, 'editShop']);
-    Route::get('/update_shop/{id}', [ShopController::class, 'updateShop']);
+    Route::get('/check_shop', [ShopController::class, 'checkShop']);
+    Route::post('/upload', [ShopController::class, 'store']);
+    Route::get('/update_shop/{id}', [ShopController::class, 'editShop']);
+    Route::put('/update_shop/{id}', [ShopController::class, 'updateShop']);
     Route::get('/booking_confirmation', [ReservationController::class, 'bookingConfirm']);
     Route::post('/booking_detail/{id}', [ReservationController::class, 'bookingDetail']);
-});
