@@ -6,7 +6,7 @@
     display: flex;
     justify-content: space-around;
     width: 50%;
-    margin: 0 0 0 auto;
+    margin: 0 5% 0 auto;
     background-color: #fff;
     padding: 10px;
     border-radius: 5px;
@@ -47,7 +47,7 @@
 .shop-all__card {
     width: 23%;
     background-color: #fff;
-    margin: 10px auto;
+    margin: 10px ;
     border-radius: 3px;
     box-shadow: 3px 3px 3px #B7B7B7;
     position: relative;

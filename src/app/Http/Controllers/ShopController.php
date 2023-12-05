@@ -15,6 +15,7 @@ class ShopController extends Controller
     // 検索機能
     public function search(Request $request)
     {   
+        // 検索機能
         $areas = Area::all();
         $genres = Genre::all();
         $shop_area = $request->input('shop_area');
@@ -33,13 +34,13 @@ class ShopController extends Controller
         }
         $results = $query->get();
 
-        // お気に入り表示
+        // 検索後お気に入り表示
         $shops = Shop::all();
         $favorites = [];
         if (Auth::check()) {
             $userId = Auth::user()->id;
             $favorites =  Favorite::where('user_id',$userId)->get();
-            $shops->each(function ($shop) use ($userId) {
+            $results->each(function ($shop) use ($userId) {
                 $shop->isFavorite = Favorite::isFavorite($shop->id, $userId)->exists();
             });   
          return view('results', compact('results','areas','genres','favorites'));
