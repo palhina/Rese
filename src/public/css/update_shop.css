@@ -7,7 +7,7 @@
 }
 
 .shop__contents {
-    width: 50%;
+    width: 40%;
 }
 
 .shop__contents-ttl {
@@ -50,8 +50,7 @@
 
 .shop__contents-update {
     background-color: #007bff;
-    width: 40%;
-    position: relative;
+    width: 50%;
 }
 
 h3 {
@@ -83,22 +82,29 @@ h3 {
     font-size: larger;
 }
 
-.rsv-confirm {
-    background-color: #5580F7;
+.form__shop-photo--ttl{
     color: #fff;
-    margin: 20px;
-    padding: 20px;
-    text-align: left;
+    margin-top: 30px;
 }
 
-th {
-    width: 50%;
+.form__shop-photo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 30px;
 }
 
+.shop-photo__wrapper{
+    width: 30%;
+    margin: 10px;
+}
+
+.shop_photo{
+    width: 100%;
+}
 
 .rsv__edit--btn {
-    position: absolute;
-    bottom: 0;
     width: 100%;
     background-color: #3560F6;
     color: #fff;
@@ -109,5 +115,119 @@ th {
 
 /* レスポンシブ */
 @media screen and (max-width: 768px) {
+    .shop-detail__wrapper {
+        display: block;
+        width: 100%;
+        margin: 30px 0;
+        padding-top: 30px;
+    }
 
+    .shop__contents {
+        width: 90%;
+        margin: auto;
+    }
+
+    .shop__contents-ttl {
+        display: flex;
+        justify-content: left;
+    }
+
+    .shop__contents-info {
+        font-size: larger;
+        text-align: center;
+        font-weight: bolder;
+    }
+
+
+    .back {
+        margin: 20px;
+        font-weight: bolder;
+        background-color: #FFFFFF;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        border-radius: 3px;
+        box-shadow: 5px 5px 5px #B7B7B7;
+        color: black;
+        text-decoration: none;
+    }
+
+    .shop__contets-img {
+        width: 100%;
+    }
+
+    .shop__img {
+        width: 100%;
+    }
+
+    .shop__contents-tag {
+        display: flex;
+        justify-content: left;
+    }
+
+    .shop__contents-update {
+        background-color: #007bff;
+        width: 90%;
+        margin: auto;
+    }
+
+    h3 {
+        margin: 30px 20px;
+        color: #fff;
+        text-align: center;
+    }
+
+    .form__group {
+        width: 80%;
+        margin: 20px;
+    }
+
+    .form__shop-name,
+    .form__shop-area,
+    .form__shop-genre {
+        height: 30px;
+        width: 100%;
+    }
+
+    .form__shop-comment {
+        width: 100%;
+        height: 200px;
+    }
+
+    .form__error {
+        color: #fff;
+        margin: 30px;
+        font-size: larger;
+    }
+
+    .form__shop-photo--ttl {
+        color: #fff;
+        margin-top: 30px;
+    }
+
+    .form__shop-photo {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        margin: 30px;
+    }
+
+    .shop-photo__wrapper {
+        width: 40%;
+        margin: 10px;
+    }
+
+    .shop_photo {
+        width: 100%;
+    }
+
+    .rsv__edit--btn {
+        width: 100%;
+        background-color: #3560F6;
+        color: #fff;
+        cursor: pointer;
+        height: 50px;
+        border-style: none;
+    }
 }

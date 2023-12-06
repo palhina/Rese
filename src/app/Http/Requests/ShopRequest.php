@@ -28,6 +28,7 @@ class ShopRequest extends FormRequest
             'shop_area' => 'required',
             'shop_genre' => 'required',
             'shop_comment' => 'required|string|max:1000',
+            'shop_photo' => 'required'
         ];
     }
     
@@ -42,6 +43,8 @@ class ShopRequest extends FormRequest
             'shop_comment.required' => '店舗概要を入力してください',
             'shop_comment.string' => '店舗概要は文字列で入力してください',
             'shop_comment.max' => '店舗概要は1000文字以内で入力してください',
+            'shop_photo.required' => '店舗画像を選択してください',
+
         ];
     }
 }

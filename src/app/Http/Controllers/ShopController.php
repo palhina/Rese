@@ -9,6 +9,7 @@ use App\Models\Shop;
 use App\Models\Area;
 use App\Models\Genre;
 use App\Models\Favorite;
+use App\Models\Manager;
 use App\Http\Requests\ShopRequest;
 
 class ShopController extends Controller
@@ -49,11 +50,33 @@ class ShopController extends Controller
         }
     }
 
-    // 店舗新規作成
-    public function createShop()
+    // 店舗新規作成ページ表示
+    public function newShop()
     {
-        return view('create_shop');
+        $areas = Area::all();
+        $genres = Genre::all();
+        return view('create_shop',compact('areas','genres'));
     }
+
+    // 店舗新規作成情報送信
+    public function createShop(ShopRequest $request,$id)
+    {
+        $manager = Auth::guard('managers')->user();
+        $shops = Shop::where('manager_id',$manager->id)->get();
+        $areas = Area::all();
+        $genres = Genre::all();
+        Shop::create([
+            'area_id' => $request->input('shop_area'),
+            'genre_id' => $request->input('shop_genre'),
+            'manager_id' => $manager->id,
+            'shop_name' => $request->input('shop_name'),
+            'shop_comment' => $request->input('shop_comment'),
+            'shop_photo' => $request->input('shop_photo')
+        ]);
+        $shops = Shop::where('manager_id',$manager->id)->get();
+        return view('edit_shop',compact('shops','areas','genres'));
+    }
+
 
     // 作成した店舗一覧表示
     public function checkShop()
@@ -84,6 +107,7 @@ class ShopController extends Controller
         $shop->area_id = $request->input('shop_area');
         $shop->genre_id = $request->input('shop_genre');
         $shop->shop_comment = $request->input('shop_comment');
+        $shop->shop_photo = $request->input('shop_photo');
         $shop->save();
 
         $shops = Shop::where('manager_id',$manager->id)->get();

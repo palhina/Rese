@@ -70,6 +70,36 @@
                             @endif 
                         </div>
                     </div>
+                    <div class="form__group">
+                        <p class="form__shop-photo--ttl">店舗画像を以下から選択してください</p>
+                        <div class="form__shop-photo">
+                            <div class="shop-photo__wrapper">
+                                <input type="radio" id="sushi" name="shop_photo" value="/images/sushi.jpg">
+                                <img class="shop_photo" src="{{ asset('images/sushi.jpg') }}" alt="寿司">
+                            </div>
+                            <div class="shop-photo__wrapper">
+                                <input type="radio" id="yakiniku" name="shop_photo" value="/images/yakiniku.jpg">
+                                <img class="shop_photo" src="{{ asset('images/yakiniku.jpg') }}" alt="焼肉">
+                            </div>
+                            <div class="shop-photo__wrapper">
+                                <input type="radio" id="izakaya" name="shop_photo" value="/images/izakaya.jpg">
+                                <img class="shop_photo" src="{{ asset('images/izakaya.jpg') }}" alt="居酒屋">
+                            </div>
+                            <div class="shop-photo__wrapper">
+                                <input type="radio" id="italian" name="shop_photo" value="/images/italian.jpg">
+                                <img class="shop_photo" src="{{ asset('images/italian.jpg') }}" alt="イタリアン">
+                            </div>
+                            <div class="shop-photo__wrapper">
+                                <input type="radio" id="ramen" name="shop_photo" value="/images/ramen.jpg">
+                                <img class="shop_photo" src="{{ asset('images/ramen.jpg') }}" alt="ラーメン">
+                            </div>
+                        </div>
+                        <div class="form__error">
+                            @if ($errors->has('shop_photo'))
+                                {{$errors->first('shop_photo')}}
+                            @endif 
+                        </div>
+                    </div>
                     <div class="form__button">
                         <button class="rsv__edit--btn">店舗情報更新</button>
                     </div>

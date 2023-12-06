@@ -62,7 +62,8 @@ Route::post('/logout/admin', [AuthController::class,'adminLogout']);
 
 // 店舗代表者メニュー,ミドルウェアかける
     Route::get('/manager_menu', [PageViewController::class, 'managerMenu']);
-    Route::get('/create_shop', [ShopController::class, 'createShop']);
+    Route::get('/create_shop', [ShopController::class, 'newShop']);
+    Route::post('/create_shop/{id}', [ShopController::class, 'createShop']);
     Route::get('/check_shop', [ShopController::class, 'checkShop']);
     Route::post('/upload', [ShopController::class, 'store']);
     Route::get('/update_shop/{id}', [ShopController::class, 'editShop']);
