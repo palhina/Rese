@@ -201,7 +201,7 @@ Composer 2.6.2
 Mailtrap
 
 ## テーブル設計  
-![テーブル仕様書](https://github.com/palhina/Rese/assets/129643430/b9dfd510-9d58-49a2-8e85-a4a10f2e66f6)  
+![テーブル設計図](https://github.com/palhina/Rese/assets/129643430/34245743-8c73-4d83-8773-9f469be57291)  
 
 ## ER図  
 ![ER図](https://github.com/palhina/Rese/assets/129643430/65f52fa3-46ae-4fec-af8f-66ad55d73b01)  
