@@ -201,10 +201,10 @@ Composer 2.6.2
 Mailtrap
 
 ## テーブル設計  
- 
+![テーブル設計図](https://github.com/palhina/Rese/assets/129643430/dc9711a0-e30b-452b-90ff-420cf4a23393)  
+
 ## ER図  
-
-
+![ER図](https://github.com/palhina/Rese/assets/129643430/65f52fa3-46ae-4fec-af8f-66ad55d73b01)  
 
 ## 環境構築  
 
@@ -257,18 +257,18 @@ Mailtrap
 
 ## 追記  
 **ダミーデータについて**  
-* ユーザーデータ(Usersテーブル)
+* ユーザーデータ(usersテーブル)
 ユーザー名test(メールアドレス、以下同様：111@mail.com)、test2(222@mail.com)を作成しています。  
 パスワードはいずれも「1234567890」  
-* お気に入り(Favoritesテーブル)、予約情報(Reservationsテーブル)  
+* お気に入り(favoritesテーブル)、予約情報(reservationsテーブル)  
   いずれもユーザー名testのみにおいて、適当に作成しております。  
-* 店舗情報(Shopsテーブル)  
+* 店舗情報(shopsテーブル)  
   20店舗の店舗名・画像・エリア・ジャンル・コメントおよび店舗作成者の登録をしております。  
   店舗作成者は任意に設定を行いました。  
-* エリア(Areasテーブル)、ジャンル(Genresテーブル)
+* エリア(areasテーブル)、ジャンル(genresテーブル)
   エリアは47都道府県、ジャンルは5つ登録しています。  
-* 管理者データ(Adminsテーブル)    
+* 管理者データ(adminsテーブル)    
   管理者名admin_test、メールアドレスadmin1@mail.com、パスワードは「1234567890」で設定しています。
-* 店舗代表者(Managersテーブル)  
+* 店舗代表者(managersテーブル)  
   店舗代表者名manager1(メールアドレス、以下同様：manager1@mail.com)、manager2(manager2@mail.com)を作成しています。  
   パスワードはいずれも「1234567890」です。  
