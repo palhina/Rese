@@ -44,7 +44,6 @@ class ShopRequest extends FormRequest
             'shop_comment.string' => '店舗概要は文字列で入力してください',
             'shop_comment.max' => '店舗概要は1000文字以内で入力してください',
             'shop_photo.required' => '店舗画像を選択してください',
-
         ];
     }
 }

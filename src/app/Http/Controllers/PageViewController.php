@@ -58,20 +58,7 @@ class PageViewController extends Controller
         return view('my_page',compact('user','reservations','favorites'));
     }
 
-    // 予約変更ページ表示
-    public function edit($id)
-    {
-        $reservation = Reservation::with('shop')->find($id);
-        return view('edit',compact('reservation'));
-    }
 
-    // 評価ページ表示
-    public function rate($id)
-    {
-        $user = Auth::user();
-        $shop = Shop::find($id);
-        return view('rating',compact('shop','user'));
-    }
 
     // 店舗代表者メニュー
     public function managerMenu()

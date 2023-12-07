@@ -46,6 +46,7 @@
                     <h2>ようこそ、{{ Auth::guard('admins')->user()->name }}さん</h2>
                     <h3>管理者権限でログイン中</h3>
                     <li><a href="/register/manager">店舗代表者新規作成</a></li>
+                    <li><a href="/send_email">メール送信</a></li>
                     <li>
                         <form class="form" action="/logout/admin" method="post">
                         @csrf

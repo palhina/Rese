@@ -7,12 +7,16 @@ use Carbon\Carbon;
 use App\Mail\TwoFactorAuthPassword;
 use App\Models\User;
 
+
 class TwoFactorAuthController extends Controller
 {
-    public function login_form() {  // ログインフォーム
+    // ログインフォーム
+    public function login_form() { 
         return view('emails.two_factor_auth.login_form');
     }
-    public function first_auth(Request $request) {  // １段階目の認証
+
+    // １段階目の認証
+    public function first_auth(Request $request) {  
         $credentials = $request->only('email', 'password');
         if(\Auth::validate($credentials)) {
             $random_password = '';
@@ -32,7 +36,8 @@ class TwoFactorAuthController extends Controller
         return ['result' => false];
     }
 
-    public function second_auth(Request $request) {  // ２段階目の認証
+    // ２段階目の認証
+    public function second_auth(Request $request) {  
         $result = false;
         if($request->filled('tfa_token', 'user_id')) {
             $user = \App\Models\User::find($request->user_id);

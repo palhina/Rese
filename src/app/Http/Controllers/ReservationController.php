@@ -41,7 +41,14 @@ class ReservationController extends Controller
         return view('my_page',compact('user','reservations','favorites'));
     }
 
-    // 予約変更
+    // 予約変更ページ表示
+    public function edit($id)
+    {
+        $reservation = Reservation::with('shop')->find($id);
+        return view('edit',compact('reservation'));
+    }
+
+    // 予約変更処理
     public function update(ReservationRequest $request, $id)
     {
         $user = Auth::user();

@@ -13,12 +13,13 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    // 以下、ユーザー認証機能
+    // ユーザー新規登録ページ表示
     public function userRegister()
     {
         return view('auth.register');
     }
 
+    // ユーザー新規登録処理
     public function postUserRegister(RegisterRequest $request)
     {   
         User::create([
@@ -29,11 +30,13 @@ class AuthController extends Controller
         return view('thanks');
     }
 
+    // ユーザーログインページ表示
     public function userLogin()
     {
         return view('auth.login');
     }
 
+    // ユーザーログイン処理
     public function postUserLogin(LoginRequest $request)
     {
         if (Auth::attempt(['email' => $request['email'], 'password' => $request['password']])) {
@@ -43,18 +46,20 @@ class AuthController extends Controller
         }
     }
 
+    // ユーザーログアウト処理
     public function userLogout()
     {
         Auth::logout();
         return redirect("login/user");
     }
 
-    // 以下、店舗代表者認証機能
+    // 店舗代表者新規登録ページ表示
     public function managerRegister()
     {
         return view('auth.manager_register');
     }
 
+    // 店舗代表者新規登録処理
     public function postManagerRegister(RegisterRequest $request)
     {   
         Manager::create([
@@ -65,11 +70,13 @@ class AuthController extends Controller
         return redirect('/register/manager')->with('result', '店舗代表者アカウントの作成に成功しました');
     }
 
+    // 店舗代表者ログインページ表示
     public function managerLogin()
     {
         return view('auth.manager_login');
     }
 
+    // 店舗代表者ログイン処理
     public function postManagerLogin(LoginRequest $request)
     {
         if (Auth::guard('managers')->attempt(['email' => $request['email'], 'password' => $request['password']])) {
@@ -79,18 +86,20 @@ class AuthController extends Controller
         }
     }
 
+    // 店舗代表者ログアウト
     public function managerLogout()
     {
         Auth::guard('managers')->logout();
         return redirect('login/manager')->with('result', 'ログアウトしました');
     }
 
-    // 以下、管理者認証機能
+    // 管理者新規登録ページ表示
     public function adminRegister()
     {
         return view('auth.admin_register');
     }
 
+    // 管理者新規登録処理
     public function postAdminRegister(RegisterRequest $request)
     {   
         Admin::create([
@@ -101,11 +110,13 @@ class AuthController extends Controller
         return redirect('/login/admin')->with('result', '管理者アカウントの作成に成功しました');
     }
 
+    // 管理者ログインページ表示
     public function adminLogin()
     {
         return view('auth.admin_login');
     }
 
+    // 管理者ログイン処理
     public function postAdminLogin(LoginRequest $request)
     {
         if (Auth::guard('admins')->attempt(['email' => $request['email'], 'password' => $request['password']])) {
@@ -115,6 +126,7 @@ class AuthController extends Controller
         }
     }
 
+    // 管理者ログアウト処理
     public function adminLogout()
     {
         Auth::guard('admins')->logout();

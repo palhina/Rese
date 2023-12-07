@@ -8,6 +8,7 @@ use App\Http\Controllers\ShopController;
 use App\Http\Controllers\RatingController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\TwoFactorAuthController;
+use App\Http\Controllers\MailController;
 
 
 
@@ -24,9 +25,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/favorite/{id}', [FavoriteController::class, 'favorite']);
     Route::delete('/fav_delete_shop/{id}', [FavoriteController::class, 'deleteShopAll']);
     Route::delete('/fav_delete_mypage/{id}', [FavoriteController::class, 'deleteMyPage']);
-    Route::get('/edit/{id}', [PageViewController::class, 'edit']);
+    Route::get('/edit/{id}', [ReservationController::class, 'edit']);
     Route::put('/update/{id}', [ReservationController::class, 'update']);
-    Route::get('/rate/{id}', [PageViewController::class, 'rate']);
+    Route::get('/rate/{id}', [RatingController::class, 'rate']);
     Route::post('/rate/{id}', [RatingController::class, 'review']);
    
 });
@@ -60,13 +61,16 @@ Route::post('/login/admin', [AuthController::class, 'postAdminLogin']);
 Route::post('/logout/admin', [AuthController::class,'adminLogout']);
 
 
-// 店舗代表者メニュー,ミドルウェアかける
-    Route::get('/manager_menu', [PageViewController::class, 'managerMenu']);
-    Route::get('/create_shop', [ShopController::class, 'newShop']);
-    Route::post('/create_shop/{id}', [ShopController::class, 'createShop']);
-    Route::get('/check_shop', [ShopController::class, 'checkShop']);
-    Route::post('/upload', [ShopController::class, 'store']);
-    Route::get('/update_shop/{id}', [ShopController::class, 'editShop']);
-    Route::put('/update_shop/{id}', [ShopController::class, 'updateShop']);
-    Route::get('/booking_confirmation', [ReservationController::class, 'bookingConfirm']);
-    Route::post('/booking_detail/{id}', [ReservationController::class, 'bookingDetail']);
+// 店舗代表者メニュー
+Route::get('/manager_menu', [PageViewController::class, 'managerMenu']);
+Route::get('/create_shop', [ShopController::class, 'newShop']);
+Route::post('/create_shop/{id}', [ShopController::class, 'createShop']);
+Route::get('/check_shop', [ShopController::class, 'checkShop']);
+Route::get('/update_shop/{id}', [ShopController::class, 'editShop']);
+Route::put('/update_shop/{id}', [ShopController::class, 'updateShop']);
+Route::get('/booking_confirmation', [ReservationController::class, 'bookingConfirm']);
+Route::post('/booking_detail/{id}', [ReservationController::class, 'bookingDetail']);
+
+// メール送信
+Route::get('/send_email', [MailController::class, 'email']);
+Route::post('/send_email', [MailController::class, 'sendEmail']);

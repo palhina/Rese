@@ -11,6 +11,14 @@ use App\Http\Requests\RatingRequest;
 
 class RatingController extends Controller
 {
+    // 評価ページ表示
+    public function rate($id)
+    {
+        $user = Auth::user();
+        $shop = Shop::find($id);
+        return view('rating',compact('shop','user'));
+    }
+
     // 評価機能送信
     public function review(RatingRequest $request,$id)
     {

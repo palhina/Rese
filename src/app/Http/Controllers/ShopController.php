@@ -58,7 +58,7 @@ class ShopController extends Controller
         return view('create_shop',compact('areas','genres'));
     }
 
-    // 店舗新規作成情報送信
+    // 店舗新規作成処理
     public function createShop(ShopRequest $request,$id)
     {
         $manager = Auth::guard('managers')->user();
@@ -76,7 +76,6 @@ class ShopController extends Controller
         $shops = Shop::where('manager_id',$manager->id)->get();
         return view('edit_shop',compact('shops','areas','genres'));
     }
-
 
     // 作成した店舗一覧表示
     public function checkShop()
