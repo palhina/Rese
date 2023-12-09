@@ -71,6 +71,6 @@ Route::put('/update_shop/{id}', [ShopController::class, 'updateShop']);
 Route::get('/booking_confirmation', [ReservationController::class, 'bookingConfirm']);
 Route::post('/booking_detail/{id}', [ReservationController::class, 'bookingDetail']);
 
-// メール送信
+// お知らせメール送信
 Route::get('/send_email', [MailController::class, 'email']);
 Route::post('/send_email', [MailController::class, 'sendEmail']);

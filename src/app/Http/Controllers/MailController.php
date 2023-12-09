@@ -12,11 +12,14 @@ class MailController extends Controller
         return view('send_email');
     }
 
-    public function sendEmail(){
-       	$data = [
-        'message' => 'This is the information message.',
+    public function sendEmail(Request $request){
+        $users = User::all();
+       	foreach($users as $user)
+        $data = [
+        'subject' => $request->input('subject'),
+        'message' => $request->input('message'),
     ];
-    Mail::to('recipient@example.com')->send(new InformationEmail($data));
-    return redirect('send_email')->with('result', 'メールが送信されました。');
+    Mail::to($user->email)->send(new InformationEmail($data));
+    return redirect('/send_email')->with('result', 'メールが送信されました。');
     }
 }

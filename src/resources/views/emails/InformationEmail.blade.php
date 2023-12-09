@@ -5,7 +5,7 @@
     <title>Information Email</title>
 </head>
 <body>
-    <h1>Information Email</h1>
+    <h1>{{$data['subject']}}</h1>
     <p>{{ $data['message'] }}</p>
 </body>
 </html>

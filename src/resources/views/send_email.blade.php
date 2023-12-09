@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('css')
-    <link rel="stylesheet" href="{{ asset('css/manager_menu.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/send_email.css') }}">
 @endsection
 
 @section('content')
@@ -10,11 +10,21 @@
             {{ session('result') }}
         </div>
     @endif
-    <div class="manager-menu__content">
-        <p>ここではユーザーにメールが送信できます</p>
+    <div class="information-email__wrapper">
+        <p class="information-email__detail">ここではユーザーにメールを送信することができます</p>
         <form method="post" action="/send_email">
         @csrf
-            <button type="submit">メールを送信する</button>
+            <div class="information-email__content">
+                <div class="information-email__ttl">
+                    <input class="information-email__subject" type="text" name="subject" placeholder="タイトル">
+                </div>
+                <div class="information-email__text">
+                    <textarea class="information-email__message" name="message" placeholder="メール本文"></textarea> 
+                </div>
+                <div class="information-email__btn">    
+                    <button type="submit">メールを送信する</button>
+                </div>
+            </div>
         </form>
     </div>
 @endsection
