@@ -173,6 +173,7 @@
 
 ## アプリケーションURL  
 GithubURL：https://github.com/palhina/Rese.git  
+http://rese-aws-launch.shop(別途設定が必要です：追記部分に後述)  
 
 ## ほかのレポジトリ  
 今回はなし  
@@ -206,7 +207,7 @@ GithubURL：https://github.com/palhina/Rese.git
 Docker version 24.0.5  
 Laravel 8.83.27  
 Nginx 1.21.1  
-MySQL 8.0.26  
+MySQL 8.0.35  
 PHP 8.1.2  
 Composer 2.6.2  
 Mailtrap
@@ -287,4 +288,21 @@ Mailtrap
   管理者名admin_test、メールアドレスadmin1@mail.com、パスワードは「1234567890」で設定しています。
 * 店舗代表者(managersテーブル)  
   店舗代表者名manager1(メールアドレス、以下同様：manager1@mail.com)、manager2(manager2@mail.com)を作成しています。  
-  パスワードはいずれも「1234567890」です。  
+  パスワードはいずれも「1234567890」です。
+* aws上では、ユーザー、管理者、店舗代表者のダミーデータはパスワードの観点から利用できません。新規作成をお願いいたします。
+  その他店舗情報等のダミーデータは使用可能です。
+
+**AWS接続,ブラウザ上での閲覧について**  
+以下の設定により、ブラウザ上でアプリケーションを閲覧することが可能です(HTTP接続のみ)。  
+  
+１．IAMユーザーでログイン  
+ユーザー名：study（権限：administration）アカウントID：973518952750、パスワード：dYfX58MBでログインしてください。  
+２．開発環境として、大阪リージョンにVPC(rese-aws-vpc)を作成しております。  
+EC2インスタンス(rese-aws-web)とRDSインスタンス(rese-aws-databases)を開始してください。  
+３．それぞれが正常に起動したことを確認し、EC2インスタンスのパブリックIPv4アドレス、あるいはパブリックIPv4DNSをブラウザに入力してください。  
+  
+**開発環境と本番環境について**　　
+* 開発環境は上記のように大阪リージョンに作成しております。  
+* 本番環境を想定したものは、開発環境と異なるVPC(rese-launch-vpc)およびリージョン(東京)で、EC2インスタンス名：rese-launch-web、RDSインスタンス名：rese-launch-dbとして作成しました。  
+  本番環境はURL (http://rese-aws-launch.shop) からアクセスも可能です。  
+  その場合はElasticIPアドレスを発行しEC2インスタンスに紐づけた後、Route53のレコード名：rese-aws-launch.shopレコードタイプ：Aの値をElasticIPの値に変更してください。  
