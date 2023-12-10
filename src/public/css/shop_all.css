@@ -13,11 +13,6 @@
     box-shadow: 5px 5px 5px #B7B7B7;
 }
 
-.search-form__area,
-.search-form__genre{
-    width: 20%;
-}
-
 .search-form__keyword{
     width: 50%;
 }

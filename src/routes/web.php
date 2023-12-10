@@ -9,6 +9,7 @@ use App\Http\Controllers\RatingController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\TwoFactorAuthController;
 use App\Http\Controllers\MailController;
+use App\Http\Controllers\PaymentController;
 
 
 
@@ -29,7 +30,6 @@ Route::middleware('auth')->group(function () {
     Route::put('/update/{id}', [ReservationController::class, 'update']);
     Route::get('/rate/{id}', [RatingController::class, 'rate']);
     Route::post('/rate/{id}', [RatingController::class, 'review']);
-   
 });
 
 // 以下追加実装
@@ -74,3 +74,12 @@ Route::post('/booking_detail/{id}', [ReservationController::class, 'bookingDetai
 // お知らせメール送信
 Route::get('/send_email', [MailController::class, 'email']);
 Route::post('/send_email', [MailController::class, 'sendEmail']);
+
+// 予約QRコード表示
+Route::get('/qr_code/{id}', [ReservationController::class, 'qrCode']);
+
+// 決済機能
+Route::prefix('/payment')->name('payment.')->group(function () {
+    Route::get('/create', [PaymentController::class, 'create'])->name('create');
+    Route::post('/store', [PaymentController::class, 'store'])->name('store');
+});

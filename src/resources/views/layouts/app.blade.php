@@ -31,6 +31,7 @@
                             <button class="my_page">Mypage</button>
                         </form>
                     </li>
+                    <li><a href="/payment/create">Payment</a></li>
                 @elseif(Auth::guard('managers')->check())
                     <h2>ようこそ、{{ Auth::guard('managers')->user()->name }}さん</h2>
                     <p>店舗代表者権限でログイン中</p>

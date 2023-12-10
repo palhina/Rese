@@ -65,5 +65,69 @@ button{
 }
 
 @media screen and (max-width: 768px) {
+    h2 {
+        margin: 0;
+        text-align: left;
+        padding: 20px;
+        }
     
+    main {
+        background-color: #F2F2F2;
+        padding: 20px;
+    }
+
+    .flash_message {
+        text-align: center;
+        margin: 10px;
+        color: #ff0000;
+        background-color: #fff;
+        padding: 10px;
+    }
+
+    .information-email__wrapper {
+        width: 100%;
+        text-align: center;
+        margin: auto;
+        box-shadow: 5px 5px 5px #B7B7B7;
+    }
+
+    .information-email__detail {
+        background-color: #3560F6;
+        padding: 10px;
+        color: #FFF;
+        margin: 0;
+    }
+
+    .information-email__content {
+        background-color: #fff;
+        padding: 10px;
+    }
+
+    .information-email__ttl,
+    .information-email__text {
+        margin: 10px;
+    }
+
+    input {
+        width: 90%;
+    }
+
+    textarea {
+        width: 90%;
+        height: 300px;
+    }
+
+    .information-email__btn {
+        text-align: right
+    }
+
+    button {
+        background-color: #3560F6;
+        color: #fff;
+        cursor: pointer;
+        border: none;
+        margin: 10px;
+        padding: 10px;
+        border-radius: 5px;
+    }
 }

@@ -49,6 +49,7 @@ h2 {
 }
 
 .rsv__edit--btn,
+.rsv__qr--btn,
 .rsv__rate--btn{
     padding: 5px;
     border-radius: 5px;
@@ -194,6 +195,7 @@ h2 {
     }
 
     .rsv__edit--btn,
+    .rsv__qr--btn,
     .rsv__rate--btn {
         padding: 5px;
         border-radius: 5px;
