@@ -173,7 +173,7 @@
 
 ## アプリケーションURL  
 GithubURL：https://github.com/palhina/Rese.git  
-http://rese-aws-launch.shop(別途設定が必要です：追記部分に後述)  
+http://rese-aws-launch.shop  （別途設定が必要です：追記部分に後述）  
 
 ## ほかのレポジトリ  
 今回はなし  
