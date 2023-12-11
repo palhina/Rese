@@ -9,7 +9,7 @@
         <h2>QRコード</h2>
         <p>このQRコードをお店で提示してください</p>
         <div class="qr-code">
-        {{$qr_image}}
+        {!! QrCode::size(200)->generate(url("/bookingdetail/{$reservation->id}")) !!}
         </div>
     </div>
 @endsection

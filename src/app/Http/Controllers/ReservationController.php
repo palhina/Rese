@@ -100,8 +100,6 @@ class ReservationController extends Controller
     public function qrCode($id)
     {
         $reservation = Reservation::find($id);
-        $url = 'https://google.com';
-        $qr_image = QrCode::size(400)->format('png')->generate($url);
-        return view('qr_code',compact('qr_image'));
+        return view('qr_code',compact('reservation'));
     }
 }
