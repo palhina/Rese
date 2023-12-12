@@ -34,9 +34,9 @@ Route::middleware('auth')->group(function () {
 
 // 以下追加実装
 // 二要素認証
-Route::get('two_factor_auth/login_form', [TwoFactorAuthController::class,'login_form']);
-Route::post('ajax/two_factor_auth/first_auth', [TwoFactorAuthController::class,'first_auth']);
-Route::post('ajax/two_factor_auth/second_auth', [TwoFactorAuthController::class,'second_auth']);
+Route::get('two_factor_auth/login_form', [TwoFactorAuthController::class,'secondAuthLogin']);
+Route::post('ajax/two_factor_auth/first_auth', [TwoFactorAuthController::class,'firstAuth']);
+Route::post('ajax/two_factor_auth/second_auth', [TwoFactorAuthController::class,'secondAuth']);
 
 // ユーザー作成、ログイン機能・サンクスページ
 Route::get('/register/user', [AuthController::class,'userRegister']);

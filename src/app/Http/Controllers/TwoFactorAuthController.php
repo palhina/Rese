@@ -11,12 +11,12 @@ use App\Models\User;
 class TwoFactorAuthController extends Controller
 {
     // ログインフォーム
-    public function login_form() { 
+    public function secondAuthLogin() { 
         return view('emails.two_factor_auth.login_form');
     }
 
     // １段階目の認証
-    public function first_auth(Request $request) {  
+    public function firstAuth(Request $request) {  
         $credentials = $request->only('email', 'password');
         if(\Auth::validate($credentials)) {
             $random_password = '';
@@ -37,7 +37,7 @@ class TwoFactorAuthController extends Controller
     }
 
     // ２段階目の認証
-    public function second_auth(Request $request) {  
+    public function secondAuth(Request $request) {  
         $result = false;
         if($request->filled('tfa_token', 'user_id')) {
             $user = \App\Models\User::find($request->user_id);
