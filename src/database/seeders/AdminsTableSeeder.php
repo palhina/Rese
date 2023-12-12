@@ -19,7 +19,7 @@ class AdminsTableSeeder extends Seeder
             [
                 'name' => 'admin_test',
                 'email' => 'admin1@mail.com',
-                'password' =>Hash::make('1234567890'),
+                'password' =>bcrypt('1234567890'),
             ],
         ];
     foreach ($admins as $admin) 

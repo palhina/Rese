@@ -24,11 +24,11 @@ class ShopRequest extends FormRequest
     public function rules()
     {
         return [
-            'shop_name' => 'required|string|max:100',
-            'shop_area' => 'required',
-            'shop_genre' => 'required',
-            'shop_comment' => 'required|string|max:1000',
-            'shop_photo' => 'required'
+            'shop_name' => ['required','string','max:100'],
+            'shop_area' => ['required'],
+            'shop_genre' => ['required'],
+            'shop_comment' => ['required','string','max:1000'],
+            'shop_photo' => '[required']
         ];
     }
     

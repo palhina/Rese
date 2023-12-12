@@ -29,7 +29,7 @@ class RegisterRequest extends FormRequest
         return [
             'name' => ['required','max:191'],
             'email' => ['required','email','unique:users,email','unique:admins,email','unique:managers,email','max:191'],
-            'password' => ['required','min:8|max:191']
+            'password' => ['required','min:8','max:191']
         ];
     }
     public function messages()

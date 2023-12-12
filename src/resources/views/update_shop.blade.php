@@ -71,7 +71,7 @@
                         </div>
                     </div>
                     <div class="form__group">
-                        <p class="form__shop-photo--ttl">店舗画像を以下から選択してください</p>
+                        <p class="form__shop-photo--ttl">店舗画像を選択してください</p>
                         <div class="form__shop-photo">
                             <div class="shop-photo__wrapper">
                                 <input type="radio" id="sushi" name="shop_photo" value="/images/sushi.jpg">

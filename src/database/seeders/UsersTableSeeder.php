@@ -19,12 +19,12 @@ class UsersTableSeeder extends Seeder
         [
             'name' => 'test',
             'email' => '111@mail.com',
-            'password' =>Hash::make('1234567890'),
+            'password' =>bcrypt('1234567890'),
         ],
         [
             'name' => 'test2',
             'email' => '222@mail.com',
-            'password' => Hash::make('1234567890')
+            'password' => bcrypt('1234567890')
         ],
         ];
     foreach ($users as $user) 

@@ -24,8 +24,8 @@ class RatingRequest extends FormRequest
     public function rules()
     {
         return [
-            'rating' => 'required',
-            'comment' => 'nullable|max:1000|string'
+            'rating' => ['required'],
+            'comment' => ['nullable','max:1000','string']
         ];
     }
 

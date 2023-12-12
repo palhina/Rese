@@ -24,9 +24,9 @@ class ReservationRequest extends FormRequest
     public function rules()
     {
         return [
-            'date' => 'required|after:today',
-            'time' => 'required',
-            'number' => 'required'
+            'date' => ['required','after:today'],
+            'time' => ['required'],
+            'number' => ['required']
         ];
     }
 

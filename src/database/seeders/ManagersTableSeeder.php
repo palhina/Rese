@@ -19,12 +19,12 @@ class ManagersTableSeeder extends Seeder
             [
                 'name' => 'manager1',
                 'email' => 'manager1@mail.com',
-                'password' =>Hash::make('1234567890'),
+                'password' =>bcrypt('1234567890'),
             ],
             [
                 'name' => 'manager2',
                 'email' => 'manager2@mail.com',
-                'password' =>Hash::make('1234567890'),
+                'password' =>bcrypt('1234567890'),
             ],
         ];
     foreach ($managers as $manager) 
