@@ -9,7 +9,6 @@ use App\Models\Reservation;
 use App\Models\Shop;
 use App\Models\Favorite;
 use App\Http\Requests\ReservationRequest;
-use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class ReservationController extends Controller
 {
@@ -95,11 +94,5 @@ class ReservationController extends Controller
     {
         $reservation = Reservation::find($id);
         return view('booking_detail',compact('reservation'));
-    }
-
-    public function qrCode($id)
-    {
-        $reservation = Reservation::find($id);
-        return view('qr_code',compact('reservation'));
     }
 }

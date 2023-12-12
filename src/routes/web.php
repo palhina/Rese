@@ -75,9 +75,6 @@ Route::post('/booking_detail/{id}', [ReservationController::class, 'bookingDetai
 Route::get('/send_email', [MailController::class, 'email']);
 Route::post('/send_email', [MailController::class, 'sendEmail']);
 
-// 予約QRコード表示
-Route::get('/qr_code/{id}', [ReservationController::class, 'qrCode']);
-
 // 決済機能
 Route::prefix('/payment')->name('payment.')->group(function () {
     Route::get('/create', [PaymentController::class, 'create'])->name('create');
