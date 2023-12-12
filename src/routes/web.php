@@ -34,7 +34,7 @@ Route::middleware('auth')->group(function () {
 
 // 以下追加実装
 // 二要素認証
-Route::get('two_factor_auth/login_form', [TwoFactorAuthController::class,'secondAuthLogin']);
+Route::get('two_factor_auth/login_form', [TwoFactorAuthController::class,'twoFactorAuthLogin']);
 Route::post('ajax/two_factor_auth/first_auth', [TwoFactorAuthController::class,'firstAuth']);
 Route::post('ajax/two_factor_auth/second_auth', [TwoFactorAuthController::class,'secondAuth']);
 

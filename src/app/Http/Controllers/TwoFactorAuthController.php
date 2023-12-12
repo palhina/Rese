@@ -11,7 +11,7 @@ use App\Models\User;
 class TwoFactorAuthController extends Controller
 {
     // ログインフォーム
-    public function secondAuthLogin() { 
+    public function twoFactorAuthLogin() { 
         return view('emails.two_factor_auth.login_form');
     }
 
