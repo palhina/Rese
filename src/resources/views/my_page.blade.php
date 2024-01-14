@@ -47,6 +47,10 @@
                         @csrf
                             <button class="rsv__edit--btn">予約変更</button>
                         </form>
+                        <form class="form" action="/qrcode/{{$reservation->id}}" method="get">
+                        @csrf
+                            <button class="rsv__edit--btn">QRコード表示</button>
+                        </form>
                         @if($reservation->rsv_date < now())
                             <form class="form" action="/rate/{{$reservation->shop->id}}" method="get">
                             @csrf

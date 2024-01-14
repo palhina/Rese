@@ -95,4 +95,10 @@ class ReservationController extends Controller
         $reservation = Reservation::find($id);
         return view('booking_detail',compact('reservation'));
     }
+
+        public function qr($id)
+    {
+        $reservation = Reservation::with('shop')->find($id);
+        return view('qr_code',compact('reservation'));
+    }
 }
