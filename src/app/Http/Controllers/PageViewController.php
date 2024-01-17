@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Shop;
 use App\Models\Reservation;
 use App\Models\Favorite;
-use App\Models\User;
 use App\Models\Area;
 use App\Models\Genre;
 

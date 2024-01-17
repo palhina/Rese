@@ -17,7 +17,7 @@
         <label for="overlay-input" id="overlay-button"><span class="hamburger-btn"></span></label>
         <div id="overlay">
             <ul class="hamburger-menu__list-wrapper">
-                @if (Auth::check())
+                @if (Auth::guard('web')->check())
                     <li class="hamburger-menu__list"><a class="menu__link" href="/">Home</a></li>
                     <li class="hamburger-menu__list">
                         <form class="form" action="/logout/user" method="post">
