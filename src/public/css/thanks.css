@@ -1,4 +1,4 @@
-h2 {
+.thanks__message {
     margin: 0;
     padding: 20px;
     text-align: center;
@@ -25,3 +25,16 @@ h2 {
     border-radius: 5px;
 }
 
+/* レスポンシブ */
+@media screen and (max-width: 768px) {
+    .thanks__message {
+        padding: 10px;
+        font-weight: lighter;
+    }
+
+    .thanks__content {
+        width: 80%;
+        padding: 20px;
+        box-shadow: 5px 5px 5px #B7B7B7;
+    }
+}

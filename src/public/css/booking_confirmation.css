@@ -3,7 +3,7 @@
     margin: auto;
 }
 
-h2{
+.rsv__ttl{
     text-align: center;
 }
 
@@ -22,7 +22,7 @@ h2{
     box-shadow: 5px 5px 5px #B7B7B7;
 }
 
-h3{
+.rsv__name{
     margin: 20px;
 }
 
@@ -41,7 +41,7 @@ h3{
     display: flex;
 }
 
-p{
+.rsv__detail{
     margin: 20px;
 }
 
@@ -57,11 +57,6 @@ p{
 @media screen and (max-width: 768px) {
     .booking__wrapper {
         width: 100%;
-        margin: auto;
-    }
-
-    h2 {
-        text-align: center;
     }
 
     .booking__list {
@@ -69,42 +64,16 @@ p{
     }
 
     .booking__content {
-        background-color: white;
         width: 80%;
         margin: 20px auto;
         padding: 10px;
-        border-radius: 5px;
-        box-shadow: 5px 5px 5px #B7B7B7;
-    }
-
-    h3 {
-        margin: 20px;
     }
 
     .booking__card {
         display: block;
-        background-color: #3560F6;
-        color: #fff;
-        padding: 10px;
-        margin: 20px;
-        box-shadow: 5px 5px 5px #B7B7B7;
-        border-radius: 5px;
     }
 
     .booking__date {
         display: block;
     }
-
-    p {
-        margin: 20px;
-    }
-
-    .rsv__edit--btn {
-        padding: 5px;
-        border-radius: 5px;
-        background-color: #fff;
-        margin: 10px;
-        cursor: pointer;
-    }
-
 }

@@ -47,7 +47,7 @@
     position: relative;
 }
 
-h3 {
+.rsv__ttl {
     margin: 30px 20px;
     color: #fff;
 }
@@ -82,7 +82,7 @@ h3 {
     text-align: left;
 }
 
-th {
+.rsv__contents {
     width: 50%;
 }
 
@@ -98,26 +98,12 @@ th {
     border-style: none;
 }
 
-/* レスポンシブ */
 @media screen and (max-width: 768px) {
     .shop-detail__wrapper {
         display: block;
         width: 100%;
-        margin: 30px 0;
-        padding-top: 30px;
-    }
-
-    .back {
-        margin: 20px;
-        font-weight: bolder;
-        background-color: #FFFFFF;
-        border: none;
-        padding: 10px;
-        cursor: pointer;
-        border-radius: 3px;
-        box-shadow: 5px 5px 5px #B7B7B7;
-        color: black;
-        text-decoration: none;
+        margin: 0;
+        padding: 0;
     }
 
     .shop__contents {
@@ -125,81 +111,16 @@ th {
         margin: auto;
     }
 
-    .shop__contents-ttl {
-        display: flex;
-        justify-content: left;
-    }
-
-    .shop__contets-img {
-        width: 100%;
-    }
-
-    .shop__img {
-        width: 100%;
-    }
-
-    .shop__contents-tag {
-        display: flex;
-        justify-content: left;
-    }
-
     .shop__rsv {
-        background-color: #007bff;
         width: 80%;
         margin: auto;
-        position: relative;
-    }
-
-    h3 {
-        margin: 30px 20px;
-        color: #fff;
-    }
-
-    .form__group {
-        width: 80%;
-        margin: 20px;
-    }
-
-    .rsv-date,
-    .rsv-time,
-    .rsv-number {
-        height: 30px;
-    }
-
-    .rsv-time,
-    .rsv-number {
-        width: 100%;
-    }
-
-    .form__error {
-        color: #fff;
-        margin: 30px;
-        font-size: larger;
     }
 
     .rsv-confirm {
-        background-color: #5580F7;
-        color: #fff;
-        margin: 20px;
-        padding: 20px;
-        text-align: left;
         height: auto;
     }
 
-    th {
-        width: 50%;
-    }
-
-
     .form__button-rsv {
         position: relative;
-        bottom: 0;
-        width: 100%;
-        background-color: #3560F6;
-        color: #fff;
-        cursor: pointer;
-        height: 50px;
-        border-style: none;
     }
-
 }

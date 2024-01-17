@@ -1,4 +1,4 @@
-h2 {
+.my-page__ttl {
     text-align: center;
 }
 
@@ -68,7 +68,7 @@ h2 {
 }
 
 .my-page__fav-card {
-    width: 40%;
+    width: 45%;
     background-color: #fff;
     margin: 10px;
     border-radius: 3px;
@@ -144,62 +144,18 @@ h2 {
 
 /* レスポンシブ */
 @media screen and (max-width: 768px) {
-    h2 {
-        text-align: center;
-    }
-
     .my-page__wrapper {
-        width: 100%;
         display: block;
-        margin: 30px 0;
-        padding-top: 30px;
     }
 
     .my-page__rsv {
-        width: 80%;
+        width: 90%;
         margin: auto;
     }
 
     .my-page__rsv-detail {
         position: relative;
-        background-color: #3560F6;
-        color: #fff;
-        padding: 30px;
-        margin: 20px;
-    }
-
-    .form__icon {
-        display: flex;
-        justify-content: left;
-    }
-
-    .rsv__ttl {
-        margin: 0 auto 30px 10px;
-    }
-
-    .rsv__delete--btn {
-        border: 2px solid #fff;
-        color: #fff;
-        font-weight: bold;
-        border-radius: 50%;
-        position: absolute;
-        top: 30px;
-        right: 30px;
-        cursor: pointer;
-        background-color: #3560F6;
-    }
-
-    .rsv__btn {
-        display: flex;
-        justify-content: space-between;
-    }
-
-    .rsv__edit--btn,
-    .rsv__qr--btn,
-    .rsv__rate--btn {
-        padding: 5px;
-        border-radius: 5px;
-        background-color: #fff;
+        padding: 20px;
         margin: 10px;
     }
 
@@ -214,77 +170,6 @@ h2 {
 
     .my-page__fav-card {
         width: 100%;
-        background-color: #fff;
         margin: 10px auto;
-        border-radius: 3px;
-        box-shadow: 3px 3px 3px #B7B7B7;
-        position: relative;
     }
-
-    .my-page__fav-img {
-        width: 100%;
-    }
-
-    .card__img {
-        width: 100%;
-    }
-
-    .my-page__fav-desc {
-        margin: 20px;
-    }
-
-    .my-page__fav-name {
-        font-weight: bolder;
-        font-size: larger;
-    }
-
-    .fav-name {
-        margin: 0;
-    }
-
-    .my-page__fav-tag {
-        display: flex;
-        justify-content: left;
-    }
-
-    .fav-tag {
-        margin-right: 10px;
-    }
-
-    .to-shop-detail {
-        background-color: #3560F6;
-        color: #fff;
-        border-style: none;
-        padding: 5px;
-        border-radius: 3px;
-        cursor: pointer;
-    }
-
-    .heart-checkbox {
-        display: none;
-    }
-
-    .fav-button {
-        width: 24px;
-        height: 24px;
-        background-color: #B7B7B7;
-        clip-path: path("M12 4.248c-3.148-5.402-12-3.825-12 2.944 0 4.661 5.571 9.427 12 15.808 6.43-6.381 12-11.147 12-15.808 0-6.792-8.875-8.306-12-2.944z");
-        position: absolute;
-        right: 20px;
-        bottom: 20px;
-        cursor: pointer;
-    }
-
-    .fav-btn__favorite {
-        background-color: red;
-        width: 24px;
-        height: 24px;
-        clip-path: path("M12 4.248c-3.148-5.402-12-3.825-12 2.944 0 4.661 5.571 9.427 12 15.808 6.43-6.381 12-11.147 12-15.808 0-6.792-8.875-8.306-12-2.944z");
-        border-style: none;
-        position: absolute;
-        right: 15px;
-        bottom: 15px;
-        cursor: pointer;
-    }
-
 }

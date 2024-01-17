@@ -6,7 +6,7 @@
 @endsection
 
 @section('content')
-    <h2>{{ $user->name }}さん</h2>
+    <h2 class="my-page__ttl">{{ $user->name }}さん</h2>
     <div class="my-page__wrapper">
         <div class="my-page__rsv">
             <div class="my-page__rsv-ttl">

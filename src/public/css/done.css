@@ -1,4 +1,4 @@
-h2 {
+.done__message {
     padding: 20px;
     text-align: center;
 }
@@ -25,28 +25,14 @@ h2 {
 
 /* レスポンシブ */
 @media screen and (max-width: 768px) {
-    h2 {
-        padding: 20px;
-        text-align: center;
+    .done__message {
+        padding: 10px;
+        font-weight: lighter;
     }
 
     .done__content {
-        width: 70%;
-        text-align: center;
-        margin: auto;
-        background-color: #fff;
+        width: 80%;
         padding: 20px;
-        border-radius: 5px;
         box-shadow: 5px 5px 5px #B7B7B7;
-    }
-
-    .back-link {
-        background-color: #3560F6;
-        color: #fff;
-        cursor: pointer;
-        text-decoration: none;
-        margin: 30px;
-        padding: 10px;
-        border-radius: 5px;
     }
 }

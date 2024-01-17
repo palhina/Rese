@@ -3,9 +3,8 @@
     margin: auto;
 }
 
-h2{
+.rsv__ttl{
     text-align: center;
-
 }
 
 .booking__content{
@@ -26,8 +25,8 @@ h2{
     font-size: larger;
 }
 
-table th,
-table td {
+.rsv__datail--ttl,
+.rsv__datail--desc {
     padding: 20px;
 }
 
@@ -48,48 +47,29 @@ table td {
 @media screen and (max-width: 768px) {
     .booking__wrapper {
         width: 90%;
-        margin: auto;
-    }
-
-    h2 {
-        text-align: center;
-
     }
 
     .booking__content {
-        background-color: #fff;
         margin: 10px;
     }
 
-    h.booking__shop-name {
-        font-weight: bolder;
-        background-color: blue;
+    .booking__shop-name {
         padding: 10px;
-        color: #fff;
-        margin: 10px 0;
     }
 
     .booking__detail {
         padding: 10px;
-        font-size: larger;
     }
 
-    table th,
-    table td {
+    .rsv__datail--ttl,
+    .rsv__datail--desc{
         padding: 10px;
-    }
-
-    .back {
-        text-align: right;
     }
 
     .back__btn {
         margin: 10px;
         padding: 5px 10px;
-        background-color: blue;
-        color: #fff;
-        border-radius: 5px;
-        box-shadow: 5px 5px 5px #B5B5B5;
+        box-shadow: 2px 2px 2px #B5B5B5;
     }
 
 }

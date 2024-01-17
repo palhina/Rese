@@ -11,7 +11,7 @@
         </div>
     @endif
     <div class="information-email__wrapper">
-        <p class="information-email__detail">ここではユーザーにメールを送信することができます</p>
+        <p class="information-email__detail">ユーザーにメールを送信</p>
         <form method="post" action="/send_email">
         @csrf
             <div class="information-email__content">
@@ -22,7 +22,7 @@
                     <textarea class="information-email__message" name="message" placeholder="メール本文"></textarea> 
                 </div>
                 <div class="information-email__btn">    
-                    <button type="submit">メールを送信する</button>
+                    <button class="send-email__btn" type="submit">送信する</button>
                 </div>
             </div>
         </form>

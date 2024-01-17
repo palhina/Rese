@@ -33,15 +33,15 @@
                 <div class="form-group">
                     <h4>評価</h4>
                     <div class="form__fiveStar">
-                        <input id="star1" type="radio"  name="rating" value="5">
+                        <input class="star-input" id="star1" type="radio"  name="rating" value="5">
                         <label for="star1" class="star">★</label>
-                        <input id="star2" type="radio" name="rating" value="4">
+                        <input class="star-input" id="star2" type="radio" name="rating" value="4">
                         <label for="star2" class="star">★</label>
-                        <input id="star3" type="radio" name="rating" value="3">
+                        <input class="star-input" id="star3" type="radio" name="rating" value="3">
                         <label for="star3" class="star">★</label>
-                        <input id="star4" type="radio" name="rating" value="2">
+                        <input class="star-input" id="star4" type="radio" name="rating" value="2">
                         <label for="star4" class="star">★</label>
-                        <input id="star5" type="radio" name="rating" value="1">
+                        <input class="star-input" id="star5" type="radio" name="rating" value="1">
                         <label for="star5" class="star">★</label>
                     </div>
                     <div class="form__error">

@@ -1,4 +1,4 @@
-.manager-menu__content{
+.menu__content{
     background-color: #fff;
     width: 50%;
     margin: 50px auto;
@@ -6,19 +6,15 @@
     text-align: center;
 }
 
-ul {
+.menu__list--wrapper {
     list-style: none;
 }
 
-.create__shop{
+.menu__info{
     margin: 30px;
 }
 
-.shops__list{
-    margin: 30px 0 0 0;
-}
-
-ul li a {
+.menu__list {
     color: #3560F6;
     font-size: 1.5em;
 }
@@ -26,24 +22,17 @@ ul li a {
 
 
 @media screen and (max-width: 768px) {
-    .manager-menu__content {
-        background-color: #fff;
+    .menu__content {
         width: 80%;
         margin: 20px auto;
         padding: 20px;
-        text-align: center;
     }
 
-    .create__shop {
+    .menu__info {
         margin: 20px 0 0 0;
     }
 
-    .shops__list {
-        margin: 20px 0 0 0;
-    }
-
-    ul li a {
-        color: #3560F6;
+    .menu__list {
         font-size: 1em;
     }
 }

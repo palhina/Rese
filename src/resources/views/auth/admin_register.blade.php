@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('css')
-    <link rel="stylesheet" href="{{ asset('css/manager_register.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/register.css') }}">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 @endsection
@@ -15,14 +15,14 @@
     @endif
     <div class="register__content">
         <div class="register__group-title">
-            <h2>サイト管理者を作成</h2>
+            <h2 class="main__ttl">サイト管理者を作成</h2>
         </div>
         <form class="form" action="/register/admin" method="post">
         @csrf
             <div class="register__form-content">
                 <div class="form__name-input">
                     <div class="form__name-text">
-                        <input type="text" name="name" value="{{ old('name') }}" placeholder="Manager_name" />
+                        <input class="form__input" type="text" name="name" value="{{ old('name') }}" placeholder="Manager_name" />
                     </div>
                     <div class="form__error">
                         {{$errors->first('name')}}
@@ -30,7 +30,7 @@
                 </div>
                 <div class="form__email-input">
                     <div class="form__email-text">
-                        <input type="email" name="email" value="{{ old('email') }}" placeholder="Email" />
+                        <input class="form__input" type="email" name="email" value="{{ old('email') }}" placeholder="Email" />
                     </div>
                     <div class="form__error">
                         {{$errors->first('email')}}
@@ -38,7 +38,7 @@
                 </div>
                 <div class="form__pwd-input">
                     <div class="form__pwd-text">
-                        <input type="password" name="password" placeholder="Password" />
+                        <input class="form__input" type="password" name="password" placeholder="Password" />
                     </div>
                     <div class="form__error">
                         {{$errors->first('password')}}

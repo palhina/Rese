@@ -1,12 +1,7 @@
-h2 {
+.main__ttl {
     margin: 0;
     text-align: left;
     padding: 20px;
-}
-
-main {
-    background-color: #F2F2F2;
-    padding: 50px;
 }
 
 .flash_message{
@@ -39,7 +34,7 @@ main {
     margin: 30px;
 }
 
-input {
+.form__input {
     border: none;
     outline: none;
     border-bottom: 2px solid #999;
@@ -62,14 +57,13 @@ input {
     margin-right: 8px;
 }
 
-/* バリデーションエラー */
 .form__error {
     color: #ff0000;
     border-bottom: 30px;
 }
 
 .form__button {
-    text-align: right
+    text-align: right;
 }
 
 .form__button-login {
@@ -84,32 +78,13 @@ input {
 
 
 @media screen and (max-width: 768px) {
-    h2 {
-        margin: 0;
-        text-align: left;
+    .main__ttl {
         padding: 10px;
-    }
-
-    main {
-        background-color: #F2F2F2;
-        padding: 0px;
     }
 
     .login__content {
         width: 80%;
-        text-align: center;
-        margin: auto;
         box-shadow: 3px 3px 3px #B7B7B7;
-    }
-
-    .login__group-title {
-        color: #fff;
-        background-color: #3560F6;
-    }
-
-    .login__form-content {
-        background-color: #fff;
-        padding: 10px;
     }
 
     .form__email-text,
@@ -117,46 +92,12 @@ input {
         margin: 15px;
     }
 
-    input {
-        border: none;
-        outline: none;
-        border-bottom: 2px solid #999;
-        width: 80%;
-    }
-
-    .form__email-text::before {
-        content: "email";
-        font-family: 'Material Icons';
-        display: inline-block;
-        vertical-align: middle;
-        margin-right: 5px;
-    }
-
+    .form__email-text::before,
     .form__pwd-text::before {
-        content: "lock";
-        font-family: 'Material Icons';
-        display: inline-block;
-        vertical-align: middle;
         margin-right: 5px;
     }
 
-    /* バリデーションエラー */
     .form__error {
-        color: #ff0000;
         border-bottom: 10px;
-    }
-
-    .form__button {
-        text-align: right
-    }
-
-    .form__button-login {
-        background-color: #3560F6;
-        color: #fff;
-        cursor: pointer;
-        border: none;
-        margin: 20px;
-        padding: 10px 20px;
-        border-radius: 5px;
     }
 }

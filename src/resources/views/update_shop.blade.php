@@ -24,7 +24,7 @@
                 </div>
             </div>
             <div class="shop__contents-update">
-                <h3>店舗情報変更</h3>
+                <h3 class="shop-update__ttl">店舗情報変更</h3>
                 <form action="/update_shop/{{$shop->id}}" method="POST">
                     @csrf
                     @method('PUT')

@@ -7,7 +7,7 @@
 @section('content')
     <div class="thanks__content">
         <div class="thanks__group-title">
-            <h2>会員登録ありがとうございます</h2>
+            <h2 class="thanks__message">会員登録ありがとうございます</h2>
         </div>
         <div class="form__button">
             <a class="login__link" href="/login/user">ログインする</a>
