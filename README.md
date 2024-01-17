@@ -246,7 +246,7 @@ Mailtrap
 
 ４．コンテナ内でComposerをインストールします：
 	
-         $composer install
+         $composer install --ignore-platform-req=ext-gd
 
 ５．”.env”ファイルを作成し、データベース名、ユーザ名、パスワードなどの必要な環境変数を設定します：
 	
