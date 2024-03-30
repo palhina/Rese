@@ -68,7 +68,11 @@
                 @foreach($favorites as $favorite)
                 <div class="my-page__fav-card">
                     <div class="my-page__fav-img">
-                        <img class="card__img" src="{{ $favorite ->shop->shop_photo }}">
+                        @if (strpos($favorite->shop->shop_photo, '/images/') === 0)
+                            <img class="card__img" src="{{ $favorite->shop->shop_photo }}">
+                        @elseif ($favorite->shop->shop_photo)
+                            <img class="card__img" src="{{ Storage('s3')->url($favorite->shop->shop_photo) }}">
+                        @endif
                     </div>
                     <div class="my-page__fav-desc">
                         <div class="my-page__fav-name">

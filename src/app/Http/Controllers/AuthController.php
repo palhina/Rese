@@ -10,9 +10,11 @@ use App\Http\Requests\RegisterRequest;
 use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Auth\Events\Registered;
 
 class AuthController extends Controller
 {
+
     // ユーザー新規登録ページ表示
     public function userRegister()
     {
@@ -21,13 +23,13 @@ class AuthController extends Controller
 
     // ユーザー新規登録処理
     public function postUserRegister(RegisterRequest $request)
-    {   
-        User::create([
+    {
+        $user = User::create([
             'name' => $request['name'],
             'email' => $request['email'],
             'password' => Hash::make($request['password']),
         ]);
-        return view('thanks');
+        return redirect('/thanks');
     }
 
     // ユーザーログインページ表示
@@ -36,13 +38,18 @@ class AuthController extends Controller
         return view('auth.login');
     }
 
-    // ユーザーログイン処理
+    // ユーザーログイン処理＆未２FAの場合認証メールを送る
     public function postUserLogin(LoginRequest $request)
     {
-        if (Auth::attempt(['email' => $request['email'], 'password' => $request['password']])) {
+        if (!Auth::attempt(['email' => $request['email'], 'password' => $request['password']])) {
+            return redirect('login/user')->with('result', 'メールアドレスまたはパスワードが違います');
+        }
+        $user = Auth::user();
+        if ($request->user()->hasVerifiedEmail()) {
             return redirect('/');
         } else {
-            return redirect('login/user')->with('result', 'メールアドレスまたはパスワードが違います');
+            event(new Registered($user));
+            return redirect('/email/verify');
         }
     }
 
@@ -61,7 +68,7 @@ class AuthController extends Controller
 
     // 店舗代表者新規登録処理
     public function postManagerRegister(RegisterRequest $request)
-    {   
+    {
         Manager::create([
             'name' => $request['name'],
             'email' => $request['email'],
@@ -80,7 +87,7 @@ class AuthController extends Controller
     public function postManagerLogin(LoginRequest $request)
     {
         if (Auth::guard('managers')->attempt(['email' => $request['email'], 'password' => $request['password']])) {
-            return view('manager_menu');
+            return redirect('menu/manager')->with('result', '店舗代表者ログインに成功しました');
         } else {
             return redirect('/login/manager')->with('result', 'メールアドレスまたはパスワードが違います');
         }
@@ -101,7 +108,7 @@ class AuthController extends Controller
 
     // 管理者新規登録処理
     public function postAdminRegister(RegisterRequest $request)
-    {   
+    {
         Admin::create([
             'name' => $request['name'],
             'email' => $request['email'],
@@ -120,7 +127,7 @@ class AuthController extends Controller
     public function postAdminLogin(LoginRequest $request)
     {
         if (Auth::guard('admins')->attempt(['email' => $request['email'], 'password' => $request['password']])) {
-            return redirect('/register/manager')->with('result', '管理者ログインに成功しました');
+            return redirect('/menu/admin')->with('result', '管理者ログインに成功しました');
         } else {
             return redirect('/login/admin')->with('result', 'メールアドレスまたはパスワードが違います');
         }

@@ -19,9 +19,9 @@
                     <input class="information-email__subject" type="text" name="subject" placeholder="タイトル">
                 </div>
                 <div class="information-email__text">
-                    <textarea class="information-email__message" name="message" placeholder="メール本文"></textarea> 
+                    <textarea class="information-email__message" name="message" placeholder="メール本文"></textarea>
                 </div>
-                <div class="information-email__btn">    
+                <div class="information-email__btn">
                     <button class="send-email__btn" type="submit">送信する</button>
                 </div>
             </div>

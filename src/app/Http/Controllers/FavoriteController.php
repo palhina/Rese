@@ -59,7 +59,7 @@ class FavoriteController extends Controller
         $favorites = Favorite::where('user_id',$user->id)
         ->get();
         $reservations = Reservation::where('user_id',$user->id)
-        ->orderBy('rsv_date', 'asc') 
+        ->orderBy('rsv_date', 'asc')
         ->orderBy('rsv_time', 'asc')
         ->get();
         return view('my_page',compact('user','favorites','reservations'));

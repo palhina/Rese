@@ -40,23 +40,6 @@
     margin-top: 30px;
 }
 
-.form__shop-photo {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    align-items: center;
-    margin: 30px;
-}
-
-.shop-photo__wrapper {
-    width: 30%;
-    margin: 10px;
-}
-
-.shop_photo {
-    width: 100%;
-}
-
 .rsv__create--btn {
     width: 100%;
     background-color: #3560F6;
@@ -94,12 +77,4 @@
         margin-top: 20px;
     }
 
-    .form__shop-photo {
-        margin: 10px;
-    }
-
-    .shop-photo__wrapper {
-        width: 40%;
-        margin: 10px;
-    }
 }

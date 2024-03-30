@@ -12,7 +12,11 @@
                 <h2>{{ $reservation->shop->shop_name }}</h2>
             </div>
             <div class="shop__contents-img">
-                <img class="shop__img" src="{{ $reservation->shop->shop_photo }}">
+                @if (strpos($reservation->shop->shop_photo, '/images/') === 0)
+                    <img class="shop__img" src="{{ $reservation->shop->shop_photo }}">
+                @elseif ($reservation->shop->shop_photo)
+                    <img class="shop__img" src="{{ Storage('s3')->url($reservation->shop->shop_photo) }}">
+                @endif
             </div>
             <div class="shop__contents-tag">
                 <p>#{{ $reservation->shop->area->shop_area }}</p>
@@ -33,7 +37,7 @@
                 <div class="form__error">
                     @if ($errors->has('date'))
                         {{$errors->first('date')}}
-                    @endif 
+                    @endif
                 </div>
                 <div class="form__group">
                     <select class="rsv-time" name="time" id="timeInput">
@@ -55,7 +59,7 @@
                 <div class="form__error">
                     @if ($errors->has('time'))
                         {{$errors->first('time')}}
-                    @endif 
+                    @endif
                 </div>
                 <div class="form__group">
                     <select class="rsv-number" name="number" id="numberInput">
@@ -71,11 +75,11 @@
                         <option value="9">9人</option>
                         <option value="10">10人</option>
                     </select>
-                </div>   
+                </div>
                 <div class="form__error">
                     @if ($errors->has('number'))
                         {{$errors->first('number')}}
-                    @endif 
+                    @endif
                 </div>
                 <div class="rsv-confirm">
                     <table>
@@ -100,7 +104,7 @@
                 <div class="form__button">
                     <button class="rsv__edit--btn">予約変更</button>
                 </div>
-            </form> 
+            </form>
         </div>
     </div>
 

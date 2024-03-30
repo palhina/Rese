@@ -8,8 +8,8 @@
     <div class="shop-create__wrapper">
         <div class="shop__contents--ttl">
             <h2>新しく店舗情報を作成</h2>
-        </div>    
-        <form class="form" action="/create_shop/{$manager->id}" method="post">
+        </div>
+        <form class="form" action="/create_shop/{$manager->id}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="shop__form--content">
                 <div class="form__group">
@@ -17,7 +17,7 @@
                     <div class="form__error">
                         @if ($errors->has('shop_name'))
                             {{$errors->first('shop_name')}}
-                        @endif 
+                        @endif
                     </div>
                 </div>
                 <div class="form__group">
@@ -30,7 +30,7 @@
                     <div class="form__error">
                         @if ($errors->has('shop_area'))
                             {{$errors->first('shop_area')}}
-                        @endif 
+                        @endif
                     </div>
                 </div>
                 <div class="form__group">
@@ -43,7 +43,7 @@
                     <div class="form__error">
                         @if ($errors->has('shop_genre'))
                             {{$errors->first('shop_genre')}}
-                        @endif 
+                        @endif
                     </div>
                 </div>
                 <div class="form__group">
@@ -51,43 +51,25 @@
                     <div class="form__error">
                         @if ($errors->has('shop_comment'))
                             {{$errors->first('shop_comment')}}
-                        @endif 
+                        @endif
                     </div>
                 </div>
+                </form>
                 <div class="form__group">
-                    <p class="form__shop-photo--ttl">店舗画像を以下から選択してください</p>
-                    <div class="form__shop-photo">
-                        <div class="shop-photo__wrapper">
-                            <input type="radio" id="sushi" name="shop_photo" value="/images/sushi.jpg">
-                            <img class="shop_photo" src="{{ asset('images/sushi.jpg') }}" alt="寿司">
-                        </div>
-                        <div class="shop-photo__wrapper">
-                            <input type="radio" id="yakiniku" name="shop_photo" value="/images/yakiniku.jpg">
-                            <img class="shop_photo" src="{{ asset('images/yakiniku.jpg') }}" alt="焼肉">
-                        </div>
-                        <div class="shop-photo__wrapper">
-                            <input type="radio" id="izakaya" name="shop_photo" value="/images/izakaya.jpg">
-                            <img class="shop_photo" src="{{ asset('images/izakaya.jpg') }}" alt="居酒屋">
-                        </div>
-                        <div class="shop-photo__wrapper">
-                            <input type="radio" id="italian" name="shop_photo" value="/images/italian.jpg">
-                            <img class="shop_photo" src="{{ asset('images/italian.jpg') }}" alt="イタリアン">
-                        </div>
-                        <div class="shop-photo__wrapper">
-                            <input type="radio" id="ramen" name="shop_photo" value="/images/ramen.jpg">
-                            <img class="shop_photo" src="{{ asset('images/ramen.jpg') }}" alt="ラーメン">
-                        </div>
-                    </div>
+                    <p class="form__shop-photo--ttl">店舗画像を入力</p>
+                    <label class="shop__img">
+                        <input class="form__img"  type="file" name="shop_photo" accept="image/jpeg, image/svg">
+                    </label>
                     <div class="form__error">
                         @if ($errors->has('shop_photo'))
                             {{$errors->first('shop_photo')}}
-                        @endif 
+                        @endif
                     </div>
                 </div>
                 <div class="form__button">
                     <button class="rsv__create--btn">店舗情報新規作成</button>
                 </div>
             </div>
-        </form> 
+        </form>
     </div>
 @endsection

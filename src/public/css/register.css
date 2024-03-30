@@ -101,7 +101,7 @@
         margin: 15px;
     }
 
-    .form__name-text::before, 
+    .form__name-text::before,
     .form__email-text::before,
     .form__pwd-text::before {
         margin-right: 5px;

@@ -7,19 +7,18 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class TwoFactorAuthPassword extends Mailable
+class MailMessage extends Mailable
 {
     use Queueable, SerializesModels;
-    private $tfa_token = '';
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($tfa_token)
+    public function __construct()
     {
-        $this->tfa_token = $tfa_token;
+        //
     }
 
     /**
@@ -29,9 +28,6 @@ class TwoFactorAuthPassword extends Mailable
      */
     public function build()
     {
-        return $this->from('test@example.com')
-            ->subject('２段階認証のパスワード')
-            ->view('emails.two_factor_auth.password')
-            ->with('tfa_token', $this->tfa_token);
+        return $this->view('emails.verify-email');
     }
 }

@@ -55,22 +55,20 @@
                         </form>
                     </li>
                 @else
-                    <h2 class="hamburger-ttl">現在ログインしていません</h2> 
+                    <h2 class="hamburger-ttl">現在ログインしていません</h2>
                     <li class="hamburger-menu__list"><a class="menu__link" href="/">Home</a></li>
                     <li class="hamburger-menu__list"><a class="menu__link" href="/register/user">Registration</a></li>
                     <li class="hamburger-menu__list"><a class="menu__link" href="/login/user">Login</a></li>
-                    <li class="hamburger-menu__list"><a class="menu__link" href="/two_factor_auth/login_form">Login(二段階認証機能使用)</a></li>
                     <li class="hamburger-menu__list"><a class="menu__link" href="/login/manager">店舗代表の方</a></li>
                     <li class="hamburger-menu__list"><a class="menu__link" href="/login/admin">管理メニュー</a></li>
                 @endif
             </ul>
-           
         </div>
         <div class="header-ttl">
             <h1 class="ttl">Rese</h1>
         </div>
     </header>
-    
+
     <main class="main">
         @yield('content')
     </main>

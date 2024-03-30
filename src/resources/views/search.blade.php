@@ -23,7 +23,7 @@
             </div>
             <div class="search__btn-wrapper">
                 <button class="search__btn" type="submit">Search</button>
-            </div>    
+            </div>
         </div>
     </form>
 </div>

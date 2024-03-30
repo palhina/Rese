@@ -13,7 +13,11 @@
                     <h2>{{ $shop->shop_name }}</h2>
                 </div>
                 <div class="shop__contents-img">
+                @if (strpos($shop->shop_photo, '/images/') === 0)
                     <img class="shop__img" src="{{ $shop->shop_photo }}">
+                @elseif ($shop->shop_photo)
+                    <img class="shop__img" src="{{ Storage('s3')->url($shop->shop_photo) }}">
+                @endif
                 </div>
                 <div class="shop__contents-tag">
                     <p>#{{ $shop->area->shop_area }}</p>
@@ -25,7 +29,7 @@
             </div>
             <div class="shop__contents-update">
                 <h3 class="shop-update__ttl">店舗情報変更</h3>
-                <form action="/update_shop/{{$shop->id}}" method="POST">
+                <form action="/update_shop/{{$shop->id}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="form__group">
@@ -71,29 +75,10 @@
                         </div>
                     </div>
                     <div class="form__group">
-                        <p class="form__shop-photo--ttl">店舗画像を選択してください</p>
-                        <div class="form__shop-photo">
-                            <div class="shop-photo__wrapper">
-                                <input type="radio" id="sushi" name="shop_photo" value="/images/sushi.jpg">
-                                <img class="shop_photo" src="{{ asset('images/sushi.jpg') }}" alt="寿司">
-                            </div>
-                            <div class="shop-photo__wrapper">
-                                <input type="radio" id="yakiniku" name="shop_photo" value="/images/yakiniku.jpg">
-                                <img class="shop_photo" src="{{ asset('images/yakiniku.jpg') }}" alt="焼肉">
-                            </div>
-                            <div class="shop-photo__wrapper">
-                                <input type="radio" id="izakaya" name="shop_photo" value="/images/izakaya.jpg">
-                                <img class="shop_photo" src="{{ asset('images/izakaya.jpg') }}" alt="居酒屋">
-                            </div>
-                            <div class="shop-photo__wrapper">
-                                <input type="radio" id="italian" name="shop_photo" value="/images/italian.jpg">
-                                <img class="shop_photo" src="{{ asset('images/italian.jpg') }}" alt="イタリアン">
-                            </div>
-                            <div class="shop-photo__wrapper">
-                                <input type="radio" id="ramen" name="shop_photo" value="/images/ramen.jpg">
-                                <img class="shop_photo" src="{{ asset('images/ramen.jpg') }}" alt="ラーメン">
-                            </div>
-                        </div>
+                        <p class="form__shop-photo--ttl">店舗画像を選択</p>
+                        <label class="shop-photo__img">
+                            <input class="shop__img"  type="file" name="shop_photo" accept="image/jpeg, image/svg">
+                        </label>
                         <div class="form__error">
                             @if ($errors->has('shop_photo'))
                                 {{$errors->first('shop_photo')}}

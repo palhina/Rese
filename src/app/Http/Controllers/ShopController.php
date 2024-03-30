@@ -14,7 +14,7 @@ class ShopController extends Controller
 {
     // 検索機能
     public function search(Request $request)
-    {   
+    {
         $areas = Area::all();
         $genres = Genre::all();
         $shop_area = $request->input('shop_area');
@@ -25,7 +25,7 @@ class ShopController extends Controller
         if (!empty($shop_area)) {
             $query->where('area_id', $shop_area);
         }
-         if (!empty($shop_genre)) {
+        if (!empty($shop_genre)) {
             $query->where('genre_id', $shop_genre);
         }
         if (!empty($keyword)) {
@@ -40,8 +40,8 @@ class ShopController extends Controller
             $favorites =  Favorite::where('user_id',$userId)->get();
             $results->each(function ($shop) use ($userId) {
                 $shop->isFavorite = Favorite::isFavorite($shop->id, $userId)->exists();
-            });   
-         return view('results', compact('results','areas','genres','favorites'));
+            });
+        return view('results', compact('results','areas','genres','favorites'));
         }
         else{
             return view('results', compact('results','areas','genres'));
@@ -63,13 +63,15 @@ class ShopController extends Controller
         $shops = Shop::where('manager_id',$manager->id)->get();
         $areas = Area::all();
         $genres = Genre::all();
+        $filename=$request->shop_photo->getClientOriginalName();
+        $img = Storage::disk('s3')->putFileAs('images', $request->file('shop_photo'), $filename, 'public');
         Shop::create([
             'area_id' => $request->input('shop_area'),
             'genre_id' => $request->input('shop_genre'),
             'manager_id' => $manager->id,
             'shop_name' => $request->input('shop_name'),
             'shop_comment' => $request->input('shop_comment'),
-            'shop_photo' => $request->input('shop_photo')
+            'shop_photo' => $img,
         ]);
         $shops = Shop::where('manager_id',$manager->id)->get();
         return view('edit_shop',compact('shops','areas','genres'));
@@ -91,7 +93,7 @@ class ShopController extends Controller
         $areas = Area::all();
         $genres = Genre::all();
         $shop = Shop::find($id);
-       return view('update_shop',compact('shop','areas','genres'));
+        return view('update_shop',compact('shop','areas','genres'));
     }
 
     // 店舗情報更新
@@ -100,17 +102,20 @@ class ShopController extends Controller
         $manager = Auth::guard('managers')->user();
         $shop = Shop::find($id);
 
+        $filename=$request->shop_photo->getClientOriginalName();
+        $img = Storage::disk('s3')->putFileAs('images', $request->file('shop_photo'), $filename, 'public');
+
         $shop->shop_name = $request->input('shop_name');
         $shop->area_id = $request->input('shop_area');
         $shop->genre_id = $request->input('shop_genre');
         $shop->shop_comment = $request->input('shop_comment');
-        $shop->shop_photo = $request->input('shop_photo');
+        $shop->shop_photo = $img;
         $shop->save();
 
         $shops = Shop::where('manager_id',$manager->id)->get();
         $areas = Area::all();
         $genres = Genre::all();
-       return view('edit_shop',compact('shops','areas','genres'));
+        return view('edit_shop',compact('shops','areas','genres'));
     }
 
 }

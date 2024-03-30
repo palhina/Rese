@@ -14,7 +14,11 @@
         @foreach ($shops as $shop)
         <div class="shop-all__card">
             <div class="shop-all__card-img">
-                <img class="card__img" src="{{ $shop->shop_photo }}">
+                @if (strpos($shop->shop_photo, '/images/') === 0)
+                    <img class="card__img" src="{{ $shop->shop_photo }}">
+                @elseif ($shop->shop_photo)
+                    <img class="card__img" src="{{ Storage('s3')->url($shop->shop_photo) }}">
+                @endif
             </div>
             <div class="shop-all__card-desc">
                 <div class="shop-all__card-name">
@@ -24,7 +28,7 @@
                     <p class="card-tag">#{{ $shop->area->shop_area}}</p>
                     <p class="card-tag">#{{ $shop->genre->shop_genre }}</p>
                 </div>
-                <div class="shop-all__card-detail"> 
+                <div class="shop-all__card-detail">
                     <form class="form" action="/update_shop/{{$shop->id}}" method="get">
                     @csrf
                         <button class="edit__shop">店舗情報更新</button>
@@ -33,6 +37,6 @@
             </div>
         </div>
         @endforeach
-    </div>       
-</div>         
+    </div>
+</div>
 @endsection

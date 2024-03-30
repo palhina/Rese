@@ -5,6 +5,11 @@
 @endsection
 
 @section('content')
+    @if (session('result'))
+        <div class="flash_message">
+            {{ session('result') }}
+        </div>
+    @endif
     <div class="menu__content">
         <h2>ようこそ、{{ Auth::guard('managers')->user()->name }}さん</h2>
         <ul class="menu__list--wrapper">

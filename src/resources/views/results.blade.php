@@ -10,7 +10,11 @@
         @foreach ($results as $shop)
         <div class="shop-all__card">
             <div class="shop-all__card-img">
-                <img class="card__img" src="{{ $shop->shop_photo }}">
+                @if (strpos($shop->shop_photo, '/images/') === 0)
+                    <img class="card__img" src="{{ $shop->shop_photo }}">
+                @elseif ($shop->shop_photo)
+                    <img class="card__img" src="{{ Storage('s3')->url($shop->shop_photo) }}">
+                @endif
             </div>
             <div class="shop-all__card-desc">
                 <div class="shop-all__card-name">
@@ -20,14 +24,14 @@
                     <p class="card-tag">#{{ $shop->area->shop_area}}</p>
                     <p class="card-tag">#{{ $shop->genre->shop_genre }}</p>
                 </div>
-                <div class="shop-all__card-detail"> 
+                <div class="shop-all__card-detail">
                     <form class="form" action="/detail/{{$shop->id}}" method="get">
                     @csrf
                         <button class="to-shop-detail">詳しく見る</button>
                     </form>
                 </div>
                 <div class="shop-all__fav-btn">
-                    @if ($shop->isFavorite)  
+                    @if ($shop->isFavorite)
                         <form class="fav__delete" method="post" action="/fav_delete_shop/{{ $favorites->firstWhere('shop_id', $shop->id)->id }}">
                             @method('DELETE')
                             @csrf
@@ -43,5 +47,5 @@
             </div>
         </div>
         @endforeach
-    </div>                
+    </div>
 @endsection

@@ -12,7 +12,11 @@
                 <h2>{{ $shop->shop_name }}</h2>
             </div>
             <div class="shop__contents-img">
-                <img class="shop__img" src="{{ $shop->shop_photo }}">
+                @if (strpos($shop->shop_photo, '/images/') === 0)
+                    <img class="shop__img" src="{{ $shop->shop_photo }}">
+                @elseif ($shop->shop_photo)
+                    <img class="shop__img" src="{{ Storage('s3')->url($shop->shop_photo) }}">
+                @endif
             </div>
             <div class="shop__contents-tag">
                 <p>#{{ $shop->area->shop_area }}</p>
@@ -47,7 +51,7 @@
                     <div class="form__error">
                         @if ($errors->has('rating'))
                             {{$errors->first('rating')}}
-                        @endif 
+                        @endif
                     </div>
                 </div>
                 <div class="form-group">
@@ -56,7 +60,7 @@
                     <div class="form__error">
                         @if ($errors->has('comment'))
                             {{$errors->first('comment')}}
-                        @endif 
+                        @endif
                     </div>
                 </div>
                 <div class="form__button">
@@ -64,5 +68,5 @@
                 </div>
             </form>
         </div>
-    </div>    
+    </div>
 @endsection

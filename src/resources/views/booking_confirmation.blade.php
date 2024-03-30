@@ -10,14 +10,14 @@
         <div class="booking__list">
             @foreach($shops as $shop)
             <div class="booking__content">
-                <h3 class="rsv__name">店舗名:{{$shop->shop_name}}</h3> 
-                
+                <h3 class="rsv__name">店舗名:{{$shop->shop_name}}</h3>
+
                 @php
                     $shopReservations = $reservations->where('shop_id', $shop->id);
                 @endphp
 
                 @if($shopReservations->isNotEmpty())
-                    @foreach($shopReservations as $reservation)          
+                    @foreach($shopReservations as $reservation)
                     <div class="booking__card">
                         <div class="booking__date">
                             <p class="rsv__detail">{{$reservation->rsv_date}}</p>
@@ -34,8 +34,8 @@
                 @else
                 <p>予約はありません</p>
                 @endif
-            </div>    
+            </div>
         @endforeach
-        </div>   
+        </div>
     </div>
 @endsection

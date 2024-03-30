@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\Mail;
 use App\Mail\InformationEmail;
 use Illuminate\Http\Request;
@@ -14,7 +15,7 @@ class MailController extends Controller
 
     public function sendEmail(Request $request){
         $users = User::all();
-       	foreach($users as $user)
+        foreach($users as $user)
         $data = [
         'subject' => $request->input('subject'),
         'message' => $request->input('message'),

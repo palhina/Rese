@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Reservation;
 use App\Models\Shop;
@@ -32,7 +31,7 @@ class ReservationController extends Controller
         $reservation = Reservation::find($id)->delete();
         $user = Auth::user();
         $reservations = Reservation::where('user_id',$user->id)
-        ->orderBy('rsv_date', 'asc') 
+        ->orderBy('rsv_date', 'asc')
         ->orderBy('rsv_time', 'asc')
         ->get();
         $favorites = Favorite::where('user_id',$user->id)
@@ -52,19 +51,16 @@ class ReservationController extends Controller
     {
         $user = Auth::user();
         $reservation = Reservation::find($id);
-        
         $reservation->rsv_date = $request->input('date');
         $reservation->rsv_time = $request->input('time');
         $reservation->rsv_guests = $request->input('number');
-        
         $reservation->save();
-
         $reservation = Reservation::where('id', $id)
         ->where('user_id', $user->id)
         ->first();
 
         $reservations = Reservation::where('user_id',$user->id)
-        ->orderBy('rsv_date', 'asc') 
+        ->orderBy('rsv_date', 'asc')
         ->orderBy('rsv_time', 'asc')
         ->get();
         $favorites = Favorite::where('user_id',$user->id)
@@ -83,13 +79,13 @@ class ReservationController extends Controller
                 ->orderBy('rsv_date', 'asc')
                 ->orderBy('rsv_time', 'asc')
                 ->get();
-            $reservations = $reservations->merge($shopReservations); 
+            $reservations = $reservations->merge($shopReservations);
         }
         return view('booking_confirmation',compact('shops','reservations'));
     }
 
     // 予約詳細確認（店舗代表者）
-    public function bookingdetail($id)
+    public function bookingDetail($id)
     {
         $reservation = Reservation::find($id);
         return view('booking_detail',compact('reservation'));
