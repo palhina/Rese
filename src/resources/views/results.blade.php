@@ -13,7 +13,7 @@
                 @if (strpos($shop->shop_photo, '/images/') === 0)
                     <img class="card__img" src="{{ $shop->shop_photo }}">
                 @elseif ($shop->shop_photo)
-                    <img class="card__img" src="{{ Storage('s3')->url($shop->shop_photo) }}">
+                    <img class="card__img" src="{{ Storage::disk('s3')->url($shop->shop_photo) }}">
                 @endif
             </div>
             <div class="shop-all__card-desc">

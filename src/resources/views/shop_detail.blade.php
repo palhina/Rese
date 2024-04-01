@@ -16,7 +16,7 @@
                 @if (strpos($shop->shop_photo, '/images/') === 0)
                     <img class="shop__img" src="{{ $shop->shop_photo }}">
                 @elseif ($shop->shop_photo)
-                    <img class="shop__img" src="{{ Storage('s3')->url($shop->shop_photo) }}">
+                    <img class="shop__img" src="{{ Storage::disk('s3')->url($shop->shop_photo) }}">
                 @endif
             </div>
             <div class="shop__contents-tag">
@@ -37,7 +37,7 @@
                 <div class="form__error">
                     @if ($errors->has('date'))
                         {{$errors->first('date')}}
-                    @endif 
+                    @endif
                 </div>
                 <div class="form__group">
                     <select class="rsv-time" name="time" id="timeInput">
@@ -59,7 +59,7 @@
                 <div class="form__error">
                     @if ($errors->has('time'))
                         {{$errors->first('time')}}
-                    @endif 
+                    @endif
                 </div>
                 <div class="form__group">
                     <select class="rsv-number" name="number" id="numberInput">
@@ -79,8 +79,8 @@
                 <div class="form__error">
                     @if ($errors->has('number'))
                         {{$errors->first('number')}}
-                    @endif 
-                </div>   
+                    @endif
+                </div>
                 <div class="rsv-confirm">
                     <table>
                         <tr>
@@ -104,7 +104,7 @@
                 <div class="form__button">
                     <button class="form__button-rsv" type="submit">予約する</button>
                 </div>
-            </form> 
+            </form>
         </div>
     </div>
 

@@ -9,6 +9,7 @@ use App\Models\Area;
 use App\Models\Genre;
 use App\Models\Favorite;
 use App\Http\Requests\ShopRequest;
+use Illuminate\Support\Facades\Storage;
 
 class ShopController extends Controller
 {

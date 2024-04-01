@@ -6,6 +6,7 @@ use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ReminderMail;
+use App\Models\Reservation;
 
 class Kernel extends ConsoleKernel
 {
@@ -19,10 +20,10 @@ class Kernel extends ConsoleKernel
     {
         $schedule->call(function () {
         $today = now()->format('Y-m-d');
-        $reservations = \App\Models\Reservation::where('rsv_date', $today)->get();
+        $reservations = Reservation::where('rsv_date', $today)->get();
         foreach ($reservations as $reservation) {
             $user = $reservation->user; 
-            \Illuminate\Support\Facades\Mail::to($user->email)->send(new \App\Mail\ReminderMail($reservation));
+            Mail::to($user->email)->send(new ReminderMail($reservation));
         }
     })->dailyAt('08:00');
     }

@@ -71,7 +71,7 @@
                         @if (strpos($favorite->shop->shop_photo, '/images/') === 0)
                             <img class="card__img" src="{{ $favorite->shop->shop_photo }}">
                         @elseif ($favorite->shop->shop_photo)
-                            <img class="card__img" src="{{ Storage('s3')->url($favorite->shop->shop_photo) }}">
+                            <img class="card__img" src="{{ Storage::disk('s3')->url($favorite->shop->shop_photo) }}">
                         @endif
                     </div>
                     <div class="my-page__fav-desc">

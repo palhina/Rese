@@ -16,7 +16,7 @@
                 @if (strpos($shop->shop_photo, '/images/') === 0)
                     <img class="shop__img" src="{{ $shop->shop_photo }}">
                 @elseif ($shop->shop_photo)
-                    <img class="shop__img" src="{{ Storage('s3')->url($shop->shop_photo) }}">
+                    <img class="shop__img" src="{{ Storage::disk('s3')->url($shop->shop_photo) }}">
                 @endif
                 </div>
                 <div class="shop__contents-tag">
@@ -37,7 +37,7 @@
                         <div class="form__error">
                             @if ($errors->has('shop_name'))
                                 {{$errors->first('shop_name')}}
-                            @endif 
+                            @endif
                         </div>
                     </div>
                     <div class="form__group">
@@ -50,7 +50,7 @@
                         <div class="form__error">
                             @if ($errors->has('shop_area'))
                                 {{$errors->first('shop_area')}}
-                            @endif 
+                            @endif
                         </div>
                     </div>
                     <div class="form__group">
@@ -63,7 +63,7 @@
                         <div class="form__error">
                             @if ($errors->has('shop_genre'))
                                 {{$errors->first('shop_genre')}}
-                            @endif 
+                            @endif
                         </div>
                     </div>
                     <div class="form__group">
@@ -71,7 +71,7 @@
                         <div class="form__error">
                             @if ($errors->has('shop_comment'))
                                 {{$errors->first('shop_comment')}}
-                            @endif 
+                            @endif
                         </div>
                     </div>
                     <div class="form__group">
@@ -82,13 +82,13 @@
                         <div class="form__error">
                             @if ($errors->has('shop_photo'))
                                 {{$errors->first('shop_photo')}}
-                            @endif 
+                            @endif
                         </div>
                     </div>
                     <div class="form__button">
                         <button class="rsv__edit--btn">店舗情報更新</button>
                     </div>
-                </form> 
+                </form>
             </div>
         </div>
 @endsection
