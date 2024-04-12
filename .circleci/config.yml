@@ -1,70 +1,34 @@
-# PHP CircleCI 2.0 configuration file
-# See: https://circleci.com/docs/language-php/
 version: 2.1
-
-# Define a job to be invoked later in a workflow.
-# See: https://circleci.com/docs/configuration-reference/#jobs
 jobs:
   build:
-    # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
-    # See: https://circleci.com/docs/configuration-reference/#docker-machine-macos-windows-executor
     docker:
-      # Specify the version you desire here
-      - image: cimg/php:8.1-node-browsers
-
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/circleci-images/
-      # Using the RAM variation mitigates I/O contention
-      # for database intensive operations.
-      # - image: circleci/mysql:5.7-ram
-      #
-      # - image: redis:2.8.19
-
-    # Add steps to the job
-    # See: https://circleci.com/docs/configuration-reference/#steps
+      - image: circleci/php:8.1-node
+      - image: circleci/mysql:8.0.26
+        environment:
+          MYSQL_DB: demo_test
+          MYSQL_USER: root
+          MYSQL_PASSWORD: root
+    environment:
+      APP_ENV: test
+      DB_CONNECTION: mysql
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_DATABASE: demo_test
+      DB_USERNAME: root
+      DB_PASSWORD: root
     steps:
       - checkout
-
-      - run: |
-          -sudo apt update 
-          -sudo apt-get install -y unzip
-          -curl-sS https://getcomposer.org/installer | php
-          -sudo mv composer.phar /usr/local/bin/composer
-      # PHP CircleCI 2.0 Configuration File# PHP CircleCI 2.0 Configuration File sudo apt install zlib1g-dev libsqlite3-dev
-      - run: |
-          sudo docker-php-ext-configure gd --with-freetype --with-jpeg
-          sudo docker-php-ext-install gd
-
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-            # "composer.lock" can be used if it is committed to the repo
-            - v1-dependencies-{{ checksum "composer.json" }}
-            # fallback to using the latest cache if no exact match is found
-            - v1-dependencies-
-
+      - run: sudo composer self-update --1
       - run: composer install -n --prefer-dist --ignore-platform-req=ext-gd
-
-      - save_cache:
-          key: v1-dependencies-{{ checksum "composer.json" }}
-          paths:
-            - ./vendor
-      - restore_cache:
-          keys:
-            - node-v1-{{ checksum "package.json" }}
-            - node-v1-
-      - run: yarn install
-      - save_cache:
-          key: node-v1-{{ checksum "package.json" }}
-          paths:
-            - node_modules
-
-      # prepare the database
-      - run: touch storage/testing.sqlite
-      - run: php artisan migrate --env=testing --database=sqlite_testing --force
-
-      # run tests with phpunit or codecept
-      #- run: ./vendor/bin/phpunit
-      - run: ./vendor/bin/codecept build
-      - run: ./vendor/bin/codecept run
+      - run: npm ci
+      - run: npm run dev
+      - run:
+          command: |
+            sudo apt-get update
+            sudo apt-get install -y unzip
+            -curl-sS https://getcomposer.org/installer | php
+            -sudo mv composer.phar /usr/local/bin/composer
+            libpq-dev
+      - run:
+          name: php test
+          command: vendor/bin/phpunit
