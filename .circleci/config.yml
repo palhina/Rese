@@ -17,4 +17,4 @@ jobs:
           name: php test
           command: |
             cd src
-            vendor/bin/phpunit
+            vendor/bin/phpunit tests\
