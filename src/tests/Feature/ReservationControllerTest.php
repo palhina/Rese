@@ -96,7 +96,7 @@ class ReservationControllerTest extends TestCase
     {
         $manager = Manager::factory()->create();
         $reservation = Reservation::factory()->create();
-        $response= $this->actingAs($manager,'managers')->post("/booking_detail/{$reservation->id}");
+        $response= $this->actingAs($manager,'managers')->get("/booking_detail/{$reservation->id}");
         $response->assertStatus(200);
         $response->assertViewIs('booking_detail');
     }

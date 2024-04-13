@@ -24,7 +24,7 @@
                             <p class="rsv__detail">{{$reservation->rsv_time}}</p>
                         </div>
                         <div class="rsv__btn">
-                            <form class="form" action="/booking_detail/{{$reservation->id}}" method="post">
+                            <form class="form" action="/booking_detail/{{$reservation->id}}" method="get">
                             @csrf
                                 <button class="rsv__edit--btn">予約詳細</button>
                             </form>

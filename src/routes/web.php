@@ -68,7 +68,7 @@ Route::middleware('auth.managers:managers')->group(function (){
     Route::put('/update_shop/{id}', [ShopController::class, 'updateShop']);
     // 予約確認
     Route::get('/booking_confirmation', [ReservationController::class, 'bookingConfirm']);
-    Route::post('/booking_detail/{id}', [ReservationController::class, 'bookingDetail']);
+    Route::get('/booking_detail/{id}', [ReservationController::class, 'bookingDetail']);
 });
 
 // 管理者作成・ログイン機能

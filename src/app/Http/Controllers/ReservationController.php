@@ -91,7 +91,8 @@ class ReservationController extends Controller
         return view('booking_detail',compact('reservation'));
     }
 
-        public function qr($id)
+    // QRコード表示
+    public function qr($id)
     {
         $reservation = Reservation::with('shop')->find($id);
         return view('qr_code',compact('reservation'));
