@@ -5,10 +5,10 @@ jobs:
       - image: circleci/php:7.3-node-browsers
     steps:
       - checkout
-      - run: sudo composer self-update --1
+      - run: sudo composer self-update --2
       - restore_cache:
           key: composer-v1-{{ checksum "composer.lock" }}
-      - run: composer install -n --prefer-dist
+      - run: composer install -n --prefer-dist --ignore-platform-reqs
       - save_cache:
           key: composer-v1-{{ checksum "composer.lock" }}
           paths:
