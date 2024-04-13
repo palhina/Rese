@@ -13,14 +13,6 @@ jobs:
           key: composer-v1-{{ checksum "composer.lock" }}
           paths:
             - vendor
-      - run: pwd
-      - run: ls
-      - run: cd src
-      - run: ls
-      - run: cd vendor
-      - run: ls
-      - run: cd bin
-      - run: ls
       - run:
           name: php test
           command: vendor/bin/phpunit tests/Feature
