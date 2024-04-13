@@ -15,4 +15,4 @@ jobs:
             - vendor
       - run:
           name: php test
-          command: vendor/bin/phpunit
+          command: src/vendor/bin/phpunit
