@@ -13,8 +13,6 @@ jobs:
           key: composer-v1-{{ checksum "composer.lock" }}
           paths:
             - vendor
-      - run: npm ci
-      - run: npm run dev
       - run:
           name: php test
           command: vendor/bin/phpunit
