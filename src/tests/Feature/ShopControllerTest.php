@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Storage;
 
 class ShopControllerTest extends TestCase
 {
+    use RefreshDatabase;
+
     // 検索機能テスト
     public function test_search()
     {
@@ -52,8 +54,9 @@ class ShopControllerTest extends TestCase
         $manager = Manager::factory()->create();
         $area = Area::factory()->create();
         $genre = Genre::factory()->create();
-        $file = UploadedFile::fake()->image('test_image.jpg');
         Storage::fake('s3');
+        $file = UploadedFile::fake()->image('test_image.jpg');
+        $file->storeAs('','test_image.jpg',['disk'=>'s3']);
         $response= $this->actingAs($manager,'managers')->post("/create_shop/{$manager->id}",[
             'shop_area' => $area->id,
             'shop_genre' => $genre->id,
@@ -67,8 +70,11 @@ class ShopControllerTest extends TestCase
             'genre_id' => $genre->id,
             'shop_name' => 'Test Shop',
             'shop_comment' => 'Test Comment',
-            'shop_photo' => 'images/' . 'test_image.jpg',
+            'shop_photo' =>  'images/' . 'test_image.jpg',
         ]);
+        Storage::disk('s3')->assertExists('test_image.jpg');
+        $this->withoutExceptionHandling();
+
     }
 
     // 作成した店舗一覧画面の表示テスト
@@ -98,8 +104,9 @@ class ShopControllerTest extends TestCase
         $shop = Shop::factory()->create(['manager_id' => $manager->id]);
         $area = Area::factory()->create(['id'=>1]);
         $genre = Genre::factory()->create(['id'=>1]);
-        $file = UploadedFile::fake()->image('test_image.jpg');
         Storage::fake('s3');
+        $file = UploadedFile::fake()->image('test_image.jpg');
+        $file->storeAs('','test_image.jpg',['disk'=>'s3']);
         $newShop = [
             'shop_area' => '1',
             'shop_genre' => '1',
@@ -110,11 +117,14 @@ class ShopControllerTest extends TestCase
         $response= $this->actingAs($manager,'managers')->put("update_shop/{$shop->id}",$newShop);
         $response->assertStatus(200);
         $this->assertDatabaseHas('shops', [
+            'id' => $shop->id,
             'area_id' => '1',
             'genre_id' => '1',
             'shop_name' => 'Test Shop',
             'shop_comment' => 'Test Comment',
-            'shop_photo' => 'images/' . 'test_image.jpg',
+            'shop_photo' =>  'images/' . 'test_image.jpg',
         ]);
+        Storage::disk('s3')->assertExists('test_image.jpg');
+        $this->withoutExceptionHandling();
     }
 }

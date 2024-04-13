@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Shop;
 use App\Models\Reservation;
 use App\Models\Manager;
+use Illuminate\Support\Facades\Storage;
 
 class ReservationControllerTest extends TestCase
 {

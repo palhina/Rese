@@ -24,16 +24,17 @@ class AuthControllerTest extends TestCase
     // ユーザー新規登録処理テスト
     public function test_postUserRegister()
     {
-        $response = $this->post('/register/user', [
+        $userData = [
             'name' => 'test',
             'email' => 'test@example.com',
-            'password' => 'password'
-        ]);
+            'password' => 'password',
+        ];
+        $response = $this->post('/register/user', $userData);
+        $response->assertRedirect('/thanks');
         $this->assertDatabaseHas('users', [
             'name' => 'test',
             'email' => 'test@example.com',
         ]);
-        $response->assertRedirect('/thanks');
     }
 
     // ユーザーログインページ表示テスト
@@ -78,7 +79,7 @@ class AuthControllerTest extends TestCase
     public function test_userLogout()
     {
         $user = User::factory()->create();
-        $response=$this->actingAs($user);
+        $response=$this->actingAs($user,'web');
         $this->assertAuthenticated();
         $response = $this->post('/logout/user');
         $this->assertGuest();
@@ -98,7 +99,7 @@ class AuthControllerTest extends TestCase
     public function test_postManagerRegister()
     {
         $admin = Admin::factory()->create();
-        $response=$this->actingAs($admin);
+        $response=$this->actingAs($admin,'admins');
         Manager::factory()->create([
             'name' => 'test',
             'email' => 'test@example.com',
