@@ -1,10 +1,18 @@
 version: 2.1
-executors:
-  docker-executor: cimg/php:8.1-browsers
-
 jobs:
   build:
-    executor: docker-executor
+    docker:
+      - image: cimg/php:8.1-browsers
+        auth:
+          username: mydockerhub_user
+          password: password
+      - image: cimg/mysql8.0
+        auth:
+          username: mydockerhub_user
+          password: password
+        environment:
+          MYSQL_DATABASE: demo_test
+          MYSQL_ROOT_PASSWORD: root
     environment:
       APP_ENV: test
       DB_CONNECTION: mysql_test
