@@ -7,13 +7,13 @@ jobs:
       - checkout
 
       - run:
-        working_directory: src
-        command: sudo composer self-update --2
+          working_directory: src
+          command: sudo composer self-update --2
       - restore_cache:
           key: composer-v1-{{ checksum "src/composer.lock" }}
       - run:
-        working_directory: src
-        command: composer install -n --prefer-dist --ignore-platform-reqs
+          working_directory: src
+          command: composer install -n --prefer-dist --ignore-platform-reqs
       - save_cache:
           key: composer-v1-{{ checksum "src/composer.lock" }}
           paths:
