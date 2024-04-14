@@ -6,14 +6,18 @@ jobs:
     steps:
       - checkout
 
-      - run: sudo composer self-update --2
+      - run:
+          working_directory: src
+          command: sudo composer self-update --2
       - restore_cache:
-          key: composer-v1-{{ checksum "composer.lock" }}
-      - run: composer install -n --prefer-dist --ignore-platform-reqs
+          key: composer-v1-{{ checksum "src/composer.lock" }}
+      - run:
+          working_directory: src
+          command: composer install -n --prefer-dist --ignore-platform-reqs
       - save_cache:
-          key: composer-v1-{{ checksum "composer.lock" }}
+          key: composer-v1-{{ checksum "src/composer.lock" }}
           paths:
-            - vendor
+            - src/vendor
 
       - restore_cache:
           key: npm-v2-{{ checksum "src/package-lock.json" }}
